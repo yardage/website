@@ -48,7 +48,7 @@ Puis branchez la vidéo en fond de hero si souhaité.
 - Build : `npm run build`
 - Publish : `dist`
 - Variable d’env : `PUBLIC_FORMSPREE_ENDPOINT`
-- Domaine : brancher `yardage.co` (DNS plus tard)
+- Domaine : `yardage.io` (CNAME vers GitHub Pages, branche `dist`)
 
 ## Structure
 
