@@ -44,10 +44,10 @@ Puis branchez la vidéo en fond de hero si souhaité.
 
 ## Déploiement (GitHub Pages)
 
-- Workflow : `.github/workflows/deploy-dist.yml` (build + deploy via GitHub Actions)
-- **Settings → Pages → Source : GitHub Actions** (obligatoire)
-- Branche miroir : `dist` (contenu buildé, pour référence)
+- Workflow : `.github/workflows/deploy-dist.yml` (build → push branche `dist`)
+- **Settings → Pages → Source : Deploy from a branch** → branche **`dist`**, dossier **`/`**
 - Domaine : `yardage.io` (DNS A vers GitHub Pages + custom domain dans Settings)
+- Le fichier `.nojekyll` est requis pour que `_astro/` (CSS) soit servi
 
 ## Structure
 
