@@ -42,13 +42,12 @@ ffmpeg -i ../YARDAGE.mp4 -vcodec libx264 -crf 28 -an public/video/yardage.mp4
 
 Puis branchez la vidéo en fond de hero si souhaité.
 
-## Déploiement (Vercel / Netlify)
+## Déploiement (GitHub Pages)
 
-- Framework preset : **Astro**
-- Build : `npm run build`
-- Publish : `dist`
-- Variable d’env : `PUBLIC_FORMSPREE_ENDPOINT`
-- Domaine : `yardage.io` (CNAME vers GitHub Pages, branche `dist`)
+- Workflow : `.github/workflows/deploy-dist.yml` (build + deploy via GitHub Actions)
+- **Settings → Pages → Source : GitHub Actions** (obligatoire)
+- Branche miroir : `dist` (contenu buildé, pour référence)
+- Domaine : `yardage.io` (DNS A vers GitHub Pages + custom domain dans Settings)
 
 ## Structure
 
