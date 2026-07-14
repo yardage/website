@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/paths';
+
 interface Props {
   title?: string;
   subtitle?: string;
@@ -23,7 +25,7 @@ const isBrand = title === 'Yardage';
   ]}
 >
   <img
-    src={image}
+    src={withBase(image)}
     alt=""
     class="animate-hero-image absolute inset-0 -z-20 h-full w-full object-cover"
     width="1600"
@@ -41,7 +43,7 @@ const isBrand = title === 'Yardage';
     {
       isBrand ? (
         <img
-          src="/images/logo.png"
+          src={withBase('/images/logo.png')}
           alt="Yardage"
           class="animate-hero-fade h-11 w-auto max-w-[min(100%,22rem)] object-contain object-left md:h-14 md:max-w-[26rem] lg:h-[4.25rem]"
           width="655"
@@ -62,13 +64,13 @@ const isBrand = title === 'Yardage';
       !compact && (
         <div class="animate-hero-fade-delay-2 mt-8 flex flex-wrap gap-3">
           <a
-            href="/contact"
+            href={withBase('/contact')}
             class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
           >
             Demander un devis
           </a>
           <a
-            href="/contact#exemplaire"
+            href={withBase('/contact#exemplaire')}
             class="rounded-sm border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             Exemplaire numérique gratuit

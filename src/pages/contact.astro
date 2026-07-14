@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import ContactForm from '../components/ContactForm.astro';
+import { withBase } from '../lib/paths';
 ---
 
 <BaseLayout
@@ -21,7 +22,7 @@ import ContactForm from '../components/ContactForm.astro';
 
     <section class="section-photo border-b border-mist" id="exemplaire">
       <img
-        src="/images/bg-aerial.jpg"
+        src={withBase('/images/bg-aerial.jpg')}
         alt=""
         class="section-photo-img opacity-[0.18]"
         width="1440"

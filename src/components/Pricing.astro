@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/paths';
+
 interface Props {
   teaser?: boolean;
 }
@@ -21,7 +23,7 @@ const extras = [
 
 <section class="section-photo border-b border-mist">
   <img
-    src="/images/bg-green.jpg"
+    src={withBase('/images/bg-green.jpg')}
     alt=""
     class="section-photo-img"
     width="1280"
@@ -66,7 +68,7 @@ const extras = [
 
     <div class="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
       <a
-        href="/contact"
+        href={withBase('/contact')}
         class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
       >
         Demander un devis
@@ -74,14 +76,14 @@ const extras = [
       {
         teaser ? (
           <a
-            href="/offre"
+            href={withBase('/offre')}
             class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
           >
             Détail de l’offre
           </a>
         ) : (
           <a
-            href="/contact#exemplaire"
+            href={withBase('/contact#exemplaire')}
             class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
           >
             Demander un exemplaire numérique gratuit

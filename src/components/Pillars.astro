@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/paths';
+
 const pillars = [
   {
     name: 'Passion',
@@ -24,7 +26,7 @@ const pillars = [
 ---
 
 <section class="section-photo border-b border-mist">
-  <img src="/images/bg-trees.jpg" alt="" class="section-photo-img" width="1080" height="1920" loading="lazy" />
+  <img src={withBase('/images/bg-trees.jpg')} alt="" class="section-photo-img" width="1080" height="1920" loading="lazy" />
   <div class="section-photo-veil"></div>
   <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
     <div class="reveal max-w-2xl">

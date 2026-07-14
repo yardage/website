@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Pillars from '../components/Pillars.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
+import { withBase } from '../lib/paths';
 ---
 
 <BaseLayout
@@ -19,7 +20,7 @@ import ProcessSteps from '../components/ProcessSteps.astro';
 
     <section class="section-photo border-b border-mist" id="produit">
       <img
-        src="/images/carnets-irl.jpg"
+        src={withBase('/images/carnets-irl.jpg')}
         alt=""
         class="section-photo-img !opacity-30"
         width="823"
@@ -39,11 +40,11 @@ import ProcessSteps from '../components/ProcessSteps.astro';
 
         <div class="reveal reveal-delay-1 mt-14 grid gap-4 md:grid-cols-12 md:gap-5">
           <a
-            href="/docs/exemple-couverture.pdf"
+            href={withBase('/docs/exemple-couverture.pdf')}
             class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
           >
             <img
-              src="/images/exemple-couverture.jpg"
+              src={withBase('/images/exemple-couverture.jpg')}
               alt="Exemple de couverture — Ableiges Le Vexin"
               class="aspect-[3/4] w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
               width="864"
@@ -53,11 +54,11 @@ import ProcessSteps from '../components/ProcessSteps.astro';
           </a>
 
           <a
-            href="/docs/exemple-trou.pdf"
+            href={withBase('/docs/exemple-trou.pdf')}
             class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
           >
             <img
-              src="/images/exemple-trou-1.jpg"
+              src={withBase('/images/exemple-trou-1.jpg')}
               alt="Exemple de page de trou — page 1, trou 5"
               class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
               width="783"
@@ -67,11 +68,11 @@ import ProcessSteps from '../components/ProcessSteps.astro';
           </a>
 
           <a
-            href="/docs/exemple-trou.pdf"
+            href={withBase('/docs/exemple-trou.pdf')}
             class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
           >
             <img
-              src="/images/exemple-trou-2.jpg"
+              src={withBase('/images/exemple-trou-2.jpg')}
               alt="Exemple de page de trou — page 2, trou 5"
               class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
               width="783"
@@ -87,7 +88,7 @@ import ProcessSteps from '../components/ProcessSteps.astro';
 
     <section class="relative isolate overflow-hidden text-white">
       <img
-        src="/images/bg-fairway.jpg"
+        src={withBase('/images/bg-fairway.jpg')}
         alt=""
         class="absolute inset-0 -z-20 h-full w-full object-cover"
         width="1280"
@@ -105,13 +106,13 @@ import ProcessSteps from '../components/ProcessSteps.astro';
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a
-            href="/contact"
+            href={withBase('/contact')}
             class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
           >
             Demander un devis
           </a>
           <a
-            href="/contact#exemplaire"
+            href={withBase('/contact#exemplaire')}
             class="rounded-sm border border-white/35 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             Exemplaire numérique gratuit

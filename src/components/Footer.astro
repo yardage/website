@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/paths';
+
 const year = new Date().getFullYear();
 ---
 
@@ -6,7 +8,7 @@ const year = new Date().getFullYear();
   <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
     <div>
       <img
-        src="/images/logo.png"
+        src={withBase('/images/logo.png')}
         alt="Yardage"
         class="h-8 w-auto"
         width="180"
@@ -20,9 +22,9 @@ const year = new Date().getFullYear();
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70">Navigation</p>
       <ul class="mt-4 space-y-2 text-sm">
-        <li><a href="/methode" class="text-ink-soft transition hover:text-ink">Méthode</a></li>
-        <li><a href="/offre" class="text-ink-soft transition hover:text-ink">Offre</a></li>
-        <li><a href="/contact" class="text-ink-soft transition hover:text-ink">Contact</a></li>
+        <li><a href={withBase('/methode')} class="text-ink-soft transition hover:text-ink">Méthode</a></li>
+        <li><a href={withBase('/offre')} class="text-ink-soft transition hover:text-ink">Offre</a></li>
+        <li><a href={withBase('/contact')} class="text-ink-soft transition hover:text-ink">Contact</a></li>
       </ul>
     </div>
 
@@ -46,8 +48,8 @@ const year = new Date().getFullYear();
   >
     <p>© {year} Yardage. Tous droits réservés.</p>
     <div class="flex gap-5">
-      <a href="/mentions-legales" class="hover:text-ink">Mentions légales</a>
-      <a href="/confidentialite" class="hover:text-ink">Confidentialité</a>
+      <a href={withBase('/mentions-legales')} class="hover:text-ink">Mentions légales</a>
+      <a href={withBase('/confidentialite')} class="hover:text-ink">Confidentialité</a>
     </div>
   </div>
 </footer>

@@ -1,14 +1,17 @@
 ---
-const pathname = Astro.url.pathname;
+import { withBase } from '../lib/paths';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const links = [
-  { href: '/methode', label: 'Méthode' },
-  { href: '/offre', label: 'Offre' },
-  { href: '/contact', label: 'Contact' },
+  { href: withBase('/methode'), label: 'Méthode' },
+  { href: withBase('/offre'), label: 'Offre' },
+  { href: withBase('/contact'), label: 'Contact' },
 ];
 
 function isActive(href: string) {
-  return pathname === href || pathname.startsWith(`${href}/`);
+  const target = href.replace(/\/$/, '') || '/';
+  return pathname === target || pathname.startsWith(`${target}/`);
 }
 ---
 
@@ -17,9 +20,9 @@ function isActive(href: string) {
   class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 md:px-8 md:py-5">
-    <a href="/" class="shrink-0" aria-label="Yardage — Accueil">
+    <a href={withBase('/')} class="shrink-0" aria-label="Yardage — Accueil">
       <img
-        src="/images/logo.png"
+        src={withBase('/images/logo.png')}
         alt="Yardage"
         class="h-7 w-auto md:h-8"
         width="200"
@@ -42,7 +45,7 @@ function isActive(href: string) {
         ))
       }
       <a
-        href="/contact"
+        href={withBase('/contact')}
         class="rounded-sm bg-white px-4 py-2.5 text-sm font-semibold text-brand transition hover:bg-ink"
       >
         Demander un devis
@@ -73,7 +76,7 @@ function isActive(href: string) {
         ))
       }
       <a
-        href="/contact"
+        href={withBase('/contact')}
         class="mt-2 rounded-sm bg-white px-3 py-3 text-center text-sm font-semibold text-brand"
       >
         Demander un devis

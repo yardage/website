@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/paths';
+
 interface Props {
   teaser?: boolean;
 }
@@ -30,7 +32,7 @@ const steps = [
     teaser && (
       <>
         <img
-          src="/images/bg-fairway.jpg"
+          src={withBase('/images/bg-fairway.jpg')}
           alt=""
           class="section-photo-img"
           width="1280"
@@ -60,7 +62,7 @@ const steps = [
       {
         teaser && (
           <a
-            href="/methode"
+            href={withBase('/methode')}
             class="shrink-0 text-sm font-semibold text-green-mid underline-offset-4 hover:underline"
           >
             Voir la méthode →

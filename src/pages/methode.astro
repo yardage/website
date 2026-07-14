@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
+import { withBase } from '../lib/paths';
 ---
 
 <BaseLayout
@@ -22,7 +23,7 @@ import ProcessSteps from '../components/ProcessSteps.astro';
 
     <section class="section-photo border-b border-mist">
       <img
-        src="/images/bg-green.jpg"
+        src={withBase('/images/bg-green.jpg')}
         alt=""
         class="section-photo-img"
         width="1280"
@@ -42,13 +43,13 @@ import ProcessSteps from '../components/ProcessSteps.astro';
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a
-              href="/contact"
+              href={withBase('/contact')}
               class="inline-flex rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
             >
               Parler de votre parcours
             </a>
             <a
-              href="/docs/exemple-trou.pdf"
+              href={withBase('/docs/exemple-trou.pdf')}
               class="inline-flex rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
             >
               Voir l’exemple PDF
@@ -57,7 +58,7 @@ import ProcessSteps from '../components/ProcessSteps.astro';
         </div>
         <div class="reveal reveal-delay-1 mx-auto w-full max-w-sm overflow-hidden border border-mist bg-panel">
           <img
-            src="/images/exemple-trou-1.jpg"
+            src={withBase('/images/exemple-trou-1.jpg')}
             alt="Exemple de page de trou Yardage — trou 5, par 4"
             class="w-full"
             width="783"
