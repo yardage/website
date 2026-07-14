@@ -150,4 +150,101 @@
       transparent
     );
   }
+
+  body.lightbox-open {
+    overflow: hidden;
+  }
+
+  .image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+  }
+
+  .image-lightbox[hidden] {
+    display: none;
+  }
+
+  .image-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgb(10 16 14 / 0.92);
+    backdrop-filter: blur(8px);
+  }
+
+  .image-lightbox-panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    max-height: 92svh;
+    width: min(100%, 56rem);
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .image-lightbox-close {
+    position: absolute;
+    top: -0.25rem;
+    right: 0;
+    z-index: 2;
+    display: grid;
+    height: 2.5rem;
+    width: 2.5rem;
+    place-items: center;
+    border-radius: 0.25rem;
+    border: 1px solid color-mix(in srgb, var(--color-mist) 80%, transparent);
+    background: color-mix(in srgb, var(--color-panel) 90%, transparent);
+    color: var(--color-ink);
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: background-color 0.15s ease;
+  }
+
+  .image-lightbox-close:hover {
+    background: var(--color-mist);
+  }
+
+  .image-lightbox-figure {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-mist);
+    background: var(--color-panel);
+  }
+
+  .image-lightbox-img {
+    display: block;
+    max-height: min(78svh, 900px);
+    width: 100%;
+    object-fit: contain;
+    background: #fff;
+  }
+
+  .image-lightbox-caption {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+  }
+
+  .image-lightbox-pdf {
+    align-self: center;
+    border-radius: 0.25rem;
+    border: 1px solid color-mix(in srgb, var(--color-green-mid) 50%, transparent);
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-green-mid);
+    transition: background-color 0.15s ease;
+  }
+
+  .image-lightbox-pdf:hover {
+    background: color-mix(in srgb, var(--color-green-mid) 12%, transparent);
+  }
+
+  .image-lightbox-pdf[hidden] {
+    display: none;
+  }
 }

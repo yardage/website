@@ -1,0 +1,157 @@
+---
+import { withBase } from '../lib/paths';
+
+interface GalleryItem {
+  src: string;
+  alt: string;
+  pdfHref?: string;
+  objectPosition?: string;
+}
+
+interface Props {
+  coverAlt?: string;
+}
+
+const { coverAlt = 'Exemple de couverture — Ableiges Le Vexin' } = Astro.props;
+
+const items: GalleryItem[] = [
+  {
+    src: '/images/exemple-couverture.jpg',
+    alt: coverAlt,
+    pdfHref: '/docs/exemple-couverture.pdf',
+  },
+  {
+    src: '/images/exemple-trou-1.png',
+    alt: 'Exemple de page de trou — vue d’ensemble, trou 5',
+    pdfHref: '/docs/exemple-trou.pdf',
+    objectPosition: 'object-top',
+  },
+  {
+    src: '/images/exemple-trou-2.png',
+    alt: 'Exemple de page de trou — détail green et fairway, trou 5',
+    pdfHref: '/docs/exemple-trou.pdf',
+    objectPosition: 'object-top',
+  },
+];
+---
+
+<div class="reveal reveal-delay-1 mt-14 grid gap-4 md:grid-cols-12 md:gap-5">
+  {
+    items.map((item) => (
+      <button
+        type="button"
+        class="group relative cursor-zoom-in overflow-hidden border border-mist bg-panel/90 text-left backdrop-blur-sm md:col-span-4"
+        data-lightbox-trigger
+        data-lightbox-src={withBase(item.src)}
+        data-lightbox-alt={item.alt}
+        data-lightbox-pdf={item.pdfHref ? withBase(item.pdfHref) : ''}
+        aria-label={`Agrandir : ${item.alt}`}
+      >
+        <img
+          src={withBase(item.src)}
+          alt={item.alt}
+          class:list={[
+            'aspect-[3/4] w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02] md:p-4',
+            item.objectPosition,
+          ]}
+          loading="lazy"
+        />
+      </button>
+    ))
+  }
+</div>
+
+<div
+  id="image-lightbox"
+  class="image-lightbox"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-label="Visionneuse d’image"
+>
+  <div class="image-lightbox-backdrop" data-lightbox-close tabindex="-1"></div>
+  <div class="image-lightbox-panel">
+    <button type="button" class="image-lightbox-close" data-lightbox-close aria-label="Fermer">
+      <span aria-hidden="true">×</span>
+    </button>
+    <figure class="image-lightbox-figure">
+      <img id="image-lightbox-img" class="image-lightbox-img" src="" alt="" />
+      <figcaption id="image-lightbox-caption" class="image-lightbox-caption"></figcaption>
+    </figure>
+    <a
+      id="image-lightbox-pdf"
+      class="image-lightbox-pdf"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      hidden
+    >
+      Ouvrir le PDF
+    </a>
+  </div>
+</div>
+
+<script>
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImg = document.getElementById('image-lightbox-img') as HTMLImageElement | null;
+  const lightboxCaption = document.getElementById('image-lightbox-caption');
+  const lightboxPdf = document.getElementById('image-lightbox-pdf') as HTMLAnchorElement | null;
+  const closeButtons = lightbox?.querySelectorAll('[data-lightbox-close]');
+
+  let lastFocus: HTMLElement | null = null;
+
+  const openLightbox = (src: string, alt: string, pdf?: string) => {
+    if (!lightbox || !lightboxImg || !lightboxCaption || !lightboxPdf) return;
+
+    lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightboxCaption.textContent = alt;
+
+    if (pdf) {
+      lightboxPdf.href = pdf;
+      lightboxPdf.hidden = false;
+    } else {
+      lightboxPdf.hidden = true;
+    }
+
+    lightbox.hidden = false;
+    document.body.classList.add('lightbox-open');
+
+    const closeBtn = lightbox.querySelector('.image-lightbox-close');
+    if (closeBtn instanceof HTMLElement) closeBtn.focus();
+  };
+
+  const closeLightbox = () => {
+    if (!lightbox || !lightboxImg) return;
+
+    lightbox.hidden = true;
+    lightboxImg.src = '';
+    document.body.classList.remove('lightbox-open');
+    lastFocus?.focus();
+    lastFocus = null;
+  };
+
+  document.addEventListener('click', (event) => {
+    const trigger = (event.target as Element | null)?.closest?.('[data-lightbox-trigger]');
+    if (!(trigger instanceof HTMLButtonElement)) return;
+
+    event.preventDefault();
+    const src = trigger.dataset.lightboxSrc;
+    const alt = trigger.dataset.lightboxAlt ?? '';
+    const pdf = trigger.dataset.lightboxPdf || undefined;
+    if (src) openLightbox(src, alt, pdf || undefined);
+  });
+
+  closeButtons?.forEach((btn) => {
+    btn.addEventListener('click', closeLightbox);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+      event.preventDefault();
+      closeLightbox();
+    }
+  });
+</script>

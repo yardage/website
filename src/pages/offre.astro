@@ -4,12 +4,13 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Pricing from '../components/Pricing.astro';
+import ProductGallery from '../components/ProductGallery.astro';
 import { withBase } from '../lib/paths';
 ---
 
 <BaseLayout
   title="Offre — Yardage"
-  description="Tarifs Yardage pour golfs et pros : 10,90 € HT l’unité, remises volume, personnalisation logo et impression premium."
+  description="Tarifs Yardage pour golfs et pros : 11,90 € HT l’unité, remises volume, personnalisation logo et impression premium."
 >
   <Header />
   <main>
@@ -40,49 +41,7 @@ import { withBase } from '../lib/paths';
           </p>
         </div>
 
-        <div class="reveal reveal-delay-1 mt-14 grid gap-4 md:grid-cols-12 md:gap-5">
-          <a
-            href={withBase('/docs/exemple-couverture.pdf')}
-            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
-          >
-            <img
-              src={withBase('/images/exemple-couverture.jpg')}
-              alt="Exemple de couverture personnalisée — Ableiges Le Vexin"
-              class="aspect-[3/4] w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
-              width="864"
-              height="1404"
-              loading="lazy"
-            />
-          </a>
-
-          <a
-            href={withBase('/docs/exemple-trou.pdf')}
-            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
-          >
-            <img
-              src={withBase('/images/exemple-trou-1.jpg')}
-              alt="Exemple de page de trou — page 1, trou 5"
-              class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
-              width="783"
-              height="1378"
-              loading="lazy"
-            />
-          </a>
-
-          <a
-            href={withBase('/docs/exemple-trou.pdf')}
-            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
-          >
-            <img
-              src={withBase('/images/exemple-trou-2.jpg')}
-              alt="Exemple de page de trou — page 2, trou 5"
-              class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
-              width="783"
-              height="1378"
-              loading="lazy"
-            />
-          </a>
-        </div>
+        <ProductGallery coverAlt="Exemple de couverture personnalisée — Ableiges Le Vexin" />
       </div>
     </section>
   </main>
