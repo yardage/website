@@ -70,24 +70,52 @@ const items: GalleryItem[] = [
   aria-label="Visionneuse d’image"
 >
   <div class="image-lightbox-backdrop" data-lightbox-close tabindex="-1"></div>
+
   <div class="image-lightbox-panel">
-    <button type="button" class="image-lightbox-close" data-lightbox-close aria-label="Fermer">
-      <span aria-hidden="true">×</span>
-    </button>
-    <figure class="image-lightbox-figure">
-      <img id="image-lightbox-img" class="image-lightbox-img" src="" alt="" />
-      <figcaption id="image-lightbox-caption" class="image-lightbox-caption"></figcaption>
-    </figure>
-    <a
-      id="image-lightbox-pdf"
-      class="image-lightbox-pdf"
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
-      hidden
-    >
-      Ouvrir le PDF
-    </a>
+    <header class="image-lightbox-header">
+      <p id="image-lightbox-counter" class="image-lightbox-counter"></p>
+      <button type="button" class="image-lightbox-close" data-lightbox-close aria-label="Fermer">
+        <span aria-hidden="true">×</span>
+      </button>
+    </header>
+
+    <div class="image-lightbox-stage">
+      <button
+        type="button"
+        id="image-lightbox-prev"
+        class="image-lightbox-nav"
+        aria-label="Image précédente"
+      >
+        ‹
+      </button>
+
+      <figure class="image-lightbox-figure">
+        <img id="image-lightbox-img" class="image-lightbox-img" src="" alt="" />
+      </figure>
+
+      <button
+        type="button"
+        id="image-lightbox-next"
+        class="image-lightbox-nav"
+        aria-label="Image suivante"
+      >
+        ›
+      </button>
+    </div>
+
+    <footer class="image-lightbox-footer">
+      <p id="image-lightbox-caption" class="image-lightbox-caption"></p>
+      <a
+        id="image-lightbox-pdf"
+        class="image-lightbox-pdf"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden
+      >
+        Ouvrir le PDF
+      </a>
+    </footer>
   </div>
 </div>
 
@@ -95,19 +123,31 @@ const items: GalleryItem[] = [
   const lightbox = document.getElementById('image-lightbox');
   const lightboxImg = document.getElementById('image-lightbox-img') as HTMLImageElement | null;
   const lightboxCaption = document.getElementById('image-lightbox-caption');
+  const lightboxCounter = document.getElementById('image-lightbox-counter');
   const lightboxPdf = document.getElementById('image-lightbox-pdf') as HTMLAnchorElement | null;
+  const prevBtn = document.getElementById('image-lightbox-prev') as HTMLButtonElement | null;
+  const nextBtn = document.getElementById('image-lightbox-next') as HTMLButtonElement | null;
   const closeButtons = lightbox?.querySelectorAll('[data-lightbox-close]');
 
+  const triggers = [...document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]')];
+  let currentIndex = 0;
   let lastFocus: HTMLElement | null = null;
 
-  const openLightbox = (src: string, alt: string, pdf?: string) => {
-    if (!lightbox || !lightboxImg || !lightboxCaption || !lightboxPdf) return;
+  const showIndex = (index: number) => {
+    const trigger = triggers[index];
+    if (!lightbox || !lightboxImg || !lightboxCaption || !lightboxCounter || !lightboxPdf || !trigger) {
+      return;
+    }
 
-    lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    currentIndex = index;
+    const src = trigger.dataset.lightboxSrc ?? '';
+    const alt = trigger.dataset.lightboxAlt ?? '';
+    const pdf = trigger.dataset.lightboxPdf || undefined;
 
     lightboxImg.src = src;
     lightboxImg.alt = alt;
     lightboxCaption.textContent = alt;
+    lightboxCounter.textContent = `${index + 1} / ${triggers.length}`;
 
     if (pdf) {
       lightboxPdf.href = pdf;
@@ -115,6 +155,19 @@ const items: GalleryItem[] = [
     } else {
       lightboxPdf.hidden = true;
     }
+
+    if (prevBtn) prevBtn.disabled = index === 0;
+    if (nextBtn) nextBtn.disabled = index === triggers.length - 1;
+  };
+
+  const openLightbox = (trigger: HTMLButtonElement) => {
+    if (!lightbox) return;
+
+    const index = triggers.indexOf(trigger);
+    if (index === -1) return;
+
+    lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    showIndex(index);
 
     lightbox.hidden = false;
     document.body.classList.add('lightbox-open');
@@ -138,20 +191,39 @@ const items: GalleryItem[] = [
     if (!(trigger instanceof HTMLButtonElement)) return;
 
     event.preventDefault();
-    const src = trigger.dataset.lightboxSrc;
-    const alt = trigger.dataset.lightboxAlt ?? '';
-    const pdf = trigger.dataset.lightboxPdf || undefined;
-    if (src) openLightbox(src, alt, pdf || undefined);
+    openLightbox(trigger);
   });
 
   closeButtons?.forEach((btn) => {
     btn.addEventListener('click', closeLightbox);
   });
 
+  prevBtn?.addEventListener('click', () => {
+    if (currentIndex > 0) showIndex(currentIndex - 1);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    if (currentIndex < triggers.length - 1) showIndex(currentIndex + 1);
+  });
+
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+    if (!lightbox || lightbox.hidden) return;
+
+    if (event.key === 'Escape') {
       event.preventDefault();
       closeLightbox();
+      return;
+    }
+
+    if (event.key === 'ArrowLeft' && currentIndex > 0) {
+      event.preventDefault();
+      showIndex(currentIndex - 1);
+      return;
+    }
+
+    if (event.key === 'ArrowRight' && currentIndex < triggers.length - 1) {
+      event.preventDefault();
+      showIndex(currentIndex + 1);
     }
   });
 </script>
