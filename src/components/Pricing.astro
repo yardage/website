@@ -1,0 +1,93 @@
+---
+interface Props {
+  teaser?: boolean;
+}
+
+const { teaser = false } = Astro.props;
+
+const volumes = [
+  { qty: 'À l’unité', price: '10,90 €', note: 'HT / exemplaire' },
+  { qty: '500 ex.', price: '−5 %', note: 'Remise volume' },
+  { qty: '1 000 ex.', price: '−10 %', note: 'Remise volume' },
+];
+
+const extras = [
+  'Personnalisation logo et sponsors',
+  'Impression premium sur papier écologique',
+  'Livraison rapide',
+  'Exemplaire numérique gratuit sur demande',
+];
+---
+
+<section class="section-photo border-b border-mist">
+  <img
+    src="/images/bg-green.jpg"
+    alt=""
+    class="section-photo-img"
+    width="1280"
+    height="1920"
+    loading="lazy"
+  />
+  <div class="section-photo-veil"></div>
+  <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">Offre</p>
+      <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">
+        Une grille claire pour les golfs et les pros.
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+        Prix public conseillé&nbsp;: <span class="font-semibold text-ink">16–19 € TTC</span>. Tarifs club
+        ci-dessous, hors taxes.
+      </p>
+    </div>
+
+    <div class="reveal reveal-delay-1 mt-12 grid gap-px overflow-hidden border border-mist bg-mist md:grid-cols-3">
+      {
+        volumes.map((item) => (
+          <div class="bg-panel px-6 py-8 md:px-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-mid">{item.qty}</p>
+            <p class="mt-4 font-display text-4xl text-green-mid md:text-5xl">{item.price}</p>
+            <p class="mt-2 text-sm text-ink-soft">{item.note}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <ul class="reveal reveal-delay-2 mt-10 grid gap-3 sm:grid-cols-2">
+      {
+        extras.map((item) => (
+          <li class="flex gap-3 text-sm text-ink-soft md:text-base">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-mid" aria-hidden="true" />
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
+      <a
+        href="/contact"
+        class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+      >
+        Demander un devis
+      </a>
+      {
+        teaser ? (
+          <a
+            href="/offre"
+            class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+          >
+            Détail de l’offre
+          </a>
+        ) : (
+          <a
+            href="/contact#exemplaire"
+            class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+          >
+            Demander un exemplaire numérique gratuit
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>

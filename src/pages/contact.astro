@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact — Yardage"
+  description="Demandez un devis ou un exemplaire numérique gratuit. Yardage : contact@yardage.co — +33 6 16 88 40 61."
+>
+  <Header />
+  <main>
+    <Hero
+      title="Contact"
+      subtitle="Devis, exemplaire numérique gratuit ou question sur un parcours — écrivez-nous."
+      image="/images/bg-green.jpg"
+      compact
+    />
+
+    <section class="section-photo border-b border-mist" id="exemplaire">
+      <img
+        src="/images/bg-aerial.jpg"
+        alt=""
+        class="section-photo-img opacity-[0.18]"
+        width="1440"
+        height="1920"
+        loading="lazy"
+      />
+      <div class="section-photo-veil"></div>
+      <div class="mx-auto grid max-w-6xl gap-14 px-5 py-20 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:py-28">
+        <div class="reveal">
+          <h2 class="font-display text-3xl text-ink md:text-4xl">Coordonnées</h2>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft">
+            Réponse sous 48&nbsp;h ouvrées. Pour un exemplaire numérique gratuit, précisez le nom du club
+            et le nombre de trous.
+          </p>
+          <ul class="mt-8 space-y-4 text-base">
+            <li>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-mid">Email</p>
+              <a
+                href="mailto:contact@yardage.co"
+                class="mt-1 inline-block font-medium text-green-mid hover:underline"
+              >
+                contact@yardage.co
+              </a>
+            </li>
+            <li>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-mid">Téléphone</p>
+              <a href="tel:+33616884061" class="mt-1 inline-block font-medium text-green-mid hover:underline">
+                +33 6 16 88 40 61
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-sm border border-mist bg-panel/80 p-6 backdrop-blur-sm md:p-8">
+          <h2 class="font-display text-2xl text-ink md:text-3xl">Demander un devis</h2>
+          <p class="mt-2 text-sm text-ink-soft">
+            Club, volume estimé et message — nous revenons vers vous avec une proposition.
+          </p>
+          <div class="mt-6">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

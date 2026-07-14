@@ -1,0 +1,103 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+  { href: '/methode', label: 'Méthode' },
+  { href: '/offre', label: 'Offre' },
+  { href: '/contact', label: 'Contact' },
+];
+
+function isActive(href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 md:px-8 md:py-5">
+    <a href="/" class="shrink-0" aria-label="Yardage — Accueil">
+      <img
+        src="/images/logo.png"
+        alt="Yardage"
+        class="h-7 w-auto md:h-8"
+        width="200"
+        height="31"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Navigation principale">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'text-sm font-medium tracking-wide text-white/85 transition hover:text-white',
+              isActive(link.href) && 'text-white',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="/contact"
+        class="rounded-sm bg-white px-4 py-2.5 text-sm font-semibold text-brand transition hover:bg-ink"
+      >
+        Demander un devis
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      class="inline-flex items-center justify-center rounded-sm border border-white/25 px-3 py-2 text-sm font-medium text-white md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      Menu
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-paper/95 backdrop-blur-md md:hidden">
+    <nav class="flex flex-col gap-1 px-5 py-4" aria-label="Navigation mobile">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-sm px-2 py-3 text-base font-medium text-white/90 hover:bg-white/10"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href="/contact"
+        class="mt-2 rounded-sm bg-white px-3 py-3 text-center text-sm font-semibold text-brand"
+      >
+        Demander un devis
+      </a>
+    </nav>
+  </div>
+</header>
+
+<div id="scroll-progress" class="fixed left-0 top-0 z-[60] h-0.5 w-0 bg-green-mid/90" aria-hidden="true"></div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('site-header');
+
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    header?.classList.toggle('header-scrolled', y > 24);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

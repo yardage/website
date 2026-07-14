@@ -1,0 +1,119 @@
+---
+/**
+ * Remplacez YOUR_FORM_ID par votre identifiant Formspree
+ * (https://formspree.io → New Form → endpoint https://formspree.io/f/xxxx)
+ */
+const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT || 'https://formspree.io/f/YOUR_FORM_ID';
+
+const fieldClass =
+  'mt-2 w-full rounded-sm border border-mist bg-paper px-3 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/50 focus:border-green-mid';
+---
+
+<form
+  id="devis-form"
+  action={formspreeEndpoint}
+  method="POST"
+  class="space-y-5"
+>
+  <input type="hidden" name="_subject" value="Demande de devis — Yardage" />
+  <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+  <div class="grid gap-5 md:grid-cols-2">
+    <label class="block">
+      <span class="text-sm font-medium text-ink">Nom</span>
+      <input type="text" name="name" required class={fieldClass} autocomplete="name" />
+    </label>
+    <label class="block">
+      <span class="text-sm font-medium text-ink">Email</span>
+      <input type="email" name="email" required class={fieldClass} autocomplete="email" />
+    </label>
+  </div>
+
+  <div class="grid gap-5 md:grid-cols-2">
+    <label class="block">
+      <span class="text-sm font-medium text-ink">Club / structure</span>
+      <input type="text" name="club" required class={fieldClass} />
+    </label>
+    <label class="block">
+      <span class="text-sm font-medium text-ink">Volume estimé</span>
+      <select name="volume" class={fieldClass}>
+        <option value="exemple">Exemplaire numérique gratuit</option>
+        <option value="<500">Moins de 500</option>
+        <option value="500">Environ 500</option>
+        <option value="1000">Environ 1 000</option>
+        <option value=">1000">Plus de 1 000</option>
+      </select>
+    </label>
+  </div>
+
+  <label class="block">
+    <span class="text-sm font-medium text-ink">Message</span>
+    <textarea
+      name="message"
+      rows="5"
+      required
+      class={fieldClass}
+      placeholder="Parcours, délais, personnalisation logo / sponsors…"
+    ></textarea>
+  </label>
+
+  <button
+    type="submit"
+    class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink disabled:opacity-60"
+  >
+    Envoyer la demande
+  </button>
+
+  <p id="form-status" class="hidden text-sm" role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  const form = document.getElementById('devis-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', async (event) => {
+    const action = form.getAttribute('action') || '';
+    if (action.includes('YOUR_FORM_ID')) {
+      event.preventDefault();
+      if (status) {
+        status.classList.remove('hidden', 'text-green-mid');
+        status.classList.add('text-ink-soft');
+        status.textContent =
+          'Formulaire non configuré : ajoutez votre endpoint Formspree (PUBLIC_FORMSPREE_ENDPOINT). En attendant, écrivez-nous à contact@yardage.co.';
+      }
+      return;
+    }
+
+    event.preventDefault();
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    if (button) button.disabled = true;
+
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        form.reset();
+        if (status) {
+          status.classList.remove('hidden', 'text-ink-soft');
+          status.classList.add('text-green-mid');
+          status.textContent = 'Merci — votre demande a bien été envoyée. Nous vous recontactons rapidement.';
+        }
+      } else {
+        throw new Error('Form error');
+      }
+    } catch {
+      if (status) {
+        status.classList.remove('hidden', 'text-green-mid');
+        status.classList.add('text-ink-soft');
+        status.textContent =
+          'Envoi impossible pour le moment. Contactez-nous à contact@yardage.co ou au +33 6 16 88 40 61.';
+      }
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>

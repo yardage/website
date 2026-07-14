@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Pillars from '../components/Pillars.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+---
+
+<BaseLayout
+  title="Yardage — Carnets de parcours pour golfs et pros"
+  description="Yardage conçoit et imprime des carnets de parcours golf pour clubs et professionnels. Précision cartographique, impression premium, devis sur mesure."
+  ogImage="/images/bg-aerial.jpg"
+>
+  <Header />
+  <main>
+    <Hero />
+    <Pillars />
+
+    <section class="section-photo border-b border-mist" id="produit">
+      <img
+        src="/images/carnets-irl.jpg"
+        alt=""
+        class="section-photo-img !opacity-30"
+        width="823"
+        height="795"
+        loading="lazy"
+      />
+      <div class="section-photo-veil"></div>
+      <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+        <div class="reveal max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">Le produit</p>
+          <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">Du carnet imprimé à la page de trou.</h2>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+            Couverture personnalisée, cartographie précise, format pensé pour le parcours. Demandez un
+            <span class="text-ink">exemplaire numérique gratuit</span> pour découvrir le rendu.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-1 mt-14 grid gap-4 md:grid-cols-12 md:gap-5">
+          <a
+            href="/docs/exemple-couverture.pdf"
+            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
+          >
+            <img
+              src="/images/exemple-couverture.jpg"
+              alt="Exemple de couverture — Ableiges Le Vexin"
+              class="aspect-[3/4] w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
+              width="864"
+              height="1404"
+              loading="lazy"
+            />
+          </a>
+
+          <a
+            href="/docs/exemple-trou.pdf"
+            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
+          >
+            <img
+              src="/images/exemple-trou-1.jpg"
+              alt="Exemple de page de trou — page 1, trou 5"
+              class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
+              width="783"
+              height="1378"
+              loading="lazy"
+            />
+          </a>
+
+          <a
+            href="/docs/exemple-trou.pdf"
+            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
+          >
+            <img
+              src="/images/exemple-trou-2.jpg"
+              alt="Exemple de page de trou — page 2, trou 5"
+              class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
+              width="783"
+              height="1378"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <ProcessSteps teaser />
+
+    <section class="relative isolate overflow-hidden text-white">
+      <img
+        src="/images/bg-fairway.jpg"
+        alt=""
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+        width="1280"
+        height="1920"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 -z-10 bg-paper/80"></div>
+      <div class="reveal mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+        <h2 class="max-w-xl font-display text-4xl md:text-5xl">
+          Un carnet digne de votre parcours.
+        </h2>
+        <p class="mt-4 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
+          Demandez un devis ou un exemplaire numérique gratuit — nous étudions votre club et vous
+          proposons une production adaptée.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/contact"
+            class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+          >
+            Demander un devis
+          </a>
+          <a
+            href="/contact#exemplaire"
+            class="rounded-sm border border-white/35 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Exemplaire numérique gratuit
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout
+  title="Mentions légales — Yardage"
+  description="Mentions légales du site Yardage."
+>
+  <Header />
+  <main>
+    <Hero title="Mentions légales" subtitle="Informations légales relatives au site yardage.co." compact />
+    <section class="bg-paper">
+      <div class="reveal prose-legal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink">Éditeur</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          Le site <strong>yardage.co</strong> est édité par Yardage.<br />
+          Contact : <a href="mailto:contact@yardage.co" class="text-green-mid hover:underline">contact@yardage.co</a>
+          — <a href="tel:+33616884061" class="text-green-mid hover:underline">+33 6 16 88 40 61</a>.
+        </p>
+        <p class="mt-3 text-sm text-ink-soft">
+          Raison sociale, forme juridique, capital, siège et numéro SIREN à compléter avant mise en
+          production.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Hébergement</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          Hébergeur à préciser selon le déploiement (Vercel ou Netlify). Les mentions d’hébergeur seront
+          mises à jour lors du branchement du domaine.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Propriété intellectuelle</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          L’ensemble des contenus (textes, visuels, logos, vidéos) présents sur ce site est protégé. Toute
+          reproduction non autorisée est interdite.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+---
+
+<BaseLayout
+  title="Méthode — Yardage"
+  description="Analyse terrain, data, production vectorielle et impression : la méthode Yardage pour des carnets de parcours précis et élégants."
+>
+  <Header />
+  <main>
+    <Hero
+      title="Méthode"
+      subtitle="Quatre étapes pour transformer le terrain en carnet de référence."
+      image="/images/bg-fairway.jpg"
+      compact
+    />
+    <ProcessSteps />
+
+    <section class="section-photo border-b border-mist">
+      <img
+        src="/images/bg-green.jpg"
+        alt=""
+        class="section-photo-img"
+        width="1280"
+        height="1920"
+        loading="lazy"
+      />
+      <div class="section-photo-veil"></div>
+      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28">
+        <div class="reveal">
+          <h2 class="font-display text-3xl text-ink md:text-4xl">Une page de trou claire et précise.</h2>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft">
+            Distances, obstacles, lignes de jeu et green — chaque trou est produit en vectoriel à partir
+            des données terrain, pour une lecture immédiate sur le parcours.
+          </p>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft">
+            La base data reste actualisable — pour faire évoluer le carnet quand le parcours change.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href="/contact"
+              class="inline-flex rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+            >
+              Parler de votre parcours
+            </a>
+            <a
+              href="/docs/exemple-trou.pdf"
+              class="inline-flex rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+            >
+              Voir l’exemple PDF
+            </a>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1 mx-auto w-full max-w-sm overflow-hidden border border-mist bg-panel">
+          <img
+            src="/images/exemple-trou-1.jpg"
+            alt="Exemple de page de trou Yardage — trou 5, par 4"
+            class="w-full"
+            width="783"
+            height="1378"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

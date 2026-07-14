@@ -1,0 +1,53 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-mist bg-sand text-ink">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
+    <div>
+      <img
+        src="/images/logo.png"
+        alt="Yardage"
+        class="h-8 w-auto"
+        width="180"
+        height="28"
+      />
+      <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft">
+        Carnets de parcours pour golfs et professionnels. Une lecture claire du terrain, du tee au green.
+      </p>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70">Navigation</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="/methode" class="text-ink-soft transition hover:text-ink">Méthode</a></li>
+        <li><a href="/offre" class="text-ink-soft transition hover:text-ink">Offre</a></li>
+        <li><a href="/contact" class="text-ink-soft transition hover:text-ink">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70">Contact</p>
+      <ul class="mt-4 space-y-2 text-sm text-ink-soft">
+        <li>
+          <a href="mailto:contact@yardage.co" class="transition hover:text-ink">
+            contact@yardage.co
+          </a>
+        </li>
+        <li>
+          <a href="tel:+33616884061" class="transition hover:text-ink">+33 6 16 88 40 61</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-mist px-5 py-5 text-xs text-ink-soft/70 md:flex-row md:items-center md:justify-between md:px-8"
+  >
+    <p>© {year} Yardage. Tous droits réservés.</p>
+    <div class="flex gap-5">
+      <a href="/mentions-legales" class="hover:text-ink">Mentions légales</a>
+      <a href="/confidentialite" class="hover:text-ink">Confidentialité</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Pricing from '../components/Pricing.astro';
+---
+
+<BaseLayout
+  title="Offre — Yardage"
+  description="Tarifs Yardage pour golfs et pros : 10,90 € HT l’unité, remises volume, personnalisation logo et impression premium."
+>
+  <Header />
+  <main>
+    <Hero
+      title="Offre"
+      subtitle="Des carnets premium à un tarif club transparent — avec remises volume."
+      image="/images/bg-trees.jpg"
+      compact
+    />
+    <Pricing />
+
+    <section class="section-photo border-b border-mist">
+      <img
+        src="/images/carnets-irl.jpg"
+        alt=""
+        class="section-photo-img !opacity-30"
+        width="823"
+        height="795"
+        loading="lazy"
+      />
+      <div class="section-photo-veil"></div>
+      <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+        <div class="reveal max-w-2xl">
+          <h2 class="font-display text-3xl text-ink md:text-4xl">Personnalisation</h2>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+            Logo du club, page sponsors, mentions partenaires — le carnet porte l’identité de votre
+            structure tout en restant un outil de jeu.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-1 mt-14 grid gap-4 md:grid-cols-12 md:gap-5">
+          <a
+            href="/docs/exemple-couverture.pdf"
+            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
+          >
+            <img
+              src="/images/exemple-couverture.jpg"
+              alt="Exemple de couverture personnalisée — Ableiges Le Vexin"
+              class="aspect-[3/4] w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
+              width="864"
+              height="1404"
+              loading="lazy"
+            />
+          </a>
+
+          <a
+            href="/docs/exemple-trou.pdf"
+            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
+          >
+            <img
+              src="/images/exemple-trou-1.jpg"
+              alt="Exemple de page de trou — page 1, trou 5"
+              class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
+              width="783"
+              height="1378"
+              loading="lazy"
+            />
+          </a>
+
+          <a
+            href="/docs/exemple-trou.pdf"
+            class="group relative overflow-hidden border border-mist bg-panel/90 backdrop-blur-sm md:col-span-4"
+          >
+            <img
+              src="/images/exemple-trou-2.jpg"
+              alt="Exemple de page de trou — page 2, trou 5"
+              class="aspect-[3/4] w-full object-contain object-top p-3 transition duration-500 group-hover:scale-[1.02] md:p-4"
+              width="783"
+              height="1378"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

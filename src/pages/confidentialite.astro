@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout
+  title="Confidentialité — Yardage"
+  description="Politique de confidentialité du site Yardage."
+>
+  <Header />
+  <main>
+    <Hero
+      title="Confidentialité"
+      subtitle="Comment nous traitons les données collectées via le site."
+      compact
+    />
+    <section class="bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink">Données collectées</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          Le formulaire de contact collecte les informations que vous renseignez (nom, email, club,
+          volume, message) afin de répondre à votre demande de devis ou d’exemplaire numérique gratuit.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Finalité</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          Ces données sont utilisées uniquement pour le suivi commercial et la relation avec les golfs
+          et professionnels intéressés par Yardage. Elles ne sont pas vendues à des tiers.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Sous-traitants</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          L’envoi du formulaire peut transiter par Formspree (ou un service équivalent). Consultez la
+          politique de confidentialité du prestataire choisi.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Vos droits</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          Vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant à
+          <a href="mailto:contact@yardage.co" class="text-green-mid hover:underline"
+            >contact@yardage.co</a
+          >.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

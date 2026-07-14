@@ -1,0 +1,53 @@
+---
+const pillars = [
+  {
+    name: 'Passion',
+    text: 'Chaque carnet naît d’une lecture attentive du parcours — le terrain d’abord, le graphisme ensuite.',
+  },
+  {
+    name: 'Innovation',
+    text: 'Cartographie vectorielle et données terrain pour une précision utile au joueur, pas décorative.',
+  },
+  {
+    name: 'Ergonomie',
+    text: 'Une page claire, une hiérarchie lisible : distances, obstacles et lignes de jeu en un coup d’œil.',
+  },
+  {
+    name: 'Stratégie',
+    text: 'Un outil de décision pour le golfeur — du club à la ligne, du fairway au green.',
+  },
+  {
+    name: 'Élégance',
+    text: 'Impression premium, papier choisi, finitions dignes d’un club qui soigne son image.',
+  },
+];
+---
+
+<section class="section-photo border-b border-mist">
+  <img src="/images/bg-trees.jpg" alt="" class="section-photo-img" width="1080" height="1920" loading="lazy" />
+  <div class="section-photo-veil"></div>
+  <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="reveal max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">Ce qui nous guide</p>
+      <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">Cinq piliers, une exigence.</h2>
+      <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+        Yardage conçoit des carnets de parcours pour les golfs et les pros qui veulent offrir à leurs joueurs
+        une référence fiable, élégante et durable.
+      </p>
+    </div>
+
+    <ol class="reveal reveal-delay-1 mt-14 divide-y divide-mist border-y border-mist">
+      {
+        pillars.map((pillar, index) => (
+          <li class="grid gap-3 py-7 md:grid-cols-[8rem_1fr] md:gap-10 md:py-8">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-2xl text-green-mid/40">{String(index + 1).padStart(2, '0')}</span>
+              <h3 class="font-display text-2xl text-green-mid md:text-3xl">{pillar.name}</h3>
+            </div>
+            <p class="text-base leading-relaxed text-ink-soft md:pt-1">{pillar.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

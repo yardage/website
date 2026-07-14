@@ -1,0 +1,80 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  image?: string;
+  compact?: boolean;
+}
+
+const {
+  title = 'Yardage',
+  subtitle = 'La tradition golfique rencontre la précision cartographique.',
+  image = '/images/bg-aerial.jpg',
+  compact = false,
+} = Astro.props;
+
+const isBrand = title === 'Yardage';
+---
+
+<section
+  class:list={[
+    'relative isolate overflow-hidden bg-brand text-white',
+    compact ? 'min-h-[52vh]' : 'min-h-[100svh]',
+  ]}
+>
+  <img
+    src={image}
+    alt=""
+    class="animate-hero-image absolute inset-0 -z-20 h-full w-full object-cover"
+    width="1600"
+    height="1067"
+    fetchpriority="high"
+  />
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-paper/75 via-brand/70 to-paper/95"></div>
+
+  <div
+    class:list={[
+      'mx-auto flex max-w-6xl flex-col justify-end px-5 md:px-8',
+      compact ? 'pb-14 pt-28 md:pb-16 md:pt-32' : 'min-h-[100svh] pb-16 pt-32 md:pb-24 md:pt-40',
+    ]}
+  >
+    {
+      isBrand ? (
+        <img
+          src="/images/logo.png"
+          alt="Yardage"
+          class="animate-hero-fade h-11 w-auto max-w-[min(100%,22rem)] object-contain object-left md:h-14 md:max-w-[26rem] lg:h-[4.25rem]"
+          width="655"
+          height="102"
+        />
+      ) : (
+        <p class="animate-hero-fade font-display text-5xl tracking-tight text-white md:text-7xl lg:text-8xl">
+          {title}
+        </p>
+      )
+    }
+    <p
+      class="animate-hero-fade-delay mt-4 max-w-xl text-lg leading-relaxed text-white/85 md:mt-5 md:text-xl"
+    >
+      {subtitle}
+    </p>
+    {
+      !compact && (
+        <div class="animate-hero-fade-delay-2 mt-8 flex flex-wrap gap-3">
+          <a
+            href="/contact"
+            class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+          >
+            Demander un devis
+          </a>
+          <a
+            href="/contact#exemplaire"
+            class="rounded-sm border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Exemplaire numérique gratuit
+          </a>
+        </div>
+      )
+    }
+  </div>
+</section>
