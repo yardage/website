@@ -296,24 +296,6 @@
     color: var(--color-ink-soft);
   }
 
-  .image-lightbox-pdf {
-    border-radius: 0.25rem;
-    border: 1px solid color-mix(in srgb, var(--color-green-mid) 50%, transparent);
-    padding: 0.625rem 1.125rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-green-mid);
-    transition: background-color 0.15s ease;
-  }
-
-  .image-lightbox-pdf:hover {
-    background: color-mix(in srgb, var(--color-green-mid) 12%, transparent);
-  }
-
-  .image-lightbox-pdf[hidden] {
-    display: none;
-  }
-
   @media (max-width: 40rem) {
     .image-lightbox-panel {
       padding: 0.5rem;

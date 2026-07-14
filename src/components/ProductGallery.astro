@@ -4,47 +4,32 @@ import { withBase } from '../lib/paths';
 interface GalleryItem {
   src: string;
   alt: string;
-  pdfHref?: string;
   objectPosition?: string;
 }
 
-interface Props {
-  coverAlt?: string;
-}
-
-const { coverAlt = 'Exemple de couverture — Ableiges Le Vexin' } = Astro.props;
-
 const items: GalleryItem[] = [
-  {
-    src: '/images/exemple-couverture.jpg',
-    alt: coverAlt,
-    pdfHref: '/docs/exemple-couverture.pdf',
-  },
   {
     src: '/images/exemple-trou-1.png',
     alt: 'Exemple de page de trou — vue d’ensemble, trou 5',
-    pdfHref: '/docs/exemple-trou.pdf',
     objectPosition: 'object-top',
   },
   {
     src: '/images/exemple-trou-2.png',
     alt: 'Exemple de page de trou — détail green et fairway, trou 5',
-    pdfHref: '/docs/exemple-trou.pdf',
     objectPosition: 'object-top',
   },
 ];
 ---
 
-<div class="reveal reveal-delay-1 mt-14 grid gap-4 md:grid-cols-12 md:gap-5">
+<div class="reveal reveal-delay-1 mt-14 grid gap-4 md:grid-cols-2 md:gap-5">
   {
     items.map((item) => (
       <button
         type="button"
-        class="group relative cursor-zoom-in overflow-hidden border border-mist bg-panel/90 text-left backdrop-blur-sm md:col-span-4"
+        class="group relative cursor-zoom-in overflow-hidden border border-mist bg-panel/90 text-left backdrop-blur-sm"
         data-lightbox-trigger
         data-lightbox-src={withBase(item.src)}
         data-lightbox-alt={item.alt}
-        data-lightbox-pdf={item.pdfHref ? withBase(item.pdfHref) : ''}
         aria-label={`Agrandir : ${item.alt}`}
       >
         <img
@@ -105,16 +90,6 @@ const items: GalleryItem[] = [
 
     <footer class="image-lightbox-footer">
       <p id="image-lightbox-caption" class="image-lightbox-caption"></p>
-      <a
-        id="image-lightbox-pdf"
-        class="image-lightbox-pdf"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        hidden
-      >
-        Ouvrir le PDF
-      </a>
     </footer>
   </div>
 </div>
@@ -124,7 +99,6 @@ const items: GalleryItem[] = [
   const lightboxImg = document.getElementById('image-lightbox-img') as HTMLImageElement | null;
   const lightboxCaption = document.getElementById('image-lightbox-caption');
   const lightboxCounter = document.getElementById('image-lightbox-counter');
-  const lightboxPdf = document.getElementById('image-lightbox-pdf') as HTMLAnchorElement | null;
   const prevBtn = document.getElementById('image-lightbox-prev') as HTMLButtonElement | null;
   const nextBtn = document.getElementById('image-lightbox-next') as HTMLButtonElement | null;
   const closeButtons = lightbox?.querySelectorAll('[data-lightbox-close]');
@@ -135,26 +109,13 @@ const items: GalleryItem[] = [
 
   const showIndex = (index: number) => {
     const trigger = triggers[index];
-    if (!lightbox || !lightboxImg || !lightboxCaption || !lightboxCounter || !lightboxPdf || !trigger) {
-      return;
-    }
+    if (!lightbox || !lightboxImg || !lightboxCaption || !lightboxCounter || !trigger) return;
 
     currentIndex = index;
-    const src = trigger.dataset.lightboxSrc ?? '';
-    const alt = trigger.dataset.lightboxAlt ?? '';
-    const pdf = trigger.dataset.lightboxPdf || undefined;
-
-    lightboxImg.src = src;
-    lightboxImg.alt = alt;
-    lightboxCaption.textContent = alt;
+    lightboxImg.src = trigger.dataset.lightboxSrc ?? '';
+    lightboxImg.alt = trigger.dataset.lightboxAlt ?? '';
+    lightboxCaption.textContent = trigger.dataset.lightboxAlt ?? '';
     lightboxCounter.textContent = `${index + 1} / ${triggers.length}`;
-
-    if (pdf) {
-      lightboxPdf.href = pdf;
-      lightboxPdf.hidden = false;
-    } else {
-      lightboxPdf.hidden = true;
-    }
 
     if (prevBtn) prevBtn.disabled = index === 0;
     if (nextBtn) nextBtn.disabled = index === triggers.length - 1;
