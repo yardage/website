@@ -17,7 +17,7 @@ function isActive(href: string) {
 
 <header
   id="site-header"
-  class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300"
+  class="fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter] duration-300"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 md:px-8 md:py-5">
     <a href={withBase('/')} class="shrink-0" aria-label="Yardage — Accueil">
@@ -55,15 +55,39 @@ function isActive(href: string) {
     <button
       type="button"
       id="menu-toggle"
-      class="inline-flex items-center justify-center rounded-sm border border-white/25 px-3 py-2 text-sm font-medium text-white md:hidden"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-white/25 text-white md:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
+      aria-label="Ouvrir le menu"
     >
-      Menu
+      <svg
+        id="menu-icon-open"
+        class="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+      <svg
+        id="menu-icon-close"
+        class="hidden h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
     </button>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-white/10 bg-paper/95 backdrop-blur-md md:hidden">
+  <div id="mobile-menu" class="hidden bg-paper/95 backdrop-blur-md md:hidden">
     <nav class="flex flex-col gap-1 px-5 py-4" aria-label="Navigation mobile">
       {
         links.map((link) => (
@@ -91,10 +115,20 @@ function isActive(href: string) {
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
   const header = document.getElementById('site-header');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  const setMenuOpen = (open: boolean) => {
+    menu?.classList.toggle('hidden', !open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+  };
 
   toggle?.addEventListener('click', () => {
-    const open = menu?.classList.toggle('hidden') === false;
-    toggle.setAttribute('aria-expanded', String(open));
+    const open = menu?.classList.contains('hidden') === true;
+    setMenuOpen(open);
   });
 
   const onScroll = () => {

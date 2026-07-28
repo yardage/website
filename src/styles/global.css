@@ -138,7 +138,6 @@
   }
 
   #site-header.header-scrolled {
-    border-color: color-mix(in srgb, var(--color-mist) 80%, transparent);
     background-color: color-mix(in srgb, var(--color-paper) 88%, transparent);
     backdrop-filter: blur(12px);
   }
