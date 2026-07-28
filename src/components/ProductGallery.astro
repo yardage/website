@@ -57,40 +57,40 @@ const items: GalleryItem[] = [
   <div class="image-lightbox-backdrop" data-lightbox-close tabindex="-1"></div>
 
   <div class="image-lightbox-panel">
-    <header class="image-lightbox-header">
-      <p id="image-lightbox-counter" class="image-lightbox-counter"></p>
-      <button type="button" class="image-lightbox-close" data-lightbox-close aria-label="Fermer">
-        <span aria-hidden="true">×</span>
-      </button>
-    </header>
+    <button
+      type="button"
+      class="image-lightbox-close"
+      data-lightbox-close
+      aria-label="Fermer"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
 
-    <div class="image-lightbox-stage">
-      <button
-        type="button"
-        id="image-lightbox-prev"
-        class="image-lightbox-nav"
-        aria-label="Image précédente"
-      >
-        ‹
-      </button>
+    <button
+      type="button"
+      id="image-lightbox-prev"
+      class="image-lightbox-nav image-lightbox-nav-prev"
+      aria-label="Image précédente"
+    >
+      ‹
+    </button>
 
-      <figure class="image-lightbox-figure">
-        <img id="image-lightbox-img" class="image-lightbox-img" src="" alt="" />
-      </figure>
+    <figure class="image-lightbox-figure">
+      <img id="image-lightbox-img" class="image-lightbox-img" src="" alt="" />
+    </figure>
 
-      <button
-        type="button"
-        id="image-lightbox-next"
-        class="image-lightbox-nav"
-        aria-label="Image suivante"
-      >
-        ›
-      </button>
-    </div>
+    <button
+      type="button"
+      id="image-lightbox-next"
+      class="image-lightbox-nav image-lightbox-nav-next"
+      aria-label="Image suivante"
+    >
+      ›
+    </button>
 
-    <footer class="image-lightbox-footer">
-      <p id="image-lightbox-caption" class="image-lightbox-caption"></p>
-    </footer>
+    <p id="image-lightbox-caption" class="image-lightbox-caption"></p>
   </div>
 </div>
 
@@ -98,7 +98,6 @@ const items: GalleryItem[] = [
   const lightbox = document.getElementById('image-lightbox');
   const lightboxImg = document.getElementById('image-lightbox-img') as HTMLImageElement | null;
   const lightboxCaption = document.getElementById('image-lightbox-caption');
-  const lightboxCounter = document.getElementById('image-lightbox-counter');
   const prevBtn = document.getElementById('image-lightbox-prev') as HTMLButtonElement | null;
   const nextBtn = document.getElementById('image-lightbox-next') as HTMLButtonElement | null;
   const closeButtons = lightbox?.querySelectorAll('[data-lightbox-close]');
@@ -109,13 +108,12 @@ const items: GalleryItem[] = [
 
   const showIndex = (index: number) => {
     const trigger = triggers[index];
-    if (!lightbox || !lightboxImg || !lightboxCaption || !lightboxCounter || !trigger) return;
+    if (!lightbox || !lightboxImg || !lightboxCaption || !trigger) return;
 
     currentIndex = index;
     lightboxImg.src = trigger.dataset.lightboxSrc ?? '';
     lightboxImg.alt = trigger.dataset.lightboxAlt ?? '';
-    lightboxCaption.textContent = trigger.dataset.lightboxAlt ?? '';
-    lightboxCounter.textContent = `${index + 1} / ${triggers.length}`;
+    lightboxCaption.textContent = `${index + 1} / ${triggers.length} — ${trigger.dataset.lightboxAlt ?? ''}`;
 
     if (prevBtn) prevBtn.disabled = index === 0;
     if (nextBtn) nextBtn.disabled = index === triggers.length - 1;
