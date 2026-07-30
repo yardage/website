@@ -6,7 +6,6 @@ import Hero from '../components/Hero.astro';
 import Pillars from '../components/Pillars.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import ProductGallery from '../components/ProductGallery.astro';
-import SnapScroll from '../components/SnapScroll.astro';
 import { withBase } from '../lib/paths';
 ---
 
@@ -17,10 +16,10 @@ import { withBase } from '../lib/paths';
 >
   <Header />
   <main>
-    <Hero snap />
+    <Hero />
     <Pillars />
 
-    <section class="section-photo min-h-[100svh] border-b border-mist" id="produit" data-snap-section>
+    <section class="section-photo border-b border-mist" id="produit">
       <img
         src={withBase('/images/carnets-irl.jpg')}
         alt=""
@@ -44,12 +43,9 @@ import { withBase } from '../lib/paths';
       </div>
     </section>
 
-    <ProcessSteps teaser snap />
+    <ProcessSteps teaser />
 
-    <section
-      class="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden text-white"
-      data-snap-section
-    >
+    <section class="relative isolate overflow-hidden text-white">
       <img
         src={withBase('/images/bg-fairway.jpg')}
         alt=""
@@ -59,7 +55,7 @@ import { withBase } from '../lib/paths';
         loading="lazy"
       />
       <div class="absolute inset-0 -z-10 bg-paper/80"></div>
-      <div class="reveal mx-auto w-full max-w-6xl px-5 py-20 md:px-8 md:py-28">
+      <div class="reveal mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
         <h2 class="max-w-xl font-display text-4xl md:text-5xl">
           Un carnet digne de votre parcours.
         </h2>
@@ -85,5 +81,4 @@ import { withBase } from '../lib/paths';
     </section>
   </main>
   <Footer />
-  <SnapScroll />
 </BaseLayout>

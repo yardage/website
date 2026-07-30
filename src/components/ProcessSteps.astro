@@ -3,10 +3,9 @@ import { withBase } from '../lib/paths';
 
 interface Props {
   teaser?: boolean;
-  snap?: boolean;
 }
 
-const { teaser = false, snap = false } = Astro.props;
+const { teaser = false } = Astro.props;
 
 const steps = [
   {
@@ -28,10 +27,7 @@ const steps = [
 ];
 ---
 
-<section
-  class:list={['section-photo border-b border-mist', !teaser && 'bg-sand', snap && 'min-h-[100svh]']}
-  data-snap-section={snap ? true : undefined}
->
+<section class:list={['section-photo border-b border-mist', !teaser && 'bg-sand']}>
   {
     teaser && (
       <>
