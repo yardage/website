@@ -45,9 +45,9 @@ const isBrand = title === 'Yardage';
         <img
           src={withBase('/images/logo-collection.png')}
           alt="Yardage Collection"
-          class="animate-hero-fade h-40 w-auto max-w-[min(100%,20rem)] object-contain object-left md:h-52 md:max-w-[26rem] lg:h-60 lg:max-w-[30rem]"
-          width="941"
-          height="941"
+          class="animate-hero-fade -mb-3 w-[min(100%,40rem)] max-w-full object-contain object-left md:-mb-4 md:w-[52rem] lg:w-[60rem]"
+          width="843"
+          height="310"
         />
       ) : (
         <p class="animate-hero-fade font-display text-5xl tracking-tight text-white md:text-7xl lg:text-8xl">
@@ -56,7 +56,10 @@ const isBrand = title === 'Yardage';
       )
     }
     <p
-      class="animate-hero-fade-delay mt-4 max-w-xl text-lg leading-relaxed text-white/85 md:mt-5 md:text-xl"
+      class:list={[
+        'animate-hero-fade-delay max-w-xl text-lg leading-relaxed text-white/85 md:text-xl',
+        isBrand ? 'mt-1 md:mt-2' : 'mt-4 md:mt-5',
+      ]}
     >
       {subtitle}
     </p>
