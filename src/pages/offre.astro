@@ -10,17 +10,39 @@ import { withBase } from '../lib/paths';
 
 <BaseLayout
   title="Offre — Yardage"
-  description="Tarifs Yardage pour golfs et pros : 11,90 € HT l’unité, remises volume, personnalisation logo et impression premium."
+  description="Tarifs Yardage pour golfs et pros : 11,90 € HT l’unité, remises volume, personnalisation et livraison sous 2 semaines après validation du devis."
 >
   <Header />
   <main>
     <Hero
       title="Offre"
-      subtitle="Des carnets premium à un tarif club transparent — avec remises volume."
+      subtitle="Une grille claire pour les clubs — avec remises volume et livraison sous 2 semaines après validation du devis."
       image="/images/bg-trees.jpg"
       compact
     />
     <Pricing />
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Ce qui est inclus</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Le tarif club couvre l’ensemble du parcours, de la conception à la livraison. Vous n’avez pas à
+          assembler des prestataires : Yardage prend en charge le produit de bout en bout.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Chaque commande inclut la personnalisation de votre identité — logo du club, page sponsors,
+          mentions partenaires — pour que le carnet porte clairement votre marque.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          L’impression est réalisée sur papier écologique, avec des finitions premium adaptées au pro
+          shop et à l’usage sur le parcours. La livraison est assurée jusqu’à votre structure.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Sur demande, nous vous adressons également un exemplaire numérique gratuit : un moyen simple de
+          découvrir le rendu avant engagement, ou de présenter le projet en interne.
+        </p>
+      </div>
+    </section>
 
     <section class="section-photo border-b border-mist">
       <img
@@ -39,9 +61,118 @@ import { withBase } from '../lib/paths';
             Logo du club, page sponsors, mentions partenaires — le carnet porte l’identité de votre
             structure tout en restant un outil de jeu.
           </p>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+            Nous adaptons la couverture et les éléments de marque à votre charte, sans compromettre la
+            lisibilité des pages de trou. Le résultat doit être immédiatement reconnaissable comme le
+            carnet officiel de votre golf.
+          </p>
         </div>
 
         <ProductGallery />
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Comment ça se passe</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Le parcours commercial est volontairement simple. Vous gardez la main sur la validation ; nous
+          assurons la production.
+        </p>
+        <ol class="mt-8 space-y-6">
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">01</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Contact</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                Vous nous écrivez avec le nom du club, le nombre de trous et, si possible, un volume
+                estimé. Nous pouvons aussi préparer un exemplaire numérique gratuit.
+              </p>
+            </div>
+          </li>
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">02</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Devis</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                Nous étudions votre parcours et vous adressons une proposition claire : tarif, options
+                de personnalisation et modalités de livraison.
+              </p>
+            </div>
+          </li>
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">03</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Validation</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                Une fois le devis validé, la production démarre. Vous validez les éléments d’identité
+                (logo, sponsors) pour que le carnet soit à votre image.
+              </p>
+            </div>
+          </li>
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">04</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Livraison</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                Les carnets vous sont livrés sous <span class="font-semibold text-ink">2 semaines</span>
+                après validation du devis — prêts pour le pro shop, les membres et les compétitions.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Pour qui</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          L’offre Yardage s’adresse aux structures qui veulent proposer un carnet professionnel sans
+          complexifier leur organisation.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>
+            <span class="font-medium text-ink">Golfs et clubs</span> — valoriser le parcours, enrichir
+            l’expérience membres et visiteurs, renforcer l’image du club.
+          </li>
+          <li>
+            <span class="font-medium text-ink">Pro shops</span> — disposer d’un produit premium, cohérent
+            et immédiatement commercialisable.
+          </li>
+          <li>
+            <span class="font-medium text-ink">Professionnels</span> — accompagner leurs joueurs avec un
+            support de préparation clair et fiable.
+          </li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Que vous commandiez à l’unité pour découvrir le produit, ou en volume pour équiper votre
+          saison, la grille reste transparente — avec remises à partir de 500 et 1&nbsp;000 exemplaires.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Demander un devis</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Indiquez-nous votre club et le volume envisagé. Nous revenons vers vous avec une proposition
+          adaptée — ou un exemplaire numérique gratuit pour découvrir le rendu.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a
+            href={withBase('/contact')}
+            class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+          >
+            Demander un devis
+          </a>
+          <a
+            href={withBase('/contact#exemplaire')}
+            class="inline-flex rounded-sm border border-mist px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+          >
+            Exemplaire numérique gratuit
+          </a>
+        </div>
       </div>
     </section>
   </main>
