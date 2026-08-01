@@ -1,5 +1,13 @@
 ---
 import { withBase } from '../lib/paths';
+import { type Locale, t } from '../lib/i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const copy = t(locale);
 
 interface GalleryItem {
   src: string;
@@ -10,12 +18,12 @@ interface GalleryItem {
 const items: GalleryItem[] = [
   {
     src: '/images/exemple-trou-1.png',
-    alt: 'Exemple — vue d’ensemble, trou 7',
+    alt: copy.gallery[0].alt,
     objectPosition: 'object-top',
   },
   {
     src: '/images/exemple-trou-2.png',
-    alt: 'Exemple — détail green et fairway, trou 7',
+    alt: copy.gallery[1].alt,
     objectPosition: 'object-top',
   },
 ];
@@ -30,7 +38,7 @@ const items: GalleryItem[] = [
         data-lightbox-trigger
         data-lightbox-src={withBase(item.src)}
         data-lightbox-alt={item.alt}
-        aria-label={`Agrandir : ${item.alt}`}
+        aria-label={`${copy.lightboxEnlarge} : ${item.alt}`}
       >
         <img
           src={withBase(item.src)}
@@ -52,7 +60,7 @@ const items: GalleryItem[] = [
   hidden
   role="dialog"
   aria-modal="true"
-  aria-label="Visionneuse d’image"
+  aria-label={copy.lightboxLabel}
 >
   <div class="image-lightbox-backdrop" data-lightbox-close tabindex="-1"></div>
 
@@ -61,7 +69,7 @@ const items: GalleryItem[] = [
       type="button"
       class="image-lightbox-close"
       data-lightbox-close
-      aria-label="Fermer"
+      aria-label={copy.lightboxClose}
     >
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
         <path d="M6 6l12 12M18 6L6 18" />
@@ -72,7 +80,7 @@ const items: GalleryItem[] = [
       type="button"
       id="image-lightbox-prev"
       class="image-lightbox-nav image-lightbox-nav-prev"
-      aria-label="Image précédente"
+      aria-label={copy.lightboxPrev}
     >
       ‹
     </button>
@@ -85,7 +93,7 @@ const items: GalleryItem[] = [
       type="button"
       id="image-lightbox-next"
       class="image-lightbox-nav image-lightbox-nav-next"
-      aria-label="Image suivante"
+      aria-label={copy.lightboxNext}
     >
       ›
     </button>

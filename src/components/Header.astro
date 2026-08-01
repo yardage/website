@@ -1,19 +1,44 @@
 ---
 import { withBase } from '../lib/paths';
+import {
+  type Locale,
+  localePath,
+  alternatePath,
+  normalizePathname,
+  t,
+} from '../lib/i18n';
 
-const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const copy = t(locale);
+const pathname = normalizePathname(Astro.url.pathname);
 
 const links = [
-  { href: withBase('/methode'), label: 'Méthode' },
-  { href: withBase('/offre'), label: 'Offre' },
-  { href: withBase('/a-propos'), label: 'À propos' },
-  { href: withBase('/contact'), label: 'Contact' },
+  { href: localePath(locale, 'method'), label: copy.nav.method },
+  { href: localePath(locale, 'offer'), label: copy.nav.offer },
+  { href: localePath(locale, 'about'), label: copy.nav.about },
+  { href: localePath(locale, 'contact'), label: copy.nav.contact },
 ];
 
 function isActive(href: string) {
   const target = href.replace(/\/$/, '') || '/';
-  return pathname === target || pathname.startsWith(`${target}/`);
+  const current = withBase(pathname).replace(/\/$/, '') || '/';
+  return current === target || current.startsWith(`${target}/`);
 }
+
+const frHref = locale === 'fr' ? withBase(pathname) : alternatePath(Astro.url.pathname);
+const enHref = locale === 'en' ? withBase(pathname) : alternatePath(Astro.url.pathname);
+
+const flagClass = (active: boolean) =>
+  [
+    'inline-flex h-5 w-7 overflow-hidden rounded-[2px] border transition',
+    active
+      ? 'border-white/80 opacity-100 ring-1 ring-white/40'
+      : 'border-white/20 opacity-55 hover:opacity-100',
+  ].join(' ');
 ---
 
 <header
@@ -21,7 +46,7 @@ function isActive(href: string) {
   class="fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter] duration-300"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 md:px-8 md:py-5">
-    <a href={withBase('/')} class="shrink-0" aria-label="Yardage — Accueil">
+    <a href={localePath(locale, 'home')} class="shrink-0" aria-label={copy.homeAria}>
       <img
         src={withBase('/images/logo.png')}
         alt="Yardage"
@@ -31,7 +56,7 @@ function isActive(href: string) {
       />
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex" aria-label="Navigation principale">
+    <nav class="hidden items-center gap-8 md:flex" aria-label={copy.navAria}>
       {
         links.map((link) => (
           <a
@@ -46,11 +71,43 @@ function isActive(href: string) {
         ))
       }
       <a
-        href={withBase('/contact')}
+        href={localePath(locale, 'contact')}
         class="rounded-sm bg-white px-4 py-2.5 text-sm font-semibold text-brand transition hover:bg-ink"
       >
-        Demander un devis
+        {copy.ctaQuote}
       </a>
+      <div class="flex items-center gap-2" aria-label={copy.langSwitchAria}>
+        <a
+          href={frHref}
+          class={flagClass(locale === 'fr')}
+          lang="fr"
+          hreflang="fr"
+          aria-label="Français"
+          title="Français"
+        >
+          <svg viewBox="0 0 3 2" class="h-full w-full" aria-hidden="true">
+            <rect width="1" height="2" x="0" fill="#002395"></rect>
+            <rect width="1" height="2" x="1" fill="#fff"></rect>
+            <rect width="1" height="2" x="2" fill="#ED2939"></rect>
+          </svg>
+        </a>
+        <a
+          href={enHref}
+          class={flagClass(locale === 'en')}
+          lang="en"
+          hreflang="en"
+          aria-label="English"
+          title="English"
+        >
+          <svg viewBox="0 0 60 30" class="h-full w-full" aria-hidden="true">
+            <rect width="60" height="30" fill="#012169"></rect>
+            <path d="M0 0 L60 30 M60 0 L0 30" stroke="#fff" stroke-width="6"></path>
+            <path d="M0 0 L60 30 M60 0 L0 30" stroke="#C8102E" stroke-width="2"></path>
+            <path d="M30 0 V30 M0 15 H60" stroke="#fff" stroke-width="10"></path>
+            <path d="M30 0 V30 M0 15 H60" stroke="#C8102E" stroke-width="6"></path>
+          </svg>
+        </a>
+      </div>
     </nav>
 
     <button
@@ -59,7 +116,9 @@ function isActive(href: string) {
       class="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-white/25 text-white md:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      aria-label="Ouvrir le menu"
+      aria-label={copy.openMenu}
+      data-label-open={copy.openMenu}
+      data-label-close={copy.closeMenu}
     >
       <svg
         id="menu-icon-open"
@@ -89,7 +148,7 @@ function isActive(href: string) {
   </div>
 
   <div id="mobile-menu" class="hidden bg-paper/95 backdrop-blur-md md:hidden">
-    <nav class="flex flex-col gap-1 px-5 py-4" aria-label="Navigation mobile">
+    <nav class="flex flex-col gap-1 px-5 py-4" aria-label={copy.navMobileAria}>
       {
         links.map((link) => (
           <a
@@ -101,11 +160,43 @@ function isActive(href: string) {
         ))
       }
       <a
-        href={withBase('/contact')}
+        href={localePath(locale, 'contact')}
         class="mt-2 rounded-sm bg-white px-3 py-3 text-center text-sm font-semibold text-brand"
       >
-        Demander un devis
+        {copy.ctaQuote}
       </a>
+      <div class="mt-3 flex items-center justify-center gap-3" aria-label={copy.langSwitchAria}>
+        <a
+          href={frHref}
+          class={flagClass(locale === 'fr')}
+          lang="fr"
+          hreflang="fr"
+          aria-label="Français"
+          title="Français"
+        >
+          <svg viewBox="0 0 3 2" class="h-full w-full" aria-hidden="true">
+            <rect width="1" height="2" x="0" fill="#002395"></rect>
+            <rect width="1" height="2" x="1" fill="#fff"></rect>
+            <rect width="1" height="2" x="2" fill="#ED2939"></rect>
+          </svg>
+        </a>
+        <a
+          href={enHref}
+          class={flagClass(locale === 'en')}
+          lang="en"
+          hreflang="en"
+          aria-label="English"
+          title="English"
+        >
+          <svg viewBox="0 0 60 30" class="h-full w-full" aria-hidden="true">
+            <rect width="60" height="30" fill="#012169"></rect>
+            <path d="M0 0 L60 30 M60 0 L0 30" stroke="#fff" stroke-width="6"></path>
+            <path d="M0 0 L60 30 M60 0 L0 30" stroke="#C8102E" stroke-width="2"></path>
+            <path d="M30 0 V30 M0 15 H60" stroke="#fff" stroke-width="10"></path>
+            <path d="M30 0 V30 M0 15 H60" stroke="#C8102E" stroke-width="6"></path>
+          </svg>
+        </a>
+      </div>
     </nav>
   </div>
 </header>
@@ -122,7 +213,9 @@ function isActive(href: string) {
   const setMenuOpen = (open: boolean) => {
     menu?.classList.toggle('hidden', !open);
     toggle?.setAttribute('aria-expanded', String(open));
-    toggle?.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    const openLabel = toggle?.dataset.labelOpen ?? 'Open menu';
+    const closeLabel = toggle?.dataset.labelClose ?? 'Close menu';
+    toggle?.setAttribute('aria-label', open ? closeLabel : openLabel);
     iconOpen?.classList.toggle('hidden', open);
     iconClose?.classList.toggle('hidden', !open);
   };

@@ -3,15 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
+
+const locale = 'fr' as const;
 ---
 
 <BaseLayout
+  locale={locale}
   title="Confidentialité — Yardage"
   description="Politique de confidentialité du site Yardage."
 >
-  <Header />
+  <Header locale={locale} />
   <main>
     <Hero
+      locale={locale}
       title="Confidentialité"
       subtitle="Comment nous traitons les données collectées via le site."
       compact
@@ -54,5 +58,5 @@ import Hero from '../components/Hero.astro';
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer locale={locale} />
 </BaseLayout>

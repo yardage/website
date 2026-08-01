@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import { withBase } from '../../lib/paths';
+import { localePath } from '../../lib/i18n';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="Method — Yardage"
+  description="Analysis, data, production and print: the Yardage method for precise, consistent yardage books that reflect your club."
+>
+  <Header locale={locale} />
+  <main>
+    <Hero
+      locale={locale}
+      title="Method"
+      subtitle="Four steps to turn the course into a reference book — precise, readable, and true to your club."
+      image="/images/bg-fairway.jpg"
+      compact
+    />
+    <ProcessSteps locale={locale} />
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">01 — Analysis</p>
+        <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Understand the course before drawing it</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Every book starts with a careful reading of the land. We look at hole layouts, hazards, natural
+          lines of play and the distances that actually matter to the player.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The goal is not to pile up measurements for their own sake, but to identify what helps build a
+          strategy: where to play, where to avoid, where to aim. This step lays the foundation for a book
+          that is useful on the course — not just aesthetic.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We also talk with the club. You know your course better than anyone — sensitive bunkers, risk
+          areas, demanding greens. Your feedback sharpens our reading and ensures the book matches the
+          reality of the land.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">02 — Data</p>
+        <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">A reliable base, ready to evolve</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Once the course is analysed, we structure the information into a clear, consistent base.
+          Distances, playing elements, cartographic landmarks: everything is organised to support book
+          production.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          This organisation has a concrete benefit for the club. When the course evolves — a new bunker,
+          a renovated green, a redrawn fairway — the base can be updated without starting over. The book
+          remains a living tool, not a frozen document.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          For the player, that means reliable, consistent information from hole to hole. The same logic,
+          the same landmarks, the same standard of care across the entire course.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">03 — Production</p>
+        <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Drawn to be read at a glance</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Production turns data into clear, hierarchical hole pages. Every element has its place:
+          distances, hazards, lines of play, green. The player must be able to read the page quickly —
+          on the tee or in the middle of the fairway.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We maintain strong consistency from hole to hole. A player discovering your course should find
+          the same landmarks and the same logic of use across all eighteen holes. That is what makes a
+          book a true standard — not a collection of isolated pages.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          This shared structure still leaves room for the club’s identity. Cover, logo, partner mentions:
+          the book remains yours, while being immediately recognisable as a Yardage book.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">04 — Print</p>
+        <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">An object worthy of your pro shop</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The book is printed on eco-friendly paper, with finishes designed for course use and for
+          presentation in the shop. It should feel good in the hand, hold up in the bag, and match the
+          image you want to convey.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We handle printing and delivery to your club or pro shop. You do not need to coordinate a
+          printer, formats or timelines: production is part of the method.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Result: a premium product, ready to offer to your members, visitors and competitors — with no
+          technical burden on your side.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-photo border-b border-mist">
+      <img
+        src={withBase('/images/bg-green.jpg')}
+        alt=""
+        class="section-photo-img"
+        width="1280"
+        height="1920"
+        loading="lazy"
+      />
+      <div class="section-photo-veil"></div>
+      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28">
+        <div class="reveal">
+          <h2 class="font-display text-3xl text-ink md:text-4xl">What a hole page contains</h2>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft">
+            A Yardage page is built for decisions. It gathers the essential information without
+            overwhelming the reader:
+          </p>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+            <li>useful distances to shape the shot;</li>
+            <li>hazards and areas to anticipate;</li>
+            <li>lines of play and course landmarks;</li>
+            <li>green representation to prepare the approach and putting.</li>
+          </ul>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft">
+            Each hole is produced from course data for immediate reading on the ground. And because the
+            base can be updated, the book can evolve with your club.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href={localePath(locale, 'contact')}
+              class="inline-flex rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+            >
+              Talk about your course
+            </a>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1 mx-auto w-full max-w-sm overflow-hidden border border-mist bg-panel">
+          <img
+            src={withBase('/images/exemple-trou-1.png')}
+            alt="Yardage hole page example — hole 7, par 4"
+            class="w-full"
+            width="783"
+            height="1378"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">
+          A shared standard, an identity unique to each club
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Our method aims for a simple balance: a shared professional structure, and respect for the
+          singularity of each course.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          A player moving from one Yardage club to another should find the same landmarks and the same
+          reading logic. That familiarity speeds up uptake and builds confidence during the round.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          At the same time, each club keeps its history, architecture and image. The book is
+          recognisable as a Yardage product — and as the official book of your club.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Ready to equip your course?</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          From course analysis to book delivery, Yardage handles the full process. You keep control of
+          the club’s identity; we ensure precision, consistency and product quality.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a
+            href={localePath(locale, 'contact')}
+            class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+          >
+            Talk about your course
+          </a>
+          <a
+            href={localePath(locale, 'offer')}
+            class="inline-flex rounded-sm border border-mist px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+          >
+            View the offer
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

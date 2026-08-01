@@ -6,21 +6,26 @@ import Hero from '../components/Hero.astro';
 import Pricing from '../components/Pricing.astro';
 import ProductGallery from '../components/ProductGallery.astro';
 import { withBase } from '../lib/paths';
+import { localePath } from '../lib/i18n';
+
+const locale = 'fr' as const;
 ---
 
 <BaseLayout
+  locale={locale}
   title="Offre — Yardage"
   description="Tarifs Yardage pour golfs et pros : 11,90 € HT l’unité, remises volume, personnalisation et livraison sous 2 semaines après validation du devis."
 >
-  <Header />
+  <Header locale={locale} />
   <main>
     <Hero
+      locale={locale}
       title="Offre"
       subtitle="Une grille claire pour les clubs — avec remises volume et livraison sous 2 semaines après validation du devis."
       image="/images/bg-trees.jpg"
       compact
     />
-    <Pricing />
+    <Pricing locale={locale} />
 
     <section class="border-b border-mist bg-paper">
       <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
@@ -68,7 +73,7 @@ import { withBase } from '../lib/paths';
           </p>
         </div>
 
-        <ProductGallery />
+        <ProductGallery locale={locale} />
       </div>
     </section>
 
@@ -161,13 +166,13 @@ import { withBase } from '../lib/paths';
         </p>
         <div class="mt-10 flex flex-wrap gap-3">
           <a
-            href={withBase('/contact')}
+            href={localePath(locale, 'contact')}
             class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
           >
             Demander un devis
           </a>
           <a
-            href={withBase('/contact#exemplaire')}
+            href={localePath(locale, 'contact', '#exemplaire')}
             class="inline-flex rounded-sm border border-mist px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
           >
             Exemplaire numérique gratuit
@@ -176,5 +181,5 @@ import { withBase } from '../lib/paths';
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer locale={locale} />
 </BaseLayout>

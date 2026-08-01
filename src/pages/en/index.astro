@@ -1,21 +1,21 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import Pillars from '../components/Pillars.astro';
-import ProcessSteps from '../components/ProcessSteps.astro';
-import ProductGallery from '../components/ProductGallery.astro';
-import { withBase } from '../lib/paths';
-import { localePath } from '../lib/i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import Pillars from '../../components/Pillars.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import { withBase } from '../../lib/paths';
+import { localePath } from '../../lib/i18n';
 
-const locale = 'fr' as const;
+const locale = 'en' as const;
 ---
 
 <BaseLayout
   locale={locale}
-  title="Yardage — Carnets de parcours pour golfs et pros"
-  description="Yardage conçoit et produit des carnets de parcours golf pour clubs et professionnels. Précision cartographique, impression premium, devis sur mesure."
+  title="Yardage — Yardage books for golf clubs and pros"
+  description="Yardage designs and produces golf yardage books for clubs and professionals. Cartographic precision, premium print, tailored quotes."
   ogImage="/images/bg-aerial.jpg"
 >
   <Header locale={locale} />
@@ -35,11 +35,11 @@ const locale = 'fr' as const;
       <div class="section-photo-veil"></div>
       <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
         <div class="reveal max-w-2xl">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">Le produit</p>
-          <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">Du dessin du parcours au carnet imprimé.</h2>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">The product</p>
+          <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">From course design to printed book.</h2>
           <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
-            Couverture personnalisée, cartographie précise, format pensé pour le parcours. Demandez un
-            <span class="text-ink">exemplaire numérique gratuit</span> pour découvrir votre golf.
+            Custom cover, precise mapping, a format built for the course. Request a
+            <span class="text-ink">free digital sample</span> to discover your golf club.
           </p>
         </div>
 
@@ -61,24 +61,23 @@ const locale = 'fr' as const;
       <div class="absolute inset-0 -z-10 bg-paper/80"></div>
       <div class="reveal mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
         <h2 class="max-w-xl font-display text-4xl md:text-5xl">
-          Un carnet digne de votre parcours.
+          A book worthy of your course.
         </h2>
         <p class="mt-4 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
-          Demandez un devis ou un exemplaire numérique gratuit — nous étudions votre club et vous
-          proposons une production adaptée.
+          Request a quote or a free digital sample — we review your club and propose a production that fits.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a
             href={localePath(locale, 'contact')}
             class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
           >
-            Demander un devis
+            Request a quote
           </a>
           <a
             href={localePath(locale, 'contact', '#exemplaire')}
             class="rounded-sm border border-white/35 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
-            Exemplaire numérique gratuit
+            Free digital sample
           </a>
         </div>
       </div>

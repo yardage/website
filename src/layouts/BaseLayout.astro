@@ -1,37 +1,57 @@
 ---
 import '../styles/global.css';
 import { withBase } from '../lib/paths';
+import {
+  type Locale,
+  hreflangLinks,
+  ogLocale,
+  normalizePathname,
+} from '../lib/i18n';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  locale?: Locale;
 }
 
-const {
-  title,
-  description = 'Yardage — carnets de parcours golf pour clubs et pros. Tradition golfique et précision cartographique.',
-  ogImage = '/images/carnets-irl.jpg',
-} = Astro.props;
+const { title, ogImage = '/images/carnets-irl.jpg', locale = 'fr' } = Astro.props;
+
+const defaultDescription =
+  locale === 'en'
+    ? 'Yardage — yardage books for golf clubs and pros. Golf tradition and cartographic precision.'
+    : 'Yardage — carnets de parcours golf pour clubs et pros. Tradition golfique et précision cartographique.';
+
+const metaDescription = Astro.props.description ?? defaultDescription;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(withBase(ogImage), Astro.site);
+const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
+    {
+      alternates.map((alt) => (
+        <link
+          rel="alternate"
+          hreflang={alt.hreflang}
+          href={new URL(alt.href, Astro.site).href}
+        />
+      ))
+    }
     <link rel="icon" type="image/png" href={withBase('/favicon.png')} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={ogLocale(locale)} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="Privacy — Yardage"
+  description="Privacy policy for the Yardage website."
+>
+  <Header locale={locale} />
+  <main>
+    <Hero
+      locale={locale}
+      title="Privacy"
+      subtitle="How we handle data collected through the website."
+      compact
+    />
+    <section class="bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink">Controller</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          For any question about your personal data, contact us at
+          <a href="mailto:contact@yardage.co" class="text-green-mid hover:underline">contact@yardage.co</a>.
+          Billing for Yardage orders is handled by PLATEFORME IO.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Data collected</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          The contact form collects the information you provide (name, email, club, volume, message) in
+          order to respond to your quote request or free digital sample request.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Purpose</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          This data is used only for commercial follow-up and relationships with golf clubs and
+          professionals interested in Yardage. It is not sold to third parties.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Processors</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          Form submissions may be processed via Formspree. The site is hosted by Amazon Web Services
+          (AWS). Please consult those providers’ privacy policies for more information.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl text-ink">Your rights</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-soft">
+          You may request access to, correction of, or deletion of your data by writing to
+          <a href="mailto:contact@yardage.co" class="text-green-mid hover:underline">contact@yardage.co</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

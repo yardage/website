@@ -1,20 +1,24 @@
 ---
 import { withBase } from '../lib/paths';
+import { type Locale, localePath, t } from '../lib/i18n';
 
 interface Props {
   title?: string;
   subtitle?: string;
   image?: string;
   compact?: boolean;
+  locale?: Locale;
 }
 
 const {
   title = 'Yardage',
-  subtitle = 'La tradition golfique rencontre la précision cartographique.',
   image = '/images/bg-aerial.jpg',
   compact = false,
+  locale = 'fr',
 } = Astro.props;
 
+const copy = t(locale);
+const subtitle = Astro.props.subtitle ?? copy.heroSubtitle;
 const isBrand = title === 'Yardage';
 ---
 
@@ -67,16 +71,16 @@ const isBrand = title === 'Yardage';
       !compact && (
         <div class="animate-hero-fade-delay-2 mt-8 flex flex-wrap gap-3">
           <a
-            href={withBase('/contact')}
+            href={localePath(locale, 'contact')}
             class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
           >
-            Demander un devis
+            {copy.ctaQuote}
           </a>
           <a
-            href={withBase('/contact#exemplaire')}
+            href={localePath(locale, 'contact', '#exemplaire')}
             class="rounded-sm border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
-            Exemplaire numérique gratuit
+            {copy.ctaSample}
           </a>
         </div>
       )

@@ -3,16 +3,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
-import { withBase } from '../lib/paths';
+import { localePath } from '../lib/i18n';
+
+const locale = 'fr' as const;
 ---
 
 <BaseLayout
+  locale={locale}
   title="À propos — Yardage"
   description="Yardage rend le carnet de parcours accessible aux clubs et aux joueurs de tous niveaux."
 >
-  <Header />
+  <Header locale={locale} />
   <main>
     <Hero
+      locale={locale}
       title="À propos"
       subtitle="Notre ambition est de rendre le carnet de parcours accessible aux clubs et aux joueurs de tous niveaux."
       image="/images/bg-fairway.jpg"
@@ -344,7 +348,7 @@ import { withBase } from '../lib/paths';
 
         <div class="mt-10">
           <a
-            href={withBase('/contact')}
+            href={localePath(locale, 'contact')}
             class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
           >
             Parler de votre parcours
@@ -353,5 +357,5 @@ import { withBase } from '../lib/paths';
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer locale={locale} />
 </BaseLayout>

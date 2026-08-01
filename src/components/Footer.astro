@@ -1,7 +1,23 @@
 ---
 import { withBase } from '../lib/paths';
+import {
+  type Locale,
+  localePath,
+  alternatePath,
+  normalizePathname,
+  t,
+} from '../lib/i18n';
 
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const copy = t(locale);
 const year = new Date().getFullYear();
+const pathname = normalizePathname(Astro.url.pathname);
+const frHref = locale === 'fr' ? withBase(pathname) : alternatePath(Astro.url.pathname);
+const enHref = locale === 'en' ? withBase(pathname) : alternatePath(Astro.url.pathname);
 ---
 
 <footer class="mt-auto border-t border-mist bg-sand text-ink">
@@ -15,22 +31,40 @@ const year = new Date().getFullYear();
         height="28"
       />
       <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft">
-        Carnets de parcours pour golfs et professionnels. Une lecture claire du terrain, du tee au green.
+        {copy.footerBlurb}
       </p>
     </div>
 
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70">Navigation</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70">{copy.footerNav}</p>
       <ul class="mt-4 space-y-2 text-sm">
-        <li><a href={withBase('/methode')} class="text-ink-soft transition hover:text-ink">Méthode</a></li>
-        <li><a href={withBase('/offre')} class="text-ink-soft transition hover:text-ink">Offre</a></li>
-        <li><a href={withBase('/a-propos')} class="text-ink-soft transition hover:text-ink">À propos</a></li>
-        <li><a href={withBase('/contact')} class="text-ink-soft transition hover:text-ink">Contact</a></li>
+        <li>
+          <a href={localePath(locale, 'method')} class="text-ink-soft transition hover:text-ink"
+            >{copy.nav.method}</a
+          >
+        </li>
+        <li>
+          <a href={localePath(locale, 'offer')} class="text-ink-soft transition hover:text-ink"
+            >{copy.nav.offer}</a
+          >
+        </li>
+        <li>
+          <a href={localePath(locale, 'about')} class="text-ink-soft transition hover:text-ink"
+            >{copy.nav.about}</a
+          >
+        </li>
+        <li>
+          <a href={localePath(locale, 'contact')} class="text-ink-soft transition hover:text-ink"
+            >{copy.nav.contact}</a
+          >
+        </li>
       </ul>
     </div>
 
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70">Contact</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70"
+        >{copy.footerContact}</p
+      >
       <ul class="mt-4 space-y-2 text-sm text-ink-soft">
         <li>
           <a href="mailto:contact@yardage.co" class="transition hover:text-ink">
@@ -101,10 +135,29 @@ const year = new Date().getFullYear();
   <div
     class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-mist px-5 py-5 text-xs text-ink-soft/70 md:flex-row md:items-center md:justify-between md:px-8"
   >
-    <p>© {year} Yardage. Tous droits réservés.</p>
-    <div class="flex gap-5">
-      <a href={withBase('/mentions-legales')} class="hover:text-ink">Mentions légales</a>
-      <a href={withBase('/confidentialite')} class="hover:text-ink">Confidentialité</a>
+    <p>© {year} Yardage. {copy.footerRights}</p>
+    <div class="flex flex-wrap items-center gap-5">
+      <a href={localePath(locale, 'legal')} class="hover:text-ink">{copy.footerLegal}</a>
+      <a href={localePath(locale, 'privacy')} class="hover:text-ink">{copy.footerPrivacy}</a>
+      <span class="flex items-center gap-2" aria-label={copy.langSwitchAria}>
+        <a
+          href={frHref}
+          class:list={['hover:text-ink', locale === 'fr' && 'text-ink']}
+          lang="fr"
+          hreflang="fr"
+        >
+          FR
+        </a>
+        <span aria-hidden="true">|</span>
+        <a
+          href={enHref}
+          class:list={['hover:text-ink', locale === 'en' && 'text-ink']}
+          lang="en"
+          hreflang="en"
+        >
+          EN
+        </a>
+      </span>
     </div>
   </div>
 </footer>

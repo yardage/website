@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import { localePath } from '../../lib/i18n';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="About — Yardage"
+  description="Yardage makes the yardage book accessible to clubs and players of every level."
+>
+  <Header locale={locale} />
+  <main>
+    <Hero
+      locale={locale}
+      title="About"
+      subtitle="Our ambition is to make the yardage book accessible to clubs and players of every level."
+      image="/images/bg-fairway.jpg"
+      compact
+    />
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">An idea born on the course</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Yardage was not born in an office. It was born on the course.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We are cousins, but our stories with golf did not start at the same time. Victor discovered
+          the sport at seven. Over the years, golf became a true discipline: a permanent learning
+          curve built on precision, strategy and high standards.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          In early 2019, he passed that passion on to Rodolphe. Shared rounds gradually gave way to a
+          deeper involvement, including competing together at a high amateur level.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          In 2021, Rodolphe caddied for Victor at a national amateur championship. That experience was a
+          turning point. Preparing the course and watching what players needed, we saw a clear gap:
+          professional yardage books remained hard for amateurs to access.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">The observation behind Yardage</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          In high-level golf, the yardage book is a real working tool. It helps understand the shape of
+          a hole, identify hazards, visualise distances and prepare a suitable strategy.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Outside the professional circuit, however, its use remains very limited.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">Our observation is simple:</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>the yardage book offer is underdeveloped in France;</li>
+          <li>professional materials are rarely accessible to amateur players;</li>
+          <li>quality and content vary widely from one club to another;</li>
+          <li>
+            there is no shared standard that lets players find a clear, familiar reading on every
+            course;
+          </li>
+          <li>
+            many clubs have no support truly adapted to their course and their identity.
+          </li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The problem was therefore not only the occasional absence of a book. It was a broader lack of
+          structure and consistency.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          From one club to another, a player might find a detailed booklet, a summary sheet or, most
+          often, nothing at all. We decided that gap needed filling — for clubs and for their players’
+          experience.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The idea of Yardage was born from that factual observation.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">From observation to first prototype</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Ten months after our first observation, we presented our first book at the 2022 Grand Prix of
+          Golf d’Ableiges.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          That first operation was the real launch of the project.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The prototype was still relatively simple and did not yet include elevation. Data came from
+          satellite imagery, then was completed and verified on the ground.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          This first version let us test the idea against the reality of the course. We could watch how
+          players used the book, identify truly useful information and measure what needed improving
+          through feedback.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The Ableiges prototype was not yet the final product. It was proof that our project met a
+          concrete need.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Four years of development</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          After that first operation, we began a long process of development, structure and
+          industrialisation.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          For four years, we refined our method to move from a prototype built for one competition to a
+          solution that can be deployed consistently across different courses.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">Each step helped us improve:</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>data collection and processing;</li>
+          <li>accuracy of representations;</li>
+          <li>overall readability of the books;</li>
+          <li>graphic consistency across courses;</li>
+          <li>integration of each club’s own identity;</li>
+          <li>reproducibility of the production process;</li>
+          <li>print quality and product durability;</li>
+          <li>lead times and manufacturing costs.</li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Early surveys combined satellite data with on-course observation. Our process now relies
+          mainly on satellite data, through a method gradually refined and standardised.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          That evolution lets us produce more efficiently while keeping a constant standard of care.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          After four years of development, Yardage is entering a new phase with its final version —
+          the result of all research, trials and improvements since the first prototype.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">
+          A shared standard, an identity unique to each club
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We do not want to produce one-off books whose structure and quality change from project to
+          project.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">We want to establish a true standard.</p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Every Yardage book should offer a clear, consistent, immediately understandable reading. A
+          player discovering a new course should find the same landmarks and the same logic of use.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          That consistency does not mean every book must look the same.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Every club has its history, architecture, particularities and identity. Our work is to
+          reconcile two requirements:
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Build a shared professional structure while respecting the singularity of each course.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The product must be identifiable as a Yardage book — and as the official book of the club it
+          was designed for.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">A company built by two</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Yardage is a family project that we build together.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We both work across the business: design, product development, commercial strategy, club
+          relationships, production and brand evolution.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          That shared involvement lets us keep a coherent vision from the first contact with a club
+          through to book delivery.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Victor has worked in hospitality since 2012. That path gave him a strong culture of service,
+          operational standards and customer satisfaction. In that world, quality is not only the
+          product — it is also consistency, presentation and the overall experience offered.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The same logic guides Yardage: offer clubs a professional, reliable solution that is simple
+          to integrate into how they operate.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Our complementary skills bring together golf knowledge, course experience, commercial
+          development and a constant search for a more effective solution.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Our promise to clubs</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          A golf course is sporting, landscape and architectural heritage. It deserves a support that
+          presents it accurately and values the work done by the club.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">Our promise is clear:</p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Give every club the means to offer a professional, consistent yardage book in its own image.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">For clubs, Yardage should become:</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>a tool to showcase the course;</li>
+          <li>an extra service for members and visitors;</li>
+          <li>a support aligned with their standards;</li>
+          <li>a way to strengthen their image;</li>
+          <li>
+            a concrete answer to players’ needs in competition and casual rounds alike.
+          </li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Our goal is to make creating a professional book simpler and more accessible, without
+          imposing complex technical work on the club.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Our promise to players</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We want to make course information long associated with professional golf accessible to
+          amateurs.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The book does not replace experience, judgement or execution. It does help the player
+          understand what lies ahead and make decisions with better information.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">Our promise to players is therefore:</p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Make the course information used at the highest level accessible to everyone.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">A Yardage book should help you:</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>visualise each hole more clearly;</li>
+          <li>anticipate the main difficulties;</li>
+          <li>prepare a strategy before the round;</li>
+          <li>choose a line of play more clearly;</li>
+          <li>better understand distances and key areas;</li>
+          <li>approach the course with more confidence.</li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Our ambition is not to tell the player how to play, but to give them what they need to build
+          their own strategy.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">
+          A French ambition, open to the world
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Yardage is growing today with French golf clubs.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Our method and product are also designed to adapt to other countries. We remain open to
+          projects and proposals from clubs abroad.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          In the long run, our goal is to make the yardage book a natural part of what a club offers —
+          not a rare tool reserved for certain events or a minority of players.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Our vision</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">Yardage rests on a simple belief:</p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Every course deserves a book equal to its identity. Every player deserves to understand it.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          We want to build a brand that is both technical and premium, founded on precision,
+          consistency and quality.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          A brand able to establish a shared standard without erasing the personality of clubs.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          A brand born from experience on the ground and developed to meet a real need.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          From the first observation to the first prototype, then through four years of development, our
+          goal has stayed the same: make the professional yardage book more accessible, more consistent
+          and more useful.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">For clubs and for players.</p>
+
+        <p class="mt-12 font-display text-xl text-ink">Rodolphe &amp; Victor</p>
+        <p class="mt-1 text-sm text-ink-soft">Co-founders of Yardage</p>
+
+        <div class="mt-10">
+          <a
+            href={localePath(locale, 'contact')}
+            class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+          >
+            Talk about your course
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

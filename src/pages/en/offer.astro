@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import Pricing from '../../components/Pricing.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import { withBase } from '../../lib/paths';
+import { localePath } from '../../lib/i18n';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="Offer — Yardage"
+  description="Yardage pricing for clubs and pros: €11.90 excl. tax per copy, volume discounts, customisation and delivery within 2 weeks after quote approval."
+>
+  <Header locale={locale} />
+  <main>
+    <Hero
+      locale={locale}
+      title="Offer"
+      subtitle="A clear price grid for clubs — with volume discounts and delivery within 2 weeks after quote approval."
+      image="/images/bg-trees.jpg"
+      compact
+    />
+    <Pricing locale={locale} />
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">What’s included</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The club rate covers the full journey, from design to delivery. You do not need to assemble
+          vendors: Yardage handles the product end to end.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Every order includes customisation of your identity — club logo, sponsor page, partner
+          mentions — so the book clearly carries your brand.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Printing is done on eco-friendly paper, with premium finishes suited to the pro shop and to
+          course use. Delivery is handled through to your club.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          On request, we also provide a free digital sample: a simple way to preview the result before
+          committing, or to present the project internally.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-photo border-b border-mist">
+      <img
+        src={withBase('/images/carnets-irl.jpg')}
+        alt=""
+        class="section-photo-img !opacity-30"
+        width="823"
+        height="795"
+        loading="lazy"
+      />
+      <div class="section-photo-veil"></div>
+      <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+        <div class="reveal max-w-2xl">
+          <h2 class="font-display text-3xl text-ink md:text-4xl">Customisation</h2>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+            Club logo, sponsor page, partner mentions — the book carries your organisation’s identity
+            while remaining a playing tool.
+          </p>
+          <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+            We adapt the cover and brand elements to your guidelines without compromising the
+            readability of hole pages. The result should be immediately recognisable as your club’s
+            official yardage book.
+          </p>
+        </div>
+
+        <ProductGallery locale={locale} />
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">How it works</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The commercial path is intentionally simple. You keep control of approval; we handle
+          production.
+        </p>
+        <ol class="mt-8 space-y-6">
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">01</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Contact</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                Write to us with the club name, number of holes and, if possible, an estimated volume.
+                We can also prepare a free digital sample.
+              </p>
+            </div>
+          </li>
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">02</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Quote</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                We review your course and send a clear proposal: pricing, customisation options and
+                delivery terms.
+              </p>
+            </div>
+          </li>
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">03</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Approval</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                Once the quote is approved, production starts. You validate identity elements (logo,
+                sponsors) so the book matches your image.
+              </p>
+            </div>
+          </li>
+          <li class="grid gap-2 md:grid-cols-[4rem_1fr] md:gap-6">
+            <span class="font-display text-3xl text-green-mid/40">04</span>
+            <div>
+              <h3 class="font-display text-xl text-green-mid">Delivery</h3>
+              <p class="mt-2 text-base leading-relaxed text-ink-soft">
+                Books are delivered within <span class="font-semibold text-ink">2 weeks</span> after
+                quote approval — ready for the pro shop, members and competitions.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Who it’s for</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          The Yardage offer is for organisations that want to provide a professional yardage book
+          without complicating their operations.
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>
+            <span class="font-medium text-ink">Golf clubs</span> — showcase the course, enrich the
+            member and visitor experience, strengthen the club’s image.
+          </li>
+          <li>
+            <span class="font-medium text-ink">Pro shops</span> — offer a premium, consistent product
+            that is ready to sell.
+          </li>
+          <li>
+            <span class="font-medium text-ink">Professionals</span> — support their players with a clear,
+            reliable preparation tool.
+          </li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Whether you order a single copy to discover the product, or volume to equip your season, the
+          pricing stays transparent — with discounts from 500 and 1,000 copies.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Request a quote</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Tell us your club and the volume you have in mind. We will come back with a tailored proposal —
+          or a free digital sample to preview the result.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a
+            href={localePath(locale, 'contact')}
+            class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+          >
+            Request a quote
+          </a>
+          <a
+            href={localePath(locale, 'contact', '#exemplaire')}
+            class="inline-flex rounded-sm border border-mist px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+          >
+            Free digital sample
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

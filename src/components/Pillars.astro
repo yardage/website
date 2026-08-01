@@ -1,28 +1,14 @@
 ---
+import { type Locale, t } from '../lib/i18n';
 import { withBase } from '../lib/paths';
 
-const pillars = [
-  {
-    name: 'Passion',
-    text: 'Chaque carnet naît d’une lecture attentive du parcours — le terrain d’abord, le graphisme ensuite.',
-  },
-  {
-    name: 'Innovation',
-    text: 'Cartographie vectorielle et données terrain pour une précision utile au joueur, pas décorative.',
-  },
-  {
-    name: 'Ergonomie',
-    text: 'Une page claire, une hiérarchie lisible : distances, obstacles et lignes de jeu en un coup d’œil.',
-  },
-  {
-    name: 'Stratégie',
-    text: 'Un outil de décision pour le golfeur — du club à la ligne, du fairway au green.',
-  },
-  {
-    name: 'Élégance',
-    text: 'Impression premium, papier choisi, finitions dignes d’un club qui soigne son image.',
-  },
-];
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'fr' } = Astro.props;
+const copy = t(locale);
+const pillars = copy.pillars;
 ---
 
 <section class="section-photo border-b border-mist">
@@ -30,11 +16,10 @@ const pillars = [
   <div class="section-photo-veil"></div>
   <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
     <div class="reveal max-w-2xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">Ce qui nous guide</p>
-      <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">Cinq piliers, une exigence.</h2>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">{copy.pillarsEyebrow}</p>
+      <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">{copy.pillarsTitle}</h2>
       <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
-        Yardage conçoit des carnets de parcours pour les golfs et les pros qui veulent offrir à leurs joueurs
-        une référence fiable, élégante et durable.
+        {copy.pillarsIntro}
       </p>
     </div>
 

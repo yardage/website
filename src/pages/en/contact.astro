@@ -1,25 +1,25 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import ContactForm from '../components/ContactForm.astro';
-import { withBase } from '../lib/paths';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { withBase } from '../../lib/paths';
 
-const locale = 'fr' as const;
+const locale = 'en' as const;
 ---
 
 <BaseLayout
   locale={locale}
   title="Contact — Yardage"
-  description="Demandez un devis ou un exemplaire numérique gratuit. Yardage : contact@yardage.co — +33 5 37 07 97 18."
+  description="Request a quote or a free digital sample. Yardage: contact@yardage.co — +33 5 37 07 97 18."
 >
   <Header locale={locale} />
   <main>
     <Hero
       locale={locale}
       title="Contact"
-      subtitle="Devis, exemplaire numérique gratuit ou question sur un parcours — écrivez-nous."
+      subtitle="Quote, free digital sample or a question about a course — write to us."
       image="/images/bg-green.jpg"
       compact
     />
@@ -36,10 +36,10 @@ const locale = 'fr' as const;
       <div class="section-photo-veil"></div>
       <div class="mx-auto grid max-w-6xl gap-14 px-5 py-20 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:py-28">
         <div class="reveal">
-          <h2 class="font-display text-3xl text-ink md:text-4xl">Coordonnées</h2>
+          <h2 class="font-display text-3xl text-ink md:text-4xl">Details</h2>
           <p class="mt-4 text-base leading-relaxed text-ink-soft">
-            Réponse sous 48&nbsp;h ouvrées. Pour un exemplaire numérique gratuit, précisez le nom du club
-            et le nombre de trous.
+            Reply within 48&nbsp;business hours. For a free digital sample, include the club name and
+            number of holes.
           </p>
           <ul class="mt-8 space-y-4 text-base">
             <li>
@@ -52,7 +52,7 @@ const locale = 'fr' as const;
               </a>
             </li>
             <li>
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-mid">Téléphone</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-mid">Phone</p>
               <a href="tel:+33537079718" class="mt-1 inline-block font-medium text-green-mid hover:underline">
                 +33 5 37 07 97 18
               </a>
@@ -125,9 +125,9 @@ const locale = 'fr' as const;
         </div>
 
         <div class="reveal reveal-delay-1 rounded-sm border border-mist bg-panel/80 p-6 backdrop-blur-sm md:p-8">
-          <h2 class="font-display text-2xl text-ink md:text-3xl">Demander un devis</h2>
+          <h2 class="font-display text-2xl text-ink md:text-3xl">Request a quote</h2>
           <p class="mt-2 text-sm text-ink-soft">
-            Club, volume estimé et message — nous revenons vers vous avec une proposition.
+            Club, estimated volume and message — we will come back with a proposal.
           </p>
           <div class="mt-6">
             <ContactForm locale={locale} />

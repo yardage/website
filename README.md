@@ -54,12 +54,19 @@ Puis branchez la vidéo en fond de hero si souhaité.
 ```
 src/
   components/   Header, Footer, Hero, Pillars, ProcessSteps, Pricing, ContactForm
-  layouts/      BaseLayout (SEO, fonts, reveal)
-  pages/        /, /methode, /offre, /contact, légales
+  layouts/      BaseLayout (SEO, fonts, reveal, hreflang)
+  lib/          paths, i18n (FR/EN routes + UI strings)
+  pages/        FR à la racine ; EN sous /en/
   styles/       variables CSS + Tailwind 4
 public/         logos, photos, favicon
 ```
 
+## Langues
+
+- Français (défaut) : `/`, `/methode`, `/offre`, `/a-propos`, `/contact`, …
+- Anglais : `/en/`, `/en/method`, `/en/offer`, `/en/about`, `/en/contact`, …
+- Switcher FR | EN dans le header et le footer
+
 ## Hors scope (phase 1)
 
-Boutique, espace client, lien vers l’outil carto, version EN.
+Boutique, espace client, lien vers l’outil carto.
