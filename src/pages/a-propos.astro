@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout
+  title="À propos — Yardage"
+  description="Yardage rend le carnet de parcours accessible aux clubs et aux joueurs de tous niveaux."
+>
+  <Header />
+  <main>
+    <Hero
+      title="À propos"
+      subtitle="Notre ambition est de rendre le carnet de parcours accessible aux clubs et aux joueurs de tous niveaux."
+      image="/images/bg-fairway.jpg"
+      compact
+    />
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Une idée née sur le parcours</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Yardage n’est pas née dans un bureau. Elle est née sur le parcours.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Nous sommes cousins, mais notre histoire avec le golf ne commence pas au même moment. Victor
+          découvre ce sport à l’âge de sept ans. Au fil des années, le golf devient une véritable
+          discipline : un apprentissage permanent, fait de précision, de stratégie et d’exigence.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Début 2019, il transmet cette passion à Rodolphe. Les premières parties
+          partagées laissent progressivement place à une implication plus importante, jusqu’à vivre
+          ensemble certaines compétitions de haut niveau.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          En 2021, Rodolphe accompagne Victor comme caddie lors d'une compétition nationale amateur.
+          Cette expérience marque un tournant. En préparant le parcours et en observant les besoins des joueurs, 
+          nous prenons conscience d’un manque évident : les carnets de parcours professionnels restent 
+          difficiles d’accès pour les amateurs.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Le constat à l’origine de Yardage</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Dans le golf de haut niveau, le carnet de parcours est un véritable outil de travail. Il
+          permet de mieux comprendre le dessin d’un trou, d’identifier les obstacles, de visualiser
+          les distances et de préparer une stratégie adaptée.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Pourtant, en dehors du circuit professionnel, son utilisation demeure encore très limitée.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Notre constat est simple :
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>l’offre de carnets de parcours est peu développée en France ;</li>
+          <li>les supports professionnels sont rarement accessibles aux joueurs amateurs ;</li>
+          <li>leur qualité et leur contenu varient fortement d’un golf à l’autre ;</li>
+          <li>
+            il n’existe pas de standard commun permettant de retrouver une lecture claire et familière
+            sur chaque parcours ;
+          </li>
+          <li>
+            de nombreux clubs ne disposent d’aucun support réellement adapté à leur parcours et à leur
+            identité.
+          </li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Le problème n’était donc pas seulement l’absence ponctuelle d’un carnet. Il s’agissait d’un
+          manque plus général de structuration et d’uniformisation.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          D’un golf à l’autre, un joueur pouvait trouver un support très détaillé, un document sommaire
+          ou, le plus souvent, aucun carnet. Nous avons alors considéré qu’il était nécessaire de
+          combler ce vide, à la fois pour répondre aux attentes des clubs et pour améliorer
+          l’expérience de leurs joueurs.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          L’idée de Yardage est née de cette observation factuelle.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Du constat au premier prototype</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Dix mois après notre premier constat, nous présentons notre premier carnet
+          à l’occasion du Grand Prix 2022 du Golf d’Ableiges.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Cette première opération constitue le véritable lancement du projet.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Le prototype est encore relativement simple et ne comporte notamment pas de représentation du
+          relief. Les données sont recueillies à partir d’imagerie satellite, puis complétées et
+          vérifiées directement sur le terrain.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Cette première version nous permet de confronter notre idée à la réalité du parcours. Nous
+          pouvons observer la manière dont les joueurs utilisent le carnet, identifier les informations
+          réellement utiles et mesurer les améliorations nécessaires grâce au retour d'expérience.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Le prototype d’Ableiges n’est pas encore le produit final. Il représente cependant la preuve que
+          notre projet répond à un besoin concret.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Quatre années de développement</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          À la suite de cette première opération, nous avons engagé un long travail de développement, de
+          structuration et d’industrialisation.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Pendant quatre ans, nous avons fait évoluer notre méthode afin de passer d’un prototype conçu
+          pour une compétition à une solution capable d’être déployée de manière cohérente sur
+          différents parcours.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">Chaque étape nous a permis d’améliorer :</p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>la collecte et le traitement des données ;</li>
+          <li>la précision des représentations ;</li>
+          <li>la lisibilité générale des carnets ;</li>
+          <li>la cohérence graphique entre les parcours ;</li>
+          <li>l’intégration de l’identité propre à chaque club ;</li>
+          <li>la reproductibilité du processus de production ;</li>
+          <li>la qualité d’impression et la durabilité du produit ;</li>
+          <li>les délais et les coûts de fabrication.</li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Les premiers relevés associaient les données satellites à des observations effectuées
+          directement sur le terrain. Notre processus repose désormais principalement sur l’exploitation
+          des données satellitaires, grâce à une méthode progressivement affinée et standardisée.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Cette évolution nous permet de produire plus efficacement, tout en maintenant un niveau
+          d’exigence constant.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Après quatre années de développement, Yardage entre aujourd’hui dans une nouvelle phase avec
+          sa version finale, issue de l’ensemble des recherches, essais et améliorations réalisés depuis
+          le premier prototype.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">
+          Un standard commun, une identité propre à chaque golf
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Notre volonté n’est pas de produire des carnets artisanaux dont la structure et la qualité
+          varieraient d’un projet à l’autre.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Nous souhaitons établir un véritable standard.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Chaque carnet Yardage doit proposer une lecture claire, cohérente et immédiatement
+          compréhensible. Un joueur qui découvre un nouveau parcours doit pouvoir retrouver les mêmes
+          repères et la même logique d’utilisation.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Cette uniformisation ne signifie pas que tous les carnets doivent se ressembler.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Chaque golf possède son histoire, son architecture, ses particularités et son identité. Notre
+          travail consiste donc à concilier deux exigences :
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Créer une structure commune et professionnelle, tout en respectant la singularité de chaque
+          parcours.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Le produit doit être identifiable comme un carnet Yardage, mais également comme le carnet
+          officiel du club pour lequel il a été conçu.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Une entreprise développée à deux</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Yardage est un projet familial que nous construisons ensemble.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Nous intervenons tous les deux dans les différentes dimensions de l’entreprise : conception,
+          développement du produit, stratégie commerciale, relation avec les clubs, production et
+          évolution de la marque.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Cette implication commune nous permet de conserver une vision cohérente, depuis la première
+          prise de contact avec le club jusqu’à la livraison des carnets.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Victor évolue dans l’hôtellerie-restauration depuis 2012. Ce parcours lui a transmis une
+          culture forte du service, de l’exigence opérationnelle et de la satisfaction client. Dans cet
+          environnement, la qualité ne dépend pas uniquement du produit proposé, mais également de sa
+          régularité, de sa présentation et de l’expérience globale offerte au client.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Cette même logique guide le développement de Yardage : proposer aux clubs une solution
+          professionnelle, fiable et simple à intégrer à leur fonctionnement.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Notre complémentarité nous permet de réunir la connaissance du golf, l’expérience du terrain,
+          le développement commercial et la recherche permanente d’une solution plus efficace.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Notre promesse aux clubs</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Un parcours de golf représente un patrimoine sportif, paysager et architectural. Il mérite un
+          support capable de le présenter avec précision et de valoriser le travail accompli par le
+          club.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">Notre promesse est claire :</p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Donner à chaque golf les moyens de proposer un carnet de parcours professionnel, homogène et
+          à son image.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Pour les clubs, Yardage doit devenir à la fois :
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>un outil de valorisation du parcours ;</li>
+          <li>un service supplémentaire proposé aux membres et aux visiteurs ;</li>
+          <li>un support cohérent avec leur niveau d’exigence ;</li>
+          <li>un moyen de renforcer leur image ;</li>
+          <li>
+            une réponse concrète aux besoins des joueurs en compétition comme en partie amicale.
+          </li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Notre objectif est de rendre la création d’un carnet professionnel plus simple et plus
+          accessible, sans imposer au club un développement technique complexe.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Notre promesse aux joueurs</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Nous souhaitons rendre accessibles aux amateurs des informations de parcours longtemps
+          associées au golf professionnel.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Le carnet ne remplace ni l’expérience, ni le jugement, ni la qualité d’exécution. Il permet
+          néanmoins au joueur de mieux comprendre ce qui se trouve devant lui et de prendre ses
+          décisions avec davantage d’informations.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Notre promesse aux joueurs est donc la suivante :
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Rendre accessible à tous l’information de parcours utilisée au plus haut niveau.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Un carnet Yardage doit permettre de :
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-ink-soft">
+          <li>mieux visualiser chaque trou ;</li>
+          <li>anticiper les principales difficultés ;</li>
+          <li>préparer une stratégie avant la partie ;</li>
+          <li>choisir une ligne de jeu plus clairement ;</li>
+          <li>mieux comprendre les distances et les zones importantes ;</li>
+          <li>aborder le parcours avec davantage de confiance.</li>
+        </ul>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Notre ambition n’est pas de dire au joueur comment il doit jouer, mais de lui donner les
+          éléments nécessaires pour construire sa propre stratégie.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-paper">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">
+          Une ambition française, ouverte sur l’extérieur
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Yardage se développe aujourd’hui auprès des golfs français.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Notre méthode et notre produit ont toutefois vocation à pouvoir s’adapter à d’autres pays.
+          Nous restons ainsi ouverts aux projets et aux propositions provenant de clubs étrangers.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          À terme, notre objectif est de faire du carnet de parcours un service naturel dans
+          l’expérience proposée par un golf, et non plus un outil rare réservé à certaines compétitions
+          ou à une minorité de joueurs.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-mist bg-sand">
+      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+        <h2 class="font-display text-2xl text-ink md:text-3xl">Notre vision</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Yardage repose sur une conviction simple :
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Chaque parcours mérite un carnet à la hauteur de son identité. Chaque joueur mérite de
+          pouvoir le comprendre.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Nous voulons construire une marque à la fois technique et premium, fondée sur la précision,
+          la cohérence et la qualité.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Une marque capable d’établir un standard commun, sans effacer la personnalité des clubs.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Une marque née d’une expérience vécue sur le terrain et développée pour répondre à un besoin
+          réel.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Depuis le constat jusqu’au premier prototype, puis au cours de quatre
+          années de développement, notre objectif est resté le même : rendre le carnet de parcours
+          professionnel plus accessible, plus cohérent et plus utile.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft">
+          Pour les clubs comme pour les joueurs.
+        </p>
+
+        <p class="mt-12 font-display text-xl text-ink">Rodolphe &amp; Victor</p>
+        <p class="mt-1 text-sm text-ink-soft">Co-fondateurs de Yardage</p>
+
+        <div class="mt-10">
+          <a
+            href={withBase('/contact')}
+            class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+          >
+            Parler de votre parcours
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
