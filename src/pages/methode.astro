@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
+import SectionPhoto from '../components/SectionPhoto.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import { withBase } from '../lib/paths';
 import { localePath } from '../lib/i18n';
@@ -26,8 +27,7 @@ const locale = 'fr' as const;
     />
     <ProcessSteps locale={locale} />
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">01 — Analyse</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Comprendre le parcours avant de le dessiner</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -45,11 +45,9 @@ const locale = 'fr' as const;
           votre parcours — bunkers sensibles, zones à risque, green exigeants. Votre retour affine notre
           lecture et garantit que le carnet collera à la réalité du terrain.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">02 — Data</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Une base fiable, prête à évoluer</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -66,11 +64,9 @@ const locale = 'fr' as const;
           Pour le joueur, cela se traduit par des informations fiables et homogènes d’un trou à l’autre.
           Même logique, mêmes repères, même niveau d’exigence sur l’ensemble du parcours.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-green.jpg">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">03 — Production</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Dessiner pour lire en un coup d’œil</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -88,11 +84,9 @@ const locale = 'fr' as const;
           partenaires : le carnet reste le vôtre, tout en étant immédiatement identifiable comme un
           carnet Yardage.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-fairway.jpg">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">04 — Impression</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Un objet digne de votre pro shop</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -108,8 +102,7 @@ const locale = 'fr' as const;
           Résultat : un support premium, prêt à être proposé à vos membres, à vos visiteurs et à vos
           compétiteurs — sans charge technique de votre côté.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
     <section class="section-photo border-b border-mist">
       <img
@@ -160,8 +153,7 @@ const locale = 'fr' as const;
       </div>
     </section>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">
           Un standard commun, une identité propre à chaque golf
         </h2>
@@ -178,11 +170,9 @@ const locale = 'fr' as const;
           En parallèle, chaque club conserve son histoire, son architecture et son image. Le carnet est
           identifiable comme un produit Yardage — et comme le carnet officiel de votre structure.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Prêt à équiper votre parcours ?</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           De l’analyse du terrain à la livraison des carnets, Yardage prend en charge l’ensemble du
@@ -203,8 +193,7 @@ const locale = 'fr' as const;
             Voir l’offre
           </a>
         </div>
-      </div>
-    </section>
+      </SectionPhoto>
   </main>
   <Footer locale={locale} />
 </BaseLayout>

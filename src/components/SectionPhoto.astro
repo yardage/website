@@ -1,0 +1,31 @@
+---
+import { withBase } from '../lib/paths';
+
+interface Props {
+  image: string;
+  class?: string;
+  /** Classes for the inner content wrapper */
+  contentClass?: string;
+}
+
+const {
+  image,
+  class: className,
+  contentClass = 'reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20',
+} = Astro.props;
+---
+
+<section class:list={['section-photo border-b border-mist', className]}>
+  <img
+    src={withBase(image)}
+    alt=""
+    class="section-photo-img opacity-[0.18]"
+    width="1280"
+    height="1920"
+    loading="lazy"
+  />
+  <div class="section-photo-veil"></div>
+  <div class={contentClass}>
+    <slot />
+  </div>
+</section>

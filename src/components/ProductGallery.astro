@@ -64,40 +64,39 @@ const items: GalleryItem[] = [
 >
   <div class="image-lightbox-backdrop" data-lightbox-close tabindex="-1"></div>
 
+  <button
+    type="button"
+    class="image-lightbox-close"
+    data-lightbox-close
+    aria-label={copy.lightboxClose}
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  </button>
+
+  <button
+    type="button"
+    id="image-lightbox-prev"
+    class="image-lightbox-nav image-lightbox-nav-prev"
+    aria-label={copy.lightboxPrev}
+  >
+    ‹
+  </button>
+
+  <button
+    type="button"
+    id="image-lightbox-next"
+    class="image-lightbox-nav image-lightbox-nav-next"
+    aria-label={copy.lightboxNext}
+  >
+    ›
+  </button>
+
   <div class="image-lightbox-panel">
-    <button
-      type="button"
-      class="image-lightbox-close"
-      data-lightbox-close
-      aria-label={copy.lightboxClose}
-    >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6l12 12M18 6L6 18" />
-      </svg>
-    </button>
-
-    <button
-      type="button"
-      id="image-lightbox-prev"
-      class="image-lightbox-nav image-lightbox-nav-prev"
-      aria-label={copy.lightboxPrev}
-    >
-      ‹
-    </button>
-
     <figure class="image-lightbox-figure">
       <img id="image-lightbox-img" class="image-lightbox-img" src="" alt="" />
     </figure>
-
-    <button
-      type="button"
-      id="image-lightbox-next"
-      class="image-lightbox-nav image-lightbox-nav-next"
-      aria-label={copy.lightboxNext}
-    >
-      ›
-    </button>
-
     <p id="image-lightbox-caption" class="image-lightbox-caption"></p>
   </div>
 </div>
@@ -109,6 +108,18 @@ const items: GalleryItem[] = [
   const prevBtn = document.getElementById('image-lightbox-prev') as HTMLButtonElement | null;
   const nextBtn = document.getElementById('image-lightbox-next') as HTMLButtonElement | null;
   const closeButtons = lightbox?.querySelectorAll('[data-lightbox-close]');
+
+  // Escape parent stacking contexts (e.g. transformed sections) so the overlay sits above the header
+  if (lightbox && lightbox.parentElement !== document.body) {
+    document.body.appendChild(lightbox);
+  }
+
+  const syncHeaderOffset = () => {
+    if (!lightbox) return;
+    const header = document.getElementById('site-header');
+    const height = header?.getBoundingClientRect().height ?? 76;
+    lightbox.style.setProperty('--lightbox-header-offset', `${Math.ceil(height)}px`);
+  };
 
   const triggers = [...document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]')];
   let currentIndex = 0;
@@ -134,6 +145,7 @@ const items: GalleryItem[] = [
     if (index === -1) return;
 
     lastFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    syncHeaderOffset();
     showIndex(index);
 
     lightbox.hidden = false;
@@ -192,5 +204,9 @@ const items: GalleryItem[] = [
       event.preventDefault();
       showIndex(currentIndex + 1);
     }
+  });
+
+  window.addEventListener('resize', () => {
+    if (lightbox && !lightbox.hidden) syncHeaderOffset();
   });
 </script>

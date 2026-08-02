@@ -47,7 +47,9 @@ const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
         />
       ))
     }
-    <link rel="icon" type="image/png" href={withBase('/favicon.png')} />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="alternate icon" href={withBase('/favicon.png')} type="image/png" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={ogLocale(locale)} />
     <meta property="og:title" content={title} />

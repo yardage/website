@@ -27,8 +27,12 @@ const fieldClass =
   data-msg-unconfigured={form.unconfigured}
   data-msg-success={form.success}
   data-msg-error={form.error}
+  data-prefill-quote={form.prefillQuote}
+  data-prefill-sample={form.prefillSample}
+  data-subject-quote={form.subjectQuote}
+  data-subject-sample={form.subjectSample}
 >
-  <input type="hidden" name="_subject" value={form.subject} />
+  <input type="hidden" name="_subject" id="form-subject" value={form.subjectQuote} />
   <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
 
   <div class="grid gap-5 md:grid-cols-2">
@@ -49,8 +53,8 @@ const fieldClass =
     </label>
     <label class="block">
       <span class="text-sm font-medium text-ink">{form.volume}</span>
-      <select name="volume" class={fieldClass}>
-        <option value="exemple">{form.optSample}</option>
+      <select name="volume" id="form-volume" class={fieldClass}>
+        <option value="">{form.optVolumePlaceholder}</option>
         <option value="<500">{form.optLt500}</option>
         <option value="500">{form.opt500}</option>
         <option value="1000">{form.opt1000}</option>
@@ -63,7 +67,8 @@ const fieldClass =
     <span class="text-sm font-medium text-ink">{form.message}</span>
     <textarea
       name="message"
-      rows="5"
+      id="form-message"
+      rows="7"
       required
       class={fieldClass}
       placeholder={form.placeholder}
@@ -83,6 +88,36 @@ const fieldClass =
 <script>
   const form = document.getElementById('devis-form') as HTMLFormElement | null;
   const status = document.getElementById('form-status');
+  const messageField = document.getElementById('form-message') as HTMLTextAreaElement | null;
+  const subjectField = document.getElementById('form-subject') as HTMLInputElement | null;
+  const volumeField = document.getElementById('form-volume') as HTMLSelectElement | null;
+
+  const applyIntentPrefill = () => {
+    if (!form || !messageField || !subjectField) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const hash = window.location.hash.replace(/^#/, '');
+    const intent = (params.get('intent') || hash || '').toLowerCase();
+
+    const isSample =
+      intent === 'exemplaire' || intent === 'sample' || intent === 'exemple';
+    const isQuote = intent === 'devis' || intent === 'quote';
+
+    if (!isSample && !isQuote) return;
+    // Don't overwrite if the visitor already typed something
+    if (messageField.value.trim().length > 0) return;
+
+    if (isSample) {
+      messageField.value = form.dataset.prefillSample ?? '';
+      subjectField.value = form.dataset.subjectSample ?? subjectField.value;
+      if (volumeField) volumeField.value = '';
+    } else {
+      messageField.value = form.dataset.prefillQuote ?? '';
+      subjectField.value = form.dataset.subjectQuote ?? subjectField.value;
+    }
+  };
+
+  applyIntentPrefill();
 
   form?.addEventListener('submit', async (event) => {
     const action = form.getAttribute('action') || '';
@@ -113,6 +148,7 @@ const fieldClass =
 
       if (response.ok) {
         form.reset();
+        if (subjectField) subjectField.value = form.dataset.subjectQuote ?? '';
         if (status) {
           status.classList.remove('hidden', 'text-ink-soft');
           status.classList.add('text-green-mid');

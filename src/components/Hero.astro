@@ -71,13 +71,13 @@ const isBrand = title === 'Yardage';
       !compact && (
         <div class="animate-hero-fade-delay-2 mt-8 flex flex-wrap gap-3">
           <a
-            href={localePath(locale, 'contact')}
+            href={localePath(locale, 'contact', '?intent=devis')}
             class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
           >
             {copy.ctaQuote}
           </a>
           <a
-            href={localePath(locale, 'contact', '#exemplaire')}
+            href={localePath(locale, 'contact', '?intent=exemplaire#exemplaire')}
             class="rounded-sm border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             {copy.ctaSample}

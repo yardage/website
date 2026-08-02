@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
+import SectionPhoto from '../../components/SectionPhoto.astro';
 import { localePath } from '../../lib/i18n';
 
 const locale = 'en' as const;
@@ -23,31 +24,27 @@ const locale = 'en' as const;
       compact
     />
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">An idea born on the course</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Yardage was not born in an office. It was born on the course.
         </p>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
-          We are cousins, but our stories with golf did not start at the same time. Victor discovered
-          the sport at seven. Over the years, golf became a true discipline: a permanent learning
-          curve built on precision, strategy and high standards.
+          Victor discovered golf at seven. Over the years, it became a true discipline: a permanent
+          learning curve built on precision, strategy and high standards.
         </p>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
-          In early 2019, he passed that passion on to Rodolphe. Shared rounds gradually gave way to a
-          deeper involvement, including competing together at a high amateur level.
+          In early 2019, he passed that passion on to Rodolphe, his cousin. Shared rounds gradually gave
+          way to a deeper involvement, including competing together at a high amateur level.
         </p>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           In 2021, Rodolphe caddied for Victor at a national amateur championship. That experience was a
           turning point. Preparing the course and watching what players needed, we saw a clear gap:
           professional yardage books remained hard for amateurs to access.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">The observation behind Yardage</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           In high-level golf, the yardage book is a real working tool. It helps understand the shape of
@@ -81,11 +78,9 @@ const locale = 'en' as const;
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           The idea of Yardage was born from that factual observation.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-green.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">From observation to first prototype</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Ten months after our first observation, we presented our first book at the 2022 Grand Prix of
@@ -107,11 +102,9 @@ const locale = 'en' as const;
           The Ableiges prototype was not yet the final product. It was proof that our project met a
           concrete need.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-fairway.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Four years of development</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           After that first operation, we began a long process of development, structure and
@@ -143,11 +136,9 @@ const locale = 'en' as const;
           After four years of development, Yardage is entering a new phase with its final version —
           the result of all research, trials and improvements since the first prototype.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">
           A shared standard, an identity unique to each club
         </h2>
@@ -174,11 +165,9 @@ const locale = 'en' as const;
           The product must be identifiable as a Yardage book — and as the official book of the club it
           was designed for.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">A company built by two</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Yardage is a family project that we build together.
@@ -204,11 +193,9 @@ const locale = 'en' as const;
           Our complementary skills bring together golf knowledge, course experience, commercial
           development and a constant search for a more effective solution.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-green.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Our promise to clubs</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           A golf course is sporting, landscape and architectural heritage. It deserves a support that
@@ -232,11 +219,9 @@ const locale = 'en' as const;
           Our goal is to make creating a professional book simpler and more accessible, without
           imposing complex technical work on the club.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-fairway.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Our promise to players</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           We want to make course information long associated with professional golf accessible to
@@ -263,11 +248,9 @@ const locale = 'en' as const;
           Our ambition is not to tell the player how to play, but to give them what they need to build
           their own strategy.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">
           A French ambition, open to the world
         </h2>
@@ -282,11 +265,9 @@ const locale = 'en' as const;
           In the long run, our goal is to make the yardage book a natural part of what a club offers —
           not a rare tool reserved for certain events or a minority of players.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Our vision</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">Yardage rests on a simple belief:</p>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -309,7 +290,7 @@ const locale = 'en' as const;
         </p>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">For clubs and for players.</p>
 
-        <p class="mt-12 font-display text-xl text-ink">Rodolphe &amp; Victor</p>
+        <p class="mt-12 font-display text-xl text-ink">Victor &amp; Rodolphe</p>
         <p class="mt-1 text-sm text-ink-soft">Co-founders of Yardage</p>
 
         <div class="mt-10">
@@ -320,8 +301,7 @@ const locale = 'en' as const;
             Talk about your course
           </a>
         </div>
-      </div>
-    </section>
+      </SectionPhoto>
   </main>
   <Footer locale={locale} />
 </BaseLayout>

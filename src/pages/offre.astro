@@ -166,13 +166,13 @@ const locale = 'fr' as const;
         </p>
         <div class="mt-10 flex flex-wrap gap-3">
           <a
-            href={localePath(locale, 'contact')}
+            href={localePath(locale, 'contact', '?intent=devis')}
             class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
           >
             Demander un devis
           </a>
           <a
-            href={localePath(locale, 'contact', '#exemplaire')}
+            href={localePath(locale, 'contact', '?intent=exemplaire#exemplaire')}
             class="inline-flex rounded-sm border border-mist px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
           >
             Exemplaire numérique gratuit

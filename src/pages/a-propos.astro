@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
+import SectionPhoto from '../components/SectionPhoto.astro';
 import { localePath } from '../lib/i18n';
 
 const locale = 'fr' as const;
@@ -23,19 +24,17 @@ const locale = 'fr' as const;
       compact
     />
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Une idée née sur le parcours</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Yardage n’est pas née dans un bureau. Elle est née sur le parcours.
         </p>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
-          Nous sommes cousins, mais notre histoire avec le golf ne commence pas au même moment. Victor
-          découvre ce sport à l’âge de sept ans. Au fil des années, le golf devient une véritable
+          Victor découvre le golf à l’âge de sept ans. Au fil des années, ce sport devient une véritable
           discipline : un apprentissage permanent, fait de précision, de stratégie et d’exigence.
         </p>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
-          Début 2019, il transmet cette passion à Rodolphe. Les premières parties
+          Début 2019, il transmet cette passion à Rodolphe, son cousin. Les premières parties
           partagées laissent progressivement place à une implication plus importante, jusqu’à vivre
           ensemble certaines compétitions de haut niveau.
         </p>
@@ -45,11 +44,9 @@ const locale = 'fr' as const;
           nous prenons conscience d’un manque évident : les carnets de parcours professionnels restent 
           difficiles d’accès pour les amateurs.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Le constat à l’origine de Yardage</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Dans le golf de haut niveau, le carnet de parcours est un véritable outil de travail. Il
@@ -88,11 +85,9 @@ const locale = 'fr' as const;
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           L’idée de Yardage est née de cette observation factuelle.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-green.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Du constat au premier prototype</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Dix mois après notre premier constat, nous présentons notre premier carnet
@@ -115,11 +110,9 @@ const locale = 'fr' as const;
           Le prototype d’Ableiges n’est pas encore le produit final. Il représente cependant la preuve que
           notre projet répond à un besoin concret.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-fairway.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Quatre années de développement</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           À la suite de cette première opération, nous avons engagé un long travail de développement, de
@@ -155,11 +148,9 @@ const locale = 'fr' as const;
           sa version finale, issue de l’ensemble des recherches, essais et améliorations réalisés depuis
           le premier prototype.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">
           Un standard commun, une identité propre à chaque golf
         </h2>
@@ -190,11 +181,9 @@ const locale = 'fr' as const;
           Le produit doit être identifiable comme un carnet Yardage, mais également comme le carnet
           officiel du club pour lequel il a été conçu.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Une entreprise développée à deux</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Yardage est un projet familial que nous construisons ensemble.
@@ -222,11 +211,9 @@ const locale = 'fr' as const;
           Notre complémentarité nous permet de réunir la connaissance du golf, l’expérience du terrain,
           le développement commercial et la recherche permanente d’une solution plus efficace.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-green.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Notre promesse aux clubs</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Un parcours de golf représente un patrimoine sportif, paysager et architectural. Il mérite un
@@ -254,11 +241,9 @@ const locale = 'fr' as const;
           Notre objectif est de rendre la création d’un carnet professionnel plus simple et plus
           accessible, sans imposer au club un développement technique complexe.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-fairway.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Notre promesse aux joueurs</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Nous souhaitons rendre accessibles aux amateurs des informations de parcours longtemps
@@ -290,11 +275,9 @@ const locale = 'fr' as const;
           Notre ambition n’est pas de dire au joueur comment il doit jouer, mais de lui donner les
           éléments nécessaires pour construire sa propre stratégie.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-paper">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-trees.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">
           Une ambition française, ouverte sur l’extérieur
         </h2>
@@ -310,11 +293,9 @@ const locale = 'fr' as const;
           l’expérience proposée par un golf, et non plus un outil rare réservé à certaines compétitions
           ou à une minorité de joueurs.
         </p>
-      </div>
-    </section>
+      </SectionPhoto>
 
-    <section class="border-b border-mist bg-sand">
-      <div class="reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+    <SectionPhoto image="/images/bg-aerial.jpg">
         <h2 class="font-display text-2xl text-ink md:text-3xl">Notre vision</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           Yardage repose sur une conviction simple :
@@ -343,7 +324,7 @@ const locale = 'fr' as const;
           Pour les clubs comme pour les joueurs.
         </p>
 
-        <p class="mt-12 font-display text-xl text-ink">Rodolphe &amp; Victor</p>
+        <p class="mt-12 font-display text-xl text-ink">Victor &amp; Rodolphe</p>
         <p class="mt-1 text-sm text-ink-soft">Co-fondateurs de Yardage</p>
 
         <div class="mt-10">
@@ -354,8 +335,7 @@ const locale = 'fr' as const;
             Parler de votre parcours
           </a>
         </div>
-      </div>
-    </section>
+      </SectionPhoto>
   </main>
   <Footer locale={locale} />
 </BaseLayout>

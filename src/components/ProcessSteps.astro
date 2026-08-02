@@ -12,22 +12,16 @@ const copy = t(locale);
 const steps = copy.processSteps;
 ---
 
-<section class:list={['section-photo border-b border-mist', !teaser && 'bg-sand']}>
-  {
-    teaser && (
-      <>
-        <img
-          src={withBase('/images/bg-fairway.jpg')}
-          alt=""
-          class="section-photo-img"
-          width="1280"
-          height="1920"
-          loading="lazy"
-        />
-        <div class="section-photo-veil"></div>
-      </>
-    )
-  }
+<section class="section-photo border-b border-mist">
+  <img
+    src={withBase(teaser ? '/images/bg-fairway.jpg' : '/images/bg-trees.jpg')}
+    alt=""
+    class:list={['section-photo-img', !teaser && 'opacity-[0.18]']}
+    width="1280"
+    height="1920"
+    loading="lazy"
+  />
+  <div class="section-photo-veil"></div>
   <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
     <div class="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div class="max-w-2xl">

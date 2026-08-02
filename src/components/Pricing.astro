@@ -59,7 +59,7 @@ const extras = copy.pricingExtras;
 
     <div class="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
       <a
-        href={localePath(locale, 'contact')}
+        href={localePath(locale, 'contact', '?intent=devis')}
         class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
       >
         {copy.ctaQuote}
@@ -74,7 +74,7 @@ const extras = copy.pricingExtras;
           </a>
         ) : (
           <a
-            href={localePath(locale, 'contact', '#exemplaire')}
+            href={localePath(locale, 'contact', '?intent=exemplaire#exemplaire')}
             class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
           >
             {copy.pricingSampleCta}
