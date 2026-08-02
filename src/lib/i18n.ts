@@ -201,8 +201,8 @@ const ui = {
         'Envoi impossible pour le moment. Contactez-nous à contact@yardage.co ou au +33 5 37 07 97 18.',
     },
     gallery: [
-      { alt: 'Exemple — vue d’ensemble, trou 7' },
-      { alt: 'Exemple — détail green et fairway, trou 7' },
+      { alt: 'Exemple — page 1,vue d’ensemble' },
+      { alt: 'Exemple — page 2, green et fairway' },
     ],
     lightboxLabel: 'Visionneuse d’image',
     lightboxClose: 'Fermer',
