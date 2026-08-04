@@ -31,7 +31,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          PUBLIC_FORMSPREE_ENDPOINT: https://formspree.io/f/mljrrjro
+          PUBLIC_FORMSPREE_ENDPOINT: https://formspree.io/f/xvzeoeeo
 
       - name: Ensure .nojekyll
         run: touch dist/.nojekyll
