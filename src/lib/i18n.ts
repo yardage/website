@@ -89,7 +89,7 @@ const ui = {
       contact: 'Contact',
     },
     ctaQuote: 'Demander un devis',
-    ctaSample: 'Exemplaire numérique gratuit',
+    ctaSample: 'Exemplaire numérique',
     ctaLearnMore: 'En savoir plus',
     ctaTalk: 'Parler de votre parcours',
     ctaOffer: 'Voir l’offre',
@@ -170,14 +170,14 @@ const ui = {
       'Personnalisation logo et sponsors',
       'Impression premium sur papier écologique',
       'Livraison sous 2 semaines après validation du devis',
-      'Exemplaire numérique gratuit sur demande',
+      'Exemplaire numérique sur demande, pour les projets en étude',
     ],
     pricingDetail: 'Détail de l’offre',
-    pricingSampleCta: 'Demander un exemplaire numérique gratuit',
+    pricingSampleCta: 'Demander un exemplaire numérique',
     form: {
       subject: 'Demande de devis — Yardage',
       subjectQuote: 'Demande de devis — Yardage',
-      subjectSample: 'Demande d’exemplaire numérique gratuit — Yardage',
+      subjectSample: 'Demande d’exemplaire numérique — Yardage',
       name: 'Nom',
       email: 'Email',
       club: 'Club / structure',
@@ -193,7 +193,7 @@ const ui = {
       prefillQuote:
         'Bonjour,\n\nJe souhaite obtenir un devis pour des carnets de parcours Yardage.\n\nCordialement,',
       prefillSample:
-        'Bonjour,\n\nJe souhaite recevoir un exemplaire numérique gratuit pour découvrir le rendu Yardage sur mon parcours.\n\nCordialement,',
+        'Bonjour,\n\nJe souhaite un exemplaire numérique pour notre parcours.\n\nClub : …\nNombre de trous : …\n\nCordialement,',
       unconfigured:
         'Formulaire non configuré : ajoutez votre endpoint Formspree (PUBLIC_FORMSPREE_ENDPOINT). En attendant, écrivez-nous à contact@yardage.co.',
       success: 'Merci — votre demande a bien été envoyée. Nous vous recontactons rapidement.',
@@ -218,7 +218,7 @@ const ui = {
       contact: 'Contact',
     },
     ctaQuote: 'Request a quote',
-    ctaSample: 'Free digital sample',
+    ctaSample: 'Digital sample',
     ctaLearnMore: 'Learn more',
     ctaTalk: 'Talk about your course',
     ctaOffer: 'View the offer',
@@ -299,14 +299,14 @@ const ui = {
       'Logo and sponsor customisation',
       'Premium print on eco-friendly paper',
       'Delivery within 2 weeks after quote approval',
-      'Free digital sample on request',
+      'Digital sample on request, for projects under review',
     ],
     pricingDetail: 'Offer details',
-    pricingSampleCta: 'Request a free digital sample',
+    pricingSampleCta: 'Request a digital sample',
     form: {
       subject: 'Quote request — Yardage',
       subjectQuote: 'Quote request — Yardage',
-      subjectSample: 'Free digital sample request — Yardage',
+      subjectSample: 'Digital sample request — Yardage',
       name: 'Name',
       email: 'Email',
       club: 'Club / organisation',
@@ -322,7 +322,7 @@ const ui = {
       prefillQuote:
         'Hello,\n\nI would like a quote for Yardage yardage books.\n\nBest regards,',
       prefillSample:
-        'Hello,\n\nI would like to receive a free digital sample to see the Yardage look for my course.\n\nBest regards,',
+        'Hello,\n\nI would like a digital sample for our course.\n\nClub: …\nNumber of holes: …\n\nBest regards,',
       unconfigured:
         'Form not configured: add your Formspree endpoint (PUBLIC_FORMSPREE_ENDPOINT). Meanwhile, email us at contact@yardage.co.',
       success: 'Thank you — your request has been sent. We will get back to you shortly.',
