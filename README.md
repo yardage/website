@@ -3,7 +3,7 @@
 Static site ([Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com)) presenting **Yardage** to golf clubs and professionals: method, offer, and contact.
 
 **Live site:** [https://yardage.io](https://yardage.io)  
-**Contact:** [contact@yardage.co](mailto:contact@yardage.co) · +33 5 37 07 97 18
+**Contact:** [contact@yardage.io](mailto:contact@yardage.io) · +33 5 37 07 97 18
 
 ---
 
@@ -51,7 +51,7 @@ Open [http://localhost:4321](http://localhost:4321).
 
 ## Environment (contact form)
 
-1. Create a form on [formspree.io](https://formspree.io) that delivers to `contact@yardage.co`.
+1. Create a form on [formspree.io](https://formspree.io) that delivers to `contact@yardage.io`.
 2. Copy `.env.example` → `.env`.
 3. Set:
 

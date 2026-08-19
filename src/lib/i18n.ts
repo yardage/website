@@ -195,10 +195,10 @@ const ui = {
       prefillSample:
         'Bonjour,\n\nJe souhaite un exemplaire numérique pour notre parcours.\n\nClub : …\nNombre de trous : …\n\nCordialement,',
       unconfigured:
-        'Formulaire non configuré : ajoutez votre endpoint Formspree (PUBLIC_FORMSPREE_ENDPOINT). En attendant, écrivez-nous à contact@yardage.co.',
+        'Formulaire non configuré : ajoutez votre endpoint Formspree (PUBLIC_FORMSPREE_ENDPOINT). En attendant, écrivez-nous à contact@yardage.io.',
       success: 'Merci — votre demande a bien été envoyée. Nous vous recontactons rapidement.',
       error:
-        'Envoi impossible pour le moment. Contactez-nous à contact@yardage.co ou au +33 5 37 07 97 18.',
+        'Envoi impossible pour le moment. Contactez-nous à contact@yardage.io ou au +33 5 37 07 97 18.',
     },
     gallery: [
       { alt: 'Exemple — page 1, vue d’ensemble du parcours' },
@@ -324,10 +324,10 @@ const ui = {
       prefillSample:
         'Hello,\n\nI would like a digital sample for our course.\n\nClub: …\nNumber of holes: …\n\nBest regards,',
       unconfigured:
-        'Form not configured: add your Formspree endpoint (PUBLIC_FORMSPREE_ENDPOINT). Meanwhile, email us at contact@yardage.co.',
+        'Form not configured: add your Formspree endpoint (PUBLIC_FORMSPREE_ENDPOINT). Meanwhile, email us at contact@yardage.io.',
       success: 'Thank you — your request has been sent. We will get back to you shortly.',
       error:
-        'Unable to send right now. Contact us at contact@yardage.co or +33 5 37 07 97 18.',
+        'Unable to send right now. Contact us at contact@yardage.io or +33 5 37 07 97 18.',
     },
     gallery: [
       { alt: 'Example — overview, hole 7' },
