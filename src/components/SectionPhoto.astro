@@ -1,28 +1,35 @@
 ---
 import { withBase } from '../lib/paths';
+import { nextSectionBackground } from '../lib/sectionBackgrounds';
 
 interface Props {
-  image: string;
+  image?: string;
+  id?: string;
   class?: string;
   /** Classes for the inner content wrapper */
   contentClass?: string;
+  imgClass?: string;
 }
 
 const {
-  image,
+  image = nextSectionBackground(Astro.locals),
+  id,
   class: className,
   contentClass = 'reveal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20',
+  imgClass,
 } = Astro.props;
 ---
 
-<section class:list={['section-photo border-b border-mist', className]}>
+<section id={id} class:list={['section-photo border-b border-mist', className]}>
   <img
     src={withBase(image)}
     alt=""
-    class="section-photo-img opacity-[0.18]"
+    class:list={['section-photo-img', imgClass]}
     width="1280"
     height="1920"
     loading="lazy"
+    decoding="async"
+    aria-hidden="true"
   />
   <div class="section-photo-veil"></div>
   <div class={contentClass}>

@@ -1,6 +1,7 @@
 ---
 import { withBase } from '../lib/paths';
 import { type Locale, localePath, t } from '../lib/i18n';
+import { nextSectionBackground } from '../lib/sectionBackgrounds';
 
 interface Props {
   teaser?: boolean;
@@ -9,13 +10,14 @@ interface Props {
 
 const { teaser = false, locale = 'fr' } = Astro.props;
 const copy = t(locale);
+const image = nextSectionBackground(Astro.locals);
 const volumes = copy.pricingVolumes;
 const extras = copy.pricingExtras;
 ---
 
 <section class="section-photo border-b border-mist">
   <img
-    src={withBase('/images/bg-green.jpg')}
+    src={withBase(image)}
     alt=""
     class="section-photo-img"
     width="1280"
@@ -34,10 +36,15 @@ const extras = copy.pricingExtras;
       </p>
     </div>
 
-    <div class="reveal reveal-delay-1 mt-12 grid gap-px overflow-hidden border border-mist bg-mist md:grid-cols-3">
+    <div class="mt-12 grid gap-px overflow-hidden border border-mist bg-mist md:grid-cols-3">
       {
-        volumes.map((item) => (
-          <div class="bg-panel px-6 py-8 md:px-8">
+        volumes.map((item, index) => (
+          <div
+            class:list={[
+              'bg-panel px-6 py-8 md:px-8 reveal',
+              index > 0 && `reveal-delay-${index}`,
+            ]}
+          >
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-mid">{item.qty}</p>
             <p class="mt-4 font-display text-4xl text-green-mid md:text-5xl">{item.price}</p>
             <p class="mt-2 text-sm text-ink-soft">{item.note}</p>
@@ -46,10 +53,15 @@ const extras = copy.pricingExtras;
       }
     </div>
 
-    <ul class="reveal reveal-delay-2 mt-10 grid gap-3 sm:grid-cols-2">
+    <ul class="mt-10 grid gap-3 sm:grid-cols-2">
       {
-        extras.map((item) => (
-          <li class="flex gap-3 text-sm text-ink-soft md:text-base">
+        extras.map((item, index) => (
+          <li
+            class:list={[
+              'flex gap-3 text-sm text-ink-soft md:text-base reveal',
+              index > 0 && `reveal-delay-${index}`,
+            ]}
+          >
             <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-mid" aria-hidden="true" />
             {item}
           </li>
@@ -65,19 +77,12 @@ const extras = copy.pricingExtras;
         {copy.ctaQuote}
       </a>
       {
-        teaser ? (
+        teaser && (
           <a
             href={localePath(locale, 'offer')}
             class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
           >
             {copy.pricingDetail}
-          </a>
-        ) : (
-          <a
-            href={localePath(locale, 'contact', '?intent=exemplaire#exemplaire')}
-            class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
-          >
-            {copy.pricingSampleCta}
           </a>
         )
       }

@@ -28,9 +28,7 @@ const fieldClass =
   data-msg-success={form.success}
   data-msg-error={form.error}
   data-prefill-quote={form.prefillQuote}
-  data-prefill-sample={form.prefillSample}
   data-subject-quote={form.subjectQuote}
-  data-subject-sample={form.subjectSample}
 >
   <input type="hidden" name="_subject" id="form-subject" value={form.subjectQuote} />
   <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
@@ -55,7 +53,7 @@ const fieldClass =
       <span class="text-sm font-medium text-ink">{form.volume}</span>
       <select name="volume" id="form-volume" class={fieldClass}>
         <option value="">{form.optVolumePlaceholder}</option>
-        <option value="<500">{form.optLt500}</option>
+        <option value="150-499">{form.opt150to499}</option>
         <option value="500">{form.opt500}</option>
         <option value="1000">{form.opt1000}</option>
         <option value=">1000">{form.optGt1000}</option>
@@ -90,31 +88,20 @@ const fieldClass =
   const status = document.getElementById('form-status');
   const messageField = document.getElementById('form-message') as HTMLTextAreaElement | null;
   const subjectField = document.getElementById('form-subject') as HTMLInputElement | null;
-  const volumeField = document.getElementById('form-volume') as HTMLSelectElement | null;
 
   const applyIntentPrefill = () => {
     if (!form || !messageField || !subjectField) return;
 
     const params = new URLSearchParams(window.location.search);
-    const hash = window.location.hash.replace(/^#/, '');
-    const intent = (params.get('intent') || hash || '').toLowerCase();
-
-    const isSample =
-      intent === 'exemplaire' || intent === 'sample' || intent === 'exemple';
+    const intent = (params.get('intent') || '').toLowerCase();
     const isQuote = intent === 'devis' || intent === 'quote';
 
-    if (!isSample && !isQuote) return;
+    if (!isQuote) return;
     // Don't overwrite if the visitor already typed something
     if (messageField.value.trim().length > 0) return;
 
-    if (isSample) {
-      messageField.value = form.dataset.prefillSample ?? '';
-      subjectField.value = form.dataset.subjectSample ?? subjectField.value;
-      if (volumeField) volumeField.value = '';
-    } else {
-      messageField.value = form.dataset.prefillQuote ?? '';
-      subjectField.value = form.dataset.subjectQuote ?? subjectField.value;
-    }
+    messageField.value = form.dataset.prefillQuote ?? '';
+    subjectField.value = form.dataset.subjectQuote ?? subjectField.value;
   };
 
   applyIntentPrefill();

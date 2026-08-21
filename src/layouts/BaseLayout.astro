@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { withBase } from '../lib/paths';
+import { sectionBackgrounds } from '../lib/sectionBackgrounds';
 import {
   type Locale,
   hreflangLinks,
@@ -27,6 +28,7 @@ const metaDescription = Astro.props.description ?? defaultDescription;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(withBase(ogImage), Astro.site);
 const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
+const sectionBgPool = sectionBackgrounds().map((src) => withBase(src));
 ---
 
 <!doctype html>
@@ -66,8 +68,43 @@ const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
   </head>
   <body class="min-h-screen flex flex-col">
     <slot />
+    <script is:inline define:vars={{ sectionBgPool }}>
+      (function () {
+        const pool = sectionBgPool;
+        if (!Array.isArray(pool) || pool.length === 0) return;
+        document.querySelectorAll('main > section:not(.hero-section)').forEach(function (section, index) {
+          if (!(section instanceof HTMLElement)) return;
+          if (section.querySelector('.section-photo-img')) return;
+          section.classList.add('section-photo', 'border-b', 'border-mist');
+          const img = document.createElement('img');
+          img.src = pool[index % pool.length];
+          img.alt = '';
+          img.className = 'section-photo-img';
+          img.width = 1280;
+          img.height = 1920;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.setAttribute('aria-hidden', 'true');
+          const veil = document.createElement('div');
+          veil.className = 'section-photo-veil';
+          section.insertBefore(veil, section.firstChild);
+          section.insertBefore(img, section.firstChild);
+        });
+      })();
+    </script>
     <script>
+      import Lenis from 'lenis';
+
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const lenis = reduceMotion
+        ? null
+        : new Lenis({
+            lerp: 0.1,
+            smoothWheel: true,
+            autoRaf: true,
+            syncTouch: false,
+          });
 
       // Reveal on scroll
       const revealObserver = new IntersectionObserver(
@@ -92,38 +129,23 @@ const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
         progress.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
       };
 
-      // Smooth intelligent scroll for same-page anchors
       const headerOffset = () => {
         const header = document.getElementById('site-header');
         return (header?.offsetHeight ?? 72) + 12;
-      };
-
-      const easeInOutCubic = (t: number) =>
-        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-      const smoothScrollTo = (targetY: number, duration = 700) => {
-        if (reduceMotion) {
-          window.scrollTo(0, targetY);
-          return;
-        }
-        const startY = window.scrollY;
-        const delta = targetY - startY;
-        const start = performance.now();
-
-        const step = (now: number) => {
-          const t = Math.min(1, (now - start) / duration);
-          window.scrollTo(0, startY + delta * easeInOutCubic(t));
-          if (t < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
       };
 
       const scrollToHash = (hash: string, push = false) => {
         if (!hash || hash === '#') return;
         const el = document.querySelector(hash);
         if (!(el instanceof HTMLElement)) return;
-        const y = el.getBoundingClientRect().top + window.scrollY - headerOffset();
-        smoothScrollTo(Math.max(0, y));
+
+        if (lenis) {
+          lenis.scrollTo(el, { offset: -headerOffset(), duration: 0.9 });
+        } else {
+          const y = el.getBoundingClientRect().top + window.scrollY - headerOffset();
+          window.scrollTo(0, Math.max(0, y));
+        }
+
         if (push) history.pushState(null, '', hash);
       };
 
@@ -147,13 +169,13 @@ const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
         }
       });
 
-      // Arrive on hash or restore top intelligently
       window.addEventListener('load', () => {
         if (window.location.hash) {
           requestAnimationFrame(() => scrollToHash(window.location.hash));
         } else if ('scrollRestoration' in history) {
           history.scrollRestoration = 'manual';
-          window.scrollTo(0, 0);
+          if (lenis) lenis.scrollTo(0, { immediate: true });
+          else window.scrollTo(0, 0);
         }
         updateProgress();
       });
@@ -161,6 +183,13 @@ const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
       window.addEventListener('scroll', updateProgress, { passive: true });
       window.addEventListener('resize', updateProgress);
       updateProgress();
+
+      document.addEventListener('yardage:lightbox', (event) => {
+        if (!lenis) return;
+        const open = event instanceof CustomEvent && Boolean(event.detail?.open);
+        if (open) lenis.stop();
+        else lenis.start();
+      });
     </script>
   </body>
 </html>

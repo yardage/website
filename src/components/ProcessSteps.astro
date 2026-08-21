@@ -1,6 +1,7 @@
 ---
 import { withBase } from '../lib/paths';
 import { type Locale, localePath, t } from '../lib/i18n';
+import { nextSectionBackground } from '../lib/sectionBackgrounds';
 
 interface Props {
   teaser?: boolean;
@@ -9,12 +10,13 @@ interface Props {
 
 const { teaser = false, locale = 'fr' } = Astro.props;
 const copy = t(locale);
+const image = nextSectionBackground(Astro.locals);
 const steps = copy.processSteps;
 ---
 
 <section class="section-photo border-b border-mist">
   <img
-    src={withBase(teaser ? '/images/bg-fairway.jpg' : '/images/bg-trees.jpg')}
+    src={withBase(image)}
     alt=""
     class:list={['section-photo-img', !teaser && 'opacity-[0.18]']}
     width="1280"
@@ -49,10 +51,12 @@ const steps = copy.processSteps;
       }
     </div>
 
-    <div class="reveal reveal-delay-1 mt-14 grid gap-10 md:grid-cols-4 md:gap-6">
+    <div class="mt-14 grid gap-10 md:grid-cols-4 md:gap-6">
       {
         steps.map((step, index) => (
-          <div class="relative">
+          <div
+            class:list={['relative reveal', index > 0 && `reveal-delay-${index}`]}
+          >
             <p class="font-display text-5xl text-green-mid/25 md:text-6xl">
               {String(index + 1).padStart(2, '0')}
             </p>

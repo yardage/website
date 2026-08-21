@@ -24,7 +24,7 @@ const isBrand = title === 'Yardage';
 
 <section
   class:list={[
-    'relative isolate overflow-hidden bg-brand text-white',
+    'hero-section relative isolate overflow-hidden bg-brand text-white',
     compact ? 'min-h-[52vh]' : 'min-h-[100svh]',
   ]}
 >
@@ -61,7 +61,7 @@ const isBrand = title === 'Yardage';
     }
     <p
       class:list={[
-        'animate-hero-fade-delay max-w-xl text-lg leading-relaxed text-white/85 md:text-xl',
+        'animate-hero-fade-delay max-w-xl text-lg leading-relaxed text-white/85 md:text-xl whitespace-pre-line',
         isBrand ? 'mt-10' : 'mt-4 md:mt-5',
       ]}
     >
@@ -75,12 +75,6 @@ const isBrand = title === 'Yardage';
             class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
           >
             {copy.ctaQuote}
-          </a>
-          <a
-            href={localePath(locale, 'contact', '?intent=exemplaire#exemplaire')}
-            class="rounded-sm border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            {copy.ctaSample}
           </a>
         </div>
       )

@@ -22,12 +22,12 @@ const locale = 'en' as const;
       locale={locale}
       title="Method"
       subtitle="Four steps to turn the course into a reference book — precise, readable, and true to your club."
-      image="/images/bg-fairway.jpg"
+      image="/images/bg_fairway.jpg"
       compact
     />
     <ProcessSteps locale={locale} />
 
-    <SectionPhoto image="/images/bg-trees.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">01 — Analysis</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Understand the course before drawing it</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -46,7 +46,7 @@ const locale = 'en' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-aerial.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">02 — Data</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">A reliable base, ready to evolve</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -65,7 +65,7 @@ const locale = 'en' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-green.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">03 — Production</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Drawn to be read at a glance</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -84,7 +84,7 @@ const locale = 'en' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-fairway.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">04 — Print</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">An object worthy of your pro shop</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -102,17 +102,10 @@ const locale = 'en' as const;
         </p>
       </SectionPhoto>
 
-    <section class="section-photo border-b border-mist">
-      <img
-        src={withBase('/images/bg-green.jpg')}
-        alt=""
-        class="section-photo-img"
-        width="1280"
-        height="1920"
-        loading="lazy"
-      />
-      <div class="section-photo-veil"></div>
-      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28">
+    <SectionPhoto
+      image="/images/carnets-irl.jpg"
+      contentClass="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28"
+    >
         <div class="reveal">
           <h2 class="font-display text-3xl text-ink md:text-4xl">What a hole page contains</h2>
           <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -148,10 +141,9 @@ const locale = 'en' as const;
             loading="lazy"
           />
         </div>
-      </div>
-    </section>
+    </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-trees.jpg">
+    <SectionPhoto>
         <h2 class="font-display text-2xl text-ink md:text-3xl">
           A shared standard, an identity unique to each club
         </h2>
@@ -169,7 +161,7 @@ const locale = 'en' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-aerial.jpg">
+    <SectionPhoto>
         <h2 class="font-display text-2xl text-ink md:text-3xl">Ready to equip your course?</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           From course analysis to book delivery, Yardage handles the full process. You keep control of

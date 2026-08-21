@@ -20,24 +20,24 @@ const frHref = locale === 'fr' ? withBase(pathname) : alternatePath(Astro.url.pa
 const enHref = locale === 'en' ? withBase(pathname) : alternatePath(Astro.url.pathname);
 ---
 
-<footer class="mt-auto border-t border-mist bg-sand text-ink">
-  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.2fr_1fr_1fr] md:px-8">
-    <div>
+<footer class="mt-auto shrink-0 border-t border-mist bg-sand text-ink">
+  <div class="mx-auto grid max-w-6xl items-start gap-6 px-5 py-5 md:grid-cols-[1.2fr_1fr_1fr] md:px-8 md:py-6">
+    <div class="reveal">
       <img
         src={withBase('/images/logo.png')}
         alt="Yardage"
-        class="h-8 w-auto"
+        class="h-6 w-auto"
         width="180"
         height="28"
       />
-      <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft">
+      <p class="mt-2 max-w-sm text-sm leading-relaxed text-ink-soft">
         {copy.footerBlurb}
       </p>
     </div>
 
-    <div>
+    <div class="reveal reveal-delay-1">
       <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70">{copy.footerNav}</p>
-      <ul class="mt-4 space-y-2 text-sm">
+      <ul class="mt-2 space-y-1 text-sm">
         <li>
           <a href={localePath(locale, 'method')} class="text-ink-soft transition hover:text-ink"
             >{copy.nav.method}</a
@@ -61,11 +61,11 @@ const enHref = locale === 'en' ? withBase(pathname) : alternatePath(Astro.url.pa
       </ul>
     </div>
 
-    <div>
+    <div class="reveal reveal-delay-2">
       <p class="text-xs font-semibold uppercase tracking-[0.18em] text-green-mid/70"
         >{copy.footerContact}</p
       >
-      <ul class="mt-4 space-y-2 text-sm text-ink-soft">
+      <ul class="mt-2 space-y-1 text-sm text-ink-soft">
         <li>
           <a href="mailto:contact@yardage.io" class="transition hover:text-ink">
             contact@yardage.io
@@ -75,7 +75,7 @@ const enHref = locale === 'en' ? withBase(pathname) : alternatePath(Astro.url.pa
           <a href="tel:+33537079718" class="transition hover:text-ink">+33 5 37 07 97 18</a>
         </li>
       </ul>
-      <div class="mt-4 flex items-center gap-4 text-ink-soft">
+      <div class="mt-2.5 flex items-center gap-4 text-ink-soft">
         <a
           href="https://wa.me/33537079718"
           class="transition hover:text-ink"
@@ -133,7 +133,7 @@ const enHref = locale === 'en' ? withBase(pathname) : alternatePath(Astro.url.pa
   </div>
 
   <div
-    class="mx-auto flex max-w-6xl flex-col gap-3 border-t border-mist px-5 py-5 text-xs text-ink-soft/70 md:flex-row md:items-center md:justify-between md:px-8"
+    class="reveal reveal-delay-3 mx-auto flex max-w-6xl flex-col gap-2 border-t border-mist px-5 py-2.5 text-xs text-ink-soft/70 md:flex-row md:items-center md:justify-between md:px-8"
   >
     <p>© {year} Yardage. {copy.footerRights}</p>
     <div class="flex flex-wrap items-center gap-5">

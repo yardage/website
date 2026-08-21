@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @theme {
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
@@ -20,8 +21,12 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     color-scheme: dark;
+  }
+
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto;
   }
 
   body {
@@ -99,6 +104,14 @@
     transition-delay: 0.36s;
   }
 
+  .reveal-delay-4 {
+    transition-delay: 0.48s;
+  }
+
+  .reveal-delay-5 {
+    transition-delay: 0.6s;
+  }
+
   @keyframes hero-fade {
     from {
       opacity: 0;
@@ -135,6 +148,24 @@
 
   .animate-hero-image {
     animation: hero-image 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .animate-hero-fade,
+    .animate-hero-fade-delay,
+    .animate-hero-fade-delay-2,
+    .animate-hero-image {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   #site-header.header-scrolled {

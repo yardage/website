@@ -6,7 +6,7 @@ import Hero from '../components/Hero.astro';
 import Pillars from '../components/Pillars.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import ProductGallery from '../components/ProductGallery.astro';
-import { withBase } from '../lib/paths';
+import SectionPhoto from '../components/SectionPhoto.astro';
 import { localePath } from '../lib/i18n';
 
 const locale = 'fr' as const;
@@ -20,70 +20,50 @@ const locale = 'fr' as const;
 >
   <Header locale={locale} />
   <main>
-    <Hero locale={locale} />
+    <Hero locale={locale} image="/images/bg-aerial.jpg" />
     <Pillars locale={locale} />
 
-    <section class="section-photo border-b border-mist" id="produit">
-      <img
-        src={withBase('/images/carnets-irl.jpg')}
-        alt=""
-        class="section-photo-img !opacity-30"
-        width="823"
-        height="795"
-        loading="lazy"
-      />
-      <div class="section-photo-veil"></div>
-      <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        <div class="reveal max-w-2xl">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">Le produit</p>
-          <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">Du dessin du parcours au carnet imprimé.</h2>
-          <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
-            Couverture personnalisée, cartographie précise, format pensé pour le parcours. Nous
-            préparons un <span class="text-ink">exemplaire numérique</span> pour les clubs qui
-            étudient un projet.
-          </p>
-        </div>
-
-        <ProductGallery locale={locale} />
+    <SectionPhoto
+      id="produit"
+      image="/images/carnets-irl_2.jpg"
+      imgClass="!opacity-30"
+      contentClass="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28"
+    >
+      <div class="reveal max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">Le produit</p>
+        <h2 class="mt-3 font-display text-4xl text-ink md:text-5xl">Du dessin du parcours au carnet imprimé.</h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
+          Couverture personnalisée, cartographie précise, format pensé pour le parcours. Un carnet
+          conçu pour les golfs et les pros, à l’attention des directeurs, gérants et salariés
+          décisionnaires.
+        </p>
       </div>
-    </section>
+
+      <ProductGallery locale={locale} />
+    </SectionPhoto>
 
     <ProcessSteps teaser locale={locale} />
 
-    <section class="relative isolate overflow-hidden text-white">
-      <img
-        src={withBase('/images/bg-fairway.jpg')}
-        alt=""
-        class="absolute inset-0 -z-20 h-full w-full object-cover"
-        width="1280"
-        height="1920"
-        loading="lazy"
-      />
-      <div class="absolute inset-0 -z-10 bg-paper/80"></div>
-      <div class="reveal mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        <h2 class="max-w-xl font-display text-4xl md:text-5xl">
-          Un carnet digne de votre parcours.
-        </h2>
-        <p class="mt-4 max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
-          Demandez un devis. Si vous étudiez un projet, nous pouvons aussi préparer un exemplaire
-          numérique de votre parcours.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href={localePath(locale, 'contact', '?intent=devis')}
-            class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
-          >
-            Demander un devis
-          </a>
-          <a
-            href={localePath(locale, 'contact', '?intent=exemplaire#exemplaire')}
-            class="rounded-sm border border-white/35 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            Exemplaire numérique
-          </a>
-        </div>
+    <SectionPhoto
+      image="/images/bg-fairway1.jpg"
+      contentClass="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28"
+    >
+      <h2 class="reveal max-w-xl font-display text-4xl text-ink md:text-5xl">
+        Un carnet digne de votre parcours.
+      </h2>
+      <p class="reveal reveal-delay-1 mt-4 max-w-lg text-base leading-relaxed text-ink-soft md:text-lg">
+        Demandez un devis au nom de votre golf. Si vous êtes joueur, parlez-en au directeur ou au
+        gérant : c’est à eux d’effectuer la demande.
+      </p>
+      <div class="reveal reveal-delay-2 mt-8 flex flex-wrap gap-3">
+        <a
+          href={localePath(locale, 'contact', '?intent=devis')}
+          class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+        >
+          Demander un devis
+        </a>
       </div>
-    </section>
+    </SectionPhoto>
   </main>
   <Footer locale={locale} />
 </BaseLayout>

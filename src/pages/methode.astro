@@ -22,12 +22,12 @@ const locale = 'fr' as const;
       locale={locale}
       title="Méthode"
       subtitle="Quatre étapes pour transformer le terrain en carnet de référence — précis, lisible et à l’image de votre club."
-      image="/images/bg-fairway.jpg"
+      image="/images/bg_fairway.jpg"
       compact
     />
     <ProcessSteps locale={locale} />
 
-    <SectionPhoto image="/images/bg-trees.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">01 — Analyse</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Comprendre le parcours avant de le dessiner</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -47,7 +47,7 @@ const locale = 'fr' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-aerial.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">02 — Data</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Une base fiable, prête à évoluer</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -66,7 +66,7 @@ const locale = 'fr' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-green.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">03 — Production</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Dessiner pour lire en un coup d’œil</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -86,7 +86,7 @@ const locale = 'fr' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-fairway.jpg">
+    <SectionPhoto>
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-green-mid">04 — Impression</p>
         <h2 class="mt-3 font-display text-2xl text-ink md:text-3xl">Un objet digne de votre pro shop</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -104,17 +104,10 @@ const locale = 'fr' as const;
         </p>
       </SectionPhoto>
 
-    <section class="section-photo border-b border-mist">
-      <img
-        src={withBase('/images/bg-green.jpg')}
-        alt=""
-        class="section-photo-img"
-        width="1280"
-        height="1920"
-        loading="lazy"
-      />
-      <div class="section-photo-veil"></div>
-      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28">
+    <SectionPhoto
+      image="/images/carnets-irl.jpg"
+      contentClass="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center md:px-8 md:py-28"
+    >
         <div class="reveal">
           <h2 class="font-display text-3xl text-ink md:text-4xl">Ce que contient une page de carnet</h2>
           <p class="mt-4 text-base leading-relaxed text-ink-soft">
@@ -150,10 +143,9 @@ const locale = 'fr' as const;
             loading="lazy"
           />
         </div>
-      </div>
-    </section>
+    </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-trees.jpg">
+    <SectionPhoto>
         <h2 class="font-display text-2xl text-ink md:text-3xl">
           Un standard commun, une identité propre à chaque golf
         </h2>
@@ -172,7 +164,7 @@ const locale = 'fr' as const;
         </p>
       </SectionPhoto>
 
-    <SectionPhoto image="/images/bg-aerial.jpg">
+    <SectionPhoto>
         <h2 class="font-display text-2xl text-ink md:text-3xl">Prêt à équiper votre parcours ?</h2>
         <p class="mt-4 text-base leading-relaxed text-ink-soft">
           De l’analyse du terrain à la livraison des carnets, Yardage prend en charge l’ensemble du

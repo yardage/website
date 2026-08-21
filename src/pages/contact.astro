@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import ContactForm from '../components/ContactForm.astro';
-import { withBase } from '../lib/paths';
+import SectionPhoto from '../components/SectionPhoto.astro';
 
 const locale = 'fr' as const;
 ---
@@ -12,35 +12,21 @@ const locale = 'fr' as const;
 <BaseLayout
   locale={locale}
   title="Contact — Yardage"
-  description="Demandez un devis ou un exemplaire numérique. Yardage : contact@yardage.io — +33 5 37 07 97 18."
+  description="Demandez un devis pour votre golf. Yardage : contact@yardage.io — +33 5 37 07 97 18."
 >
   <Header locale={locale} />
   <main>
     <Hero
       locale={locale}
       title="Contact"
-      subtitle="Devis, exemplaire numérique ou question sur un parcours — écrivez-nous."
-      image="/images/bg-green.jpg"
+      subtitle={"Devis et exemplaire numérique sur demande — écrivez-nous.\nRéponse sous 48\u00a0h ouvrées."}
+      image="/images/bg-green1.jpg"
       compact
     />
 
-    <section class="section-photo border-b border-mist" id="exemplaire">
-      <img
-        src={withBase('/images/bg-aerial.jpg')}
-        alt=""
-        class="section-photo-img opacity-[0.18]"
-        width="1440"
-        height="1920"
-        loading="lazy"
-      />
-      <div class="section-photo-veil"></div>
-      <div class="mx-auto grid max-w-6xl gap-14 px-5 py-20 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:py-28">
+    <SectionPhoto contentClass="mx-auto grid max-w-6xl gap-14 px-5 py-20 md:grid-cols-[0.9fr_1.1fr] md:px-8 md:py-28">
         <div class="reveal">
           <h2 class="font-display text-3xl text-ink md:text-4xl">Coordonnées</h2>
-          <p class="mt-4 text-base leading-relaxed text-ink-soft">
-            Réponse sous 48&nbsp;h ouvrées. Un exemplaire numérique est préparé pour les clubs et
-            professionnels qui étudient un projet : précisez le nom du club et le nombre de trous.
-          </p>
           <ul class="mt-8 space-y-4 text-base">
             <li>
               <p class="text-xs font-semibold uppercase tracking-[0.16em] text-green-mid">Email</p>
@@ -133,8 +119,7 @@ const locale = 'fr' as const;
             <ContactForm locale={locale} />
           </div>
         </div>
-      </div>
-    </section>
+    </SectionPhoto>
   </main>
   <Footer locale={locale} />
 </BaseLayout>

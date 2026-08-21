@@ -1,6 +1,9 @@
 ---
 import { type Locale, t } from '../lib/i18n';
 import { withBase } from '../lib/paths';
+import { nextSectionBackground } from '../lib/sectionBackgrounds';
+
+const image = nextSectionBackground(Astro.locals);
 
 interface Props {
   locale?: Locale;
@@ -12,7 +15,7 @@ const pillars = copy.pillars;
 ---
 
 <section class="section-photo border-b border-mist">
-  <img src={withBase('/images/bg-trees.jpg')} alt="" class="section-photo-img" width="1080" height="1920" loading="lazy" />
+  <img src={withBase(image)} alt="" class="section-photo-img" width="1080" height="1920" loading="lazy" decoding="async" aria-hidden="true" />
   <div class="section-photo-veil"></div>
   <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
     <div class="reveal max-w-2xl">
@@ -23,10 +26,15 @@ const pillars = copy.pillars;
       </p>
     </div>
 
-    <ol class="reveal reveal-delay-1 mt-14 divide-y divide-mist border-y border-mist">
+    <ol class="mt-14 divide-y divide-mist border-y border-mist">
       {
         pillars.map((pillar, index) => (
-          <li class="grid gap-3 py-7 md:grid-cols-[8rem_1fr] md:gap-10 md:py-8">
+          <li
+            class:list={[
+              'grid gap-3 py-7 md:grid-cols-[8rem_1fr] md:gap-10 md:py-8 reveal',
+              index > 0 && `reveal-delay-${index}`,
+            ]}
+          >
             <div class="flex items-baseline gap-3">
               <span class="font-display text-2xl text-green-mid/40">{String(index + 1).padStart(2, '0')}</span>
               <h3 class="font-display text-2xl text-green-mid md:text-3xl">{pillar.name}</h3>
