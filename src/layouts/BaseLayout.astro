@@ -59,8 +59,9 @@ const ogLocaleAlternate = locale === 'en' ? 'fr_FR' : 'en_US';
         />
       ))
     }
-    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
-    <link rel="alternate icon" href={withBase('/favicon.png')} type="image/png" />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="32x32" />
+    <link rel="icon" href={withBase('/favicon.png')} type="image/png" sizes="48x48" />
+    <link rel="icon" href={withBase('/favicon.jpg')} type="image/jpeg" />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Yardage" />
