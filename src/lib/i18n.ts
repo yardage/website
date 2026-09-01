@@ -4,6 +4,7 @@ export type Locale = 'fr' | 'en';
 
 export type RouteKey =
   | 'home'
+  | 'faq'
   | 'method'
   | 'offer'
   | 'about'
@@ -16,6 +17,7 @@ export const locales: Locale[] = ['fr', 'en'];
 /** Canonical path per locale (no trailing slash except home). */
 export const routes: Record<RouteKey, Record<Locale, string>> = {
   home: { fr: '/', en: '/en' },
+  faq: { fr: '/faq', en: '/en/faq' },
   method: { fr: '/methode', en: '/en/method' },
   offer: { fr: '/offre', en: '/en/offer' },
   about: { fr: '/a-propos', en: '/en/about' },
@@ -83,6 +85,7 @@ export function hreflangLinks(pathname: string): { hreflang: string; href: strin
 const ui = {
   fr: {
     nav: {
+      faq: 'FAQ',
       method: 'Méthode',
       offer: 'Offre',
       about: 'À propos',
@@ -105,6 +108,7 @@ const ui = {
     footerRights: 'Tous droits réservés.',
     footerLegal: 'Mentions légales',
     footerPrivacy: 'Confidentialité',
+    heroHeadline: 'Carnets de parcours de golf',
     heroSubtitle: 'La tradition golfique rencontre la précision cartographique.',
     pillarsEyebrow: 'Ce qui nous guide',
     pillarsTitle: 'Cinq piliers, une exigence.',
@@ -197,8 +201,12 @@ const ui = {
         'Envoi impossible pour le moment. Contactez-nous à contact@yardage.io ou au +33 5 37 07 97 18.',
     },
     gallery: [
-      { alt: 'Exemple — page 1, vue d’ensemble du parcours' },
-      { alt: 'Exemple — page 2, détail du green et du fairway' },
+      {
+        alt: 'Page de trou d’un carnet de parcours Yardage : distances, obstacles et lignes de jeu',
+      },
+      {
+        alt: 'Détail green et fairway d’un carnet de parcours golf Yardage, avec distances utiles',
+      },
     ],
     lightboxLabel: 'Visionneuse d’image',
     lightboxClose: 'Fermer',
@@ -208,6 +216,7 @@ const ui = {
   },
   en: {
     nav: {
+      faq: 'FAQ',
       method: 'Method',
       offer: 'Offer',
       about: 'About',
@@ -230,6 +239,7 @@ const ui = {
     footerRights: 'All rights reserved.',
     footerLegal: 'Legal notice',
     footerPrivacy: 'Privacy',
+    heroHeadline: 'Golf yardage books',
     heroSubtitle: 'Golf tradition meets cartographic precision.',
     pillarsEyebrow: 'What guides us',
     pillarsTitle: 'Five pillars, one standard.',
@@ -322,8 +332,12 @@ const ui = {
         'Unable to send right now. Contact us at contact@yardage.io or +33 5 37 07 97 18.',
     },
     gallery: [
-      { alt: 'Example — overview, hole 7' },
-      { alt: 'Example — green and fairway detail, hole 7' },
+      {
+        alt: 'Hole page from a Yardage golf yardage book: distances, hazards and lines of play',
+      },
+      {
+        alt: 'Green and fairway detail from a Yardage yardage book, with useful distances',
+      },
     ],
     lightboxLabel: 'Image viewer',
     lightboxClose: 'Close',

@@ -8,12 +8,14 @@ import {
   ogLocale,
   normalizePathname,
 } from '../lib/i18n';
+import { jsonLdGraph, organizationJsonLd, type JsonLd } from '../lib/schema';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
   locale?: Locale;
+  jsonLd?: JsonLd | JsonLd[];
 }
 
 const { title, ogImage = '/images/carnets-irl.jpg', locale = 'fr' } = Astro.props;
@@ -25,10 +27,18 @@ const defaultDescription =
 
 const metaDescription = Astro.props.description ?? defaultDescription;
 
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonical = new URL(pathname, Astro.site);
 const ogImageUrl = new URL(withBase(ogImage), Astro.site);
 const alternates = hreflangLinks(normalizePathname(Astro.url.pathname));
 const sectionBgPool = sectionBackgrounds().map((src) => withBase(src));
+const extraJsonLd = Astro.props.jsonLd
+  ? Array.isArray(Astro.props.jsonLd)
+    ? Astro.props.jsonLd
+    : [Astro.props.jsonLd]
+  : [];
+const structuredData = jsonLdGraph([organizationJsonLd(), ...extraJsonLd]);
+const ogLocaleAlternate = locale === 'en' ? 'fr_FR' : 'en_US';
 ---
 
 <!doctype html>
@@ -53,12 +63,18 @@ const sectionBgPool = sectionBackgrounds().map((src) => withBase(src));
     <link rel="alternate icon" href={withBase('/favicon.png')} type="image/png" />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yardage" />
     <meta property="og:locale" content={ogLocale(locale)} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <script type="application/ld+json" set:html={structuredData} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

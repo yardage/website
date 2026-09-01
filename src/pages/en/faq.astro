@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import SectionPhoto from '../../components/SectionPhoto.astro';
+import { localePath, routes } from '../../lib/i18n';
+import { SITE_URL, breadcrumbJsonLd, faqPageJsonLd } from '../../lib/schema';
+
+const locale = 'en' as const;
+const pageUrl = `${SITE_URL}${routes.faq.en}`;
+
+const faqs = [
+  {
+    question: 'What is the difference between a yardage book and a scorecard?',
+    answer:
+      'A yardage book maps each hole: distances, hazards, lines of play and the green. A scorecard is for recording strokes. Yardage designs the former, for clubs.',
+  },
+  {
+    question: 'Does a yardage book replace a rangefinder?',
+    answer:
+      'No. A rangefinder gives a one-off distance. The book gives an overview of the hole so you can anticipate the next shots and build a strategy. The two complement each other.',
+  },
+  {
+    question: 'What does a Yardage hole page contain?',
+    answer:
+      'Useful distances, hazards, lines of play and a green diagram. The page is designed to be read quickly on the tee and in the fairway.',
+  },
+  {
+    question: 'Can the book be customised with the club logo and sponsors?',
+    answer:
+      'Yes. Cover, logo, sponsor page and partner mentions are part of the order. The book remains recognisable as the club’s official yardage book.',
+  },
+  {
+    question: 'What paper are the books printed on?',
+    answer:
+      'Eco-friendly paper, with finishes suited to course use and to presentation in the pro shop.',
+  },
+  {
+    question: 'What is the delivery time?',
+    answer:
+      'Books are delivered within one month after quote approval, to the club or the pro shop.',
+  },
+  {
+    question: 'What is the minimum order?',
+    answer:
+      '150 copies per order. Volume discounts at 500 and 1,000 copies. A digital sample can be prepared on request.',
+  },
+  {
+    question: 'Can the book be updated if the course changes?',
+    answer:
+      'Yes. Distances and landmarks live in an updatable base — a new bunker, a rebuilt green, a reshaped fairway — without starting over.',
+  },
+  {
+    question: 'I am a player: can I order a book for my club?',
+    answer:
+      'Orders are placed on behalf of the club. Speak to the director, manager or pro shop: they are the ones who request a quote.',
+  },
+  {
+    question: 'How do I get a quote?',
+    answer:
+      'Write via the contact form, to contact@yardage.io or +33 5 37 07 97 18. Reply within 48 business hours. Include the club name, number of holes and, if possible, an estimated volume.',
+  },
+];
+---
+
+<BaseLayout
+  locale={locale}
+  title="FAQ — Yardage"
+  description="Answers about Yardage golf yardage books: hole-page content, pricing, lead time, customisation, rangefinders and club orders."
+  jsonLd={[
+    faqPageJsonLd(faqs),
+    breadcrumbJsonLd([
+      { name: 'Home', url: `${SITE_URL}/en` },
+      { name: 'FAQ', url: pageUrl },
+    ]),
+  ]}
+>
+  <Header locale={locale} />
+  <main>
+    <Hero
+      locale={locale}
+      title="FAQ"
+      subtitle="Common questions about Yardage golf yardage books — for clubs and players."
+      image="/images/bg-green1.jpg"
+      compact
+    />
+
+    <SectionPhoto contentClass="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+      <div class="space-y-12">
+        {
+          faqs.map((item) => (
+            <div class="reveal">
+              <h2 class="font-display text-2xl text-ink md:text-3xl">{item.question}</h2>
+              <p class="mt-4 text-base leading-relaxed text-ink-soft">{item.answer}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="reveal mt-14 flex flex-wrap gap-3">
+        <a
+          href={localePath(locale, 'contact', '?intent=devis')}
+          class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+        >
+          Request a quote
+        </a>
+        <a
+          href={localePath(locale, 'method')}
+          class="inline-flex rounded-sm border border-mist px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+        >
+          See the method
+        </a>
+      </div>
+    </SectionPhoto>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

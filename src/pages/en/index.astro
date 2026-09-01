@@ -7,20 +7,21 @@ import Pillars from '../../components/Pillars.astro';
 import ProcessSteps from '../../components/ProcessSteps.astro';
 import ProductGallery from '../../components/ProductGallery.astro';
 import SectionPhoto from '../../components/SectionPhoto.astro';
-import { localePath } from '../../lib/i18n';
+import { localePath, t } from '../../lib/i18n';
 
 const locale = 'en' as const;
+const copy = t(locale);
 ---
 
 <BaseLayout
   locale={locale}
-  title="Yardage — Yardage books for golf clubs and pros"
+  title="Home — Yardage"
   description="Yardage designs and produces golf yardage books for clubs and professionals. Cartographic precision, premium print, tailored quotes."
   ogImage="/images/bg-aerial.jpg"
 >
   <Header locale={locale} />
   <main>
-    <Hero locale={locale} image="/images/bg-aerial.jpg" />
+    <Hero locale={locale} image="/images/bg-aerial.jpg" headline={copy.heroHeadline} />
     <Pillars locale={locale} />
 
     <SectionPhoto

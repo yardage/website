@@ -1,7 +1,7 @@
 import { readdirSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 
-const IMAGES_DIR = fileURLToPath(new URL('../../public/images', import.meta.url));
+const IMAGES_DIR = join(process.cwd(), 'public', 'images');
 const INCLUDE = /^(bg[-_]|carnets-irl|3d-vizualizer)/i;
 const EXT = /\.(jpe?g|png|webp)$/i;
 const SHUFFLE_SEED = 0x59444e;

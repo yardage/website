@@ -4,9 +4,11 @@ import { type Locale, localePath, t } from '../lib/i18n';
 
 interface Props {
   title?: string;
+  headline?: string;
   subtitle?: string;
   image?: string;
   compact?: boolean;
+  heading?: 'display' | 'title';
   locale?: Locale;
 }
 
@@ -14,11 +16,13 @@ const {
   title = 'Yardage',
   image = '/images/bg-aerial.jpg',
   compact = false,
+  heading = 'display',
   locale = 'fr',
 } = Astro.props;
 
 const copy = t(locale);
 const subtitle = Astro.props.subtitle ?? copy.heroSubtitle;
+const headline = Astro.props.headline;
 const isBrand = title === 'Yardage';
 ---
 
@@ -46,25 +50,25 @@ const isBrand = title === 'Yardage';
   >
     {
       isBrand ? (
-        <img
-          src={withBase('/images/logo-collection.png')}
-          alt="Yardage Collection"
-          class="animate-hero-fade w-[min(100%,13rem)] max-w-full object-contain object-left md:w-[17rem] lg:w-[19.5rem]"
-          width="835"
-          height="310"
-        />
+        headline && (
+          <h1 class="animate-hero-fade max-w-3xl font-display text-3xl tracking-tight text-white md:text-5xl lg:text-6xl">
+            {headline}
+          </h1>
+        )
       ) : (
-        <p class="animate-hero-fade font-display text-5xl tracking-tight text-white md:text-7xl lg:text-8xl">
+        <h1
+          class:list={[
+            'animate-hero-fade font-display tracking-tight text-white',
+            heading === 'title'
+              ? 'max-w-4xl text-3xl md:text-5xl lg:text-6xl'
+              : 'text-5xl md:text-7xl lg:text-8xl',
+          ]}
+        >
           {title}
-        </p>
+        </h1>
       )
     }
-    <p
-      class:list={[
-        'animate-hero-fade-delay max-w-xl text-lg leading-relaxed text-white/85 md:text-xl whitespace-pre-line',
-        isBrand ? 'mt-10' : 'mt-4 md:mt-5',
-      ]}
-    >
+    <p class="animate-hero-fade-delay mt-4 max-w-xl text-lg leading-relaxed text-white/85 md:mt-5 md:text-xl whitespace-pre-line">
       {subtitle}
     </p>
     {

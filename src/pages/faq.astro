@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import SectionPhoto from '../components/SectionPhoto.astro';
+import { localePath, routes } from '../lib/i18n';
+import { SITE_URL, breadcrumbJsonLd, faqPageJsonLd } from '../lib/schema';
+
+const locale = 'fr' as const;
+const pageUrl = `${SITE_URL}${routes.faq.fr}`;
+
+const faqs = [
+  {
+    question: 'Quelle est la différence entre un carnet de parcours et une carte de score ?',
+    answer:
+      'Un carnet de parcours (yardage book) cartographie chaque trou : distances, obstacles, lignes de jeu et green. Une carte de score sert à noter les coups. Yardage conçoit le premier, pour les clubs.',
+  },
+  {
+    question: 'Un carnet de parcours remplace-t-il le télémètre ?',
+    answer:
+      'Non. Le télémètre donne une distance ponctuelle. Le carnet offre une vue d’ensemble du trou pour anticiper les coups suivants et construire une stratégie. Les deux se complètent.',
+  },
+  {
+    question: 'Que contient une page de trou Yardage ?',
+    answer:
+      'Les distances utiles, les obstacles, les lignes de jeu et une représentation du green. La page est conçue pour être lue rapidement sur le tee comme au milieu du fairway.',
+  },
+  {
+    question: 'Peut-on personnaliser le carnet avec le logo du club et des sponsors ?',
+    answer:
+      'Oui. Couverture, logo, page sponsors et mentions partenaires font partie de la commande. Le carnet reste identifiable comme le carnet officiel du club.',
+  },
+  {
+    question: 'Sur quel papier les carnets sont-ils imprimés ?',
+    answer:
+      'Sur papier écologique, avec des finitions pensées pour l’usage sur le parcours et la présentation en pro shop.',
+  },
+  {
+    question: 'Quel est le délai de livraison ?',
+    answer:
+      'Les carnets sont livrés sous un mois après validation du devis, jusqu’au club ou au pro shop.',
+  },
+  {
+    question: 'Quel est le minimum de commande ?',
+    answer:
+      '150 exemplaires par commande. Remises volume à 500 et 1 000 exemplaires. Un exemplaire numérique peut être préparé sur demande.',
+  },
+  {
+    question: 'Le carnet peut-il être mis à jour si le parcours évolue ?',
+    answer:
+      'Oui. Les distances et repères sont organisés dans une base actualisable — nouveau bunker, green rénové, fairway redessiné — sans tout recommencer.',
+  },
+  {
+    question: 'Je suis joueur : puis-je commander un carnet pour mon golf ?',
+    answer:
+      'La commande se fait au nom du club. Parlez-en au directeur, au gérant ou au pro shop : ce sont eux qui effectuent la demande de devis.',
+  },
+  {
+    question: 'Comment obtenir un devis ?',
+    answer:
+      'Écrivez-nous via le formulaire de contact, à contact@yardage.io ou au +33 5 37 07 97 18. Réponse sous 48 h ouvrées. Indiquez le nom du golf, le nombre de trous et, si possible, un volume estimé.',
+  },
+];
+---
+
+<BaseLayout
+  locale={locale}
+  title="FAQ — Yardage"
+  description="Réponses sur les carnets de parcours golf Yardage : contenu d’une page, tarifs, délais, personnalisation, télémètre et commande club."
+  jsonLd={[
+    faqPageJsonLd(faqs),
+    breadcrumbJsonLd([
+      { name: 'Accueil', url: SITE_URL },
+      { name: 'FAQ', url: pageUrl },
+    ]),
+  ]}
+>
+  <Header locale={locale} />
+  <main>
+    <Hero
+      locale={locale}
+      title="FAQ"
+      subtitle="Questions fréquentes sur les carnets de parcours golf Yardage — pour les clubs et les joueurs."
+      image="/images/bg-green1.jpg"
+      compact
+    />
+
+    <SectionPhoto contentClass="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
+      <div class="space-y-12">
+        {
+          faqs.map((item) => (
+            <div class="reveal">
+              <h2 class="font-display text-2xl text-ink md:text-3xl">{item.question}</h2>
+              <p class="mt-4 text-base leading-relaxed text-ink-soft">{item.answer}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="reveal mt-14 flex flex-wrap gap-3">
+        <a
+          href={localePath(locale, 'contact', '?intent=devis')}
+          class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+        >
+          Demander un devis
+        </a>
+        <a
+          href={localePath(locale, 'method')}
+          class="inline-flex rounded-sm border border-mist px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+        >
+          Voir la méthode
+        </a>
+      </div>
+    </SectionPhoto>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

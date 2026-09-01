@@ -54,6 +54,11 @@ const enHref = locale === 'en' ? withBase(pathname) : alternatePath(Astro.url.pa
           >
         </li>
         <li>
+          <a href={localePath(locale, 'faq')} class="text-ink-soft transition hover:text-ink"
+            >{copy.nav.faq}</a
+          >
+        </li>
+        <li>
           <a href={localePath(locale, 'contact')} class="text-ink-soft transition hover:text-ink"
             >{copy.nav.contact}</a
           >
