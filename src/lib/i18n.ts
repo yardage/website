@@ -163,9 +163,9 @@ const ui = {
     pricingTitle: 'Une grille claire pour les golfs et les pros.',
     pricingIntroBefore: 'Prix public conseillé\u00a0:',
     pricingIntroPrice: '16–19 € TTC',
-    pricingIntroAfter: '. Tarifs club ci-dessous, hors taxes.',
+    pricingIntroAfter: '. Tarif club sur devis. Remises volume ci-dessous.',
     pricingVolumes: [
-      { qty: 'À l’unité', price: '11,90 €', note: 'HT / exemplaire' },
+      { qty: 'À l’unité', price: 'Sur devis', note: 'Tarif club HT' },
       { qty: '500 ex.', price: '−10 %', note: 'Remise volume' },
       { qty: '1 000 ex.', price: '−20 %', note: 'Remise volume' },
     ],
@@ -294,9 +294,9 @@ const ui = {
     pricingTitle: 'A clear price grid for clubs and pros.',
     pricingIntroBefore: 'Suggested retail price\u00a0:',
     pricingIntroPrice: '€16–19 incl. tax',
-    pricingIntroAfter: '. Club rates below, excluding tax.',
+    pricingIntroAfter: '. Club rate on request. Volume discounts below.',
     pricingVolumes: [
-      { qty: 'Per copy', price: '€11.90', note: 'excl. tax / copy' },
+      { qty: 'Per copy', price: 'On request', note: 'Club rate excl. tax' },
       { qty: '500 copies', price: '−10%', note: 'Volume discount' },
       { qty: '1,000 copies', price: '−20%', note: 'Volume discount' },
     ],
