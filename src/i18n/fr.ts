@@ -113,10 +113,6 @@ export const fr = {
         'Papier écologique, finitions premium',
         'Livré sous 1 mois après validation du devis',
       ],
-      spreadAlt: [
-        'Page de trou d’un carnet Yardage : distances, obstacles et lignes de jeu du tee au green',
-        'Page de green d’un carnet Yardage : relief du green et distances d’approche',
-      ],
     },
     problem: {
       eyebrow: 'Le constat',
@@ -496,6 +492,10 @@ export const fr = {
       'Page de trou d’un carnet Yardage, édition {edition}, trou {hole} : distances, obstacles et lignes de jeu',
       'Page de green d’un carnet Yardage, édition {edition}, trou {hole} : green et distances d’approche',
     ],
+    slope: {
+      caption: 'relief du green en couleurs',
+      alt: 'Page de green d’un carnet Yardage : relief du green représenté en couleurs',
+    },
     gallery: {
       eyebrow: 'Exemples de carnets',
       title: 'À quoi ressemble une page Yardage.',

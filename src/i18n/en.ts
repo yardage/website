@@ -115,10 +115,6 @@ export const en: Messages = {
         'Eco-friendly paper, premium finishes',
         'Delivered within 1 month after quote approval',
       ],
-      spreadAlt: [
-        'Hole page from a Yardage book: distances, hazards and lines of play from tee to green',
-        'Green page from a Yardage book: green contours and approach distances',
-      ],
     },
     problem: {
       eyebrow: 'The problem',
@@ -496,6 +492,10 @@ export const en: Messages = {
       'Hole page from a Yardage book, {edition} edition, hole {hole}: distances, hazards and lines of play',
       'Green page from a Yardage book, {edition} edition, hole {hole}: green and approach distances',
     ],
+    slope: {
+      caption: 'green relief in colour',
+      alt: 'Green page from a Yardage book: green relief shown in colour',
+    },
     gallery: {
       eyebrow: 'Sample books',
       title: 'What a Yardage page looks like.',

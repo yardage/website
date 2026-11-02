@@ -2,12 +2,13 @@
 import { ArrowRight } from '@lucide/astro';
 import { Image } from 'astro:assets';
 import { getLocale, localePath, t } from '../../i18n';
-import { editionSamples, sampleAlt, sampleCaption } from '../../lib/bookSamples';
+import { editionVisuals } from '../../lib/bookSamples';
 import SectionHeading from '../SectionHeading.astro';
 
 const locale = getLocale(Astro.currentLocale);
 const copy = t(locale);
 const editions = copy.home.editions;
+const visuals = editionVisuals(locale);
 ---
 
 <section id={editions.id} class="section-alt scroll-mt-20 border-y border-border" aria-labelledby="editions-title">
@@ -17,15 +18,14 @@ const editions = copy.home.editions;
     <div class="mt-10 grid gap-4 md:grid-cols-3">
       {
         editions.items.map((item, index) => {
-          const { sample, page } = editionSamples[index]!;
-          const src = sample.pages[page];
+          const visual = visuals[index]!;
           return (
             <article class="flex flex-col overflow-hidden rounded-xl border border-border bg-card">
               <figure class="m-0">
                 <div class="aspect-[5/4] overflow-hidden border-b border-border bg-white">
                   <Image
-                    src={src}
-                    alt={sampleAlt(locale, sample, page)}
+                    src={visual.src}
+                    alt={visual.alt}
                     width={682}
                     widths={[360, 682]}
                     sizes="(min-width: 768px) 360px, 90vw"
@@ -34,7 +34,7 @@ const editions = copy.home.editions;
                     class="block h-full w-full object-cover object-top"
                   />
                 </div>
-                <figcaption class="px-6 pt-3 text-xs text-muted-foreground">{sampleCaption(locale, sample)}</figcaption>
+                <figcaption class="px-6 pt-3 text-xs text-muted-foreground">{visual.caption}</figcaption>
               </figure>
               <div class="flex flex-1 flex-col p-6 pt-4">
                 <h3 class="text-sm font-semibold tracking-[0.18em]">{item.name}</h3>
