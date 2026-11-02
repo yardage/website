@@ -1,0 +1,31 @@
+---
+import { getLocale, routeKeyFromPathname, routes, t } from '../i18n';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
+const key = routeKeyFromPathname(Astro.url.pathname) ?? 'home';
+const options = [
+  { code: 'fr', label: 'FR', name: 'Français', href: routes[key].fr },
+  { code: 'en', label: 'EN', name: 'English', href: routes[key].en },
+] as const;
+---
+
+<nav class="flex items-center rounded-lg border border-border p-0.5 text-xs font-medium" aria-label={copy.langSwitchAria}>
+  {
+    options.map((option) => (
+      <a
+        href={option.href}
+        class:list={[
+          'rounded-md px-2 py-1.5',
+          locale === option.code ? 'bg-muted text-foreground' : 'text-muted-foreground hover:text-foreground',
+        ]}
+        aria-current={locale === option.code ? 'true' : undefined}
+        hreflang={option.code}
+        lang={option.code}
+        title={option.name}
+      >
+        {option.label}
+      </a>
+    ))
+  }
+</nav>

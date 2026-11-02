@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
@@ -7,20 +7,19 @@ import Pillars from '../components/Pillars.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import ProductGallery from '../components/ProductGallery.astro';
 import SectionPhoto from '../components/SectionPhoto.astro';
-import { localePath, t } from '../lib/i18n';
+import { localePath, t } from '../i18n';
 
 const locale = 'fr' as const;
 const copy = t(locale);
 ---
 
-<BaseLayout
-  locale={locale}
+<Base
   title="Accueil — Yardage"
   description="Yardage conçoit et produit des carnets de parcours golf pour clubs et professionnels. Précision cartographique, impression premium, devis sur mesure."
   ogImage="/images/bg-aerial.jpg"
 >
-  <Header locale={locale} />
-  <main>
+  <Header />
+  <main id="main">
     <Hero locale={locale} image="/images/bg-aerial.jpg" headline={copy.heroHeadline} />
     <Pillars locale={locale} />
 
@@ -59,12 +58,12 @@ const copy = t(locale);
       <div class="reveal reveal-delay-2 mt-8 flex flex-wrap gap-3">
         <a
           href={localePath(locale, 'contact', '?intent=devis')}
-          class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+          class="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
         >
           Demander un devis
         </a>
       </div>
     </SectionPhoto>
   </main>
-  <Footer locale={locale} />
-</BaseLayout>
+  <Footer />
+</Base>

@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
@@ -8,13 +8,12 @@ import SectionPhoto from '../components/SectionPhoto.astro';
 const locale = 'fr' as const;
 ---
 
-<BaseLayout
-  locale={locale}
+<Base
   title="Confidentialité — Yardage"
   description="Politique de confidentialité du site Yardage."
 >
-  <Header locale={locale} />
-  <main>
+  <Header />
+  <main id="main">
     <Hero
       locale={locale}
       title="Confidentialité"
@@ -58,5 +57,5 @@ const locale = 'fr' as const;
         </p>
     </SectionPhoto>
   </main>
-  <Footer locale={locale} />
-</BaseLayout>
+  <Footer />
+</Base>

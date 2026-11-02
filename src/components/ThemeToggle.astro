@@ -1,0 +1,76 @@
+---
+import { Moon, Sun } from '@lucide/astro';
+
+interface Props {
+  toDark: string;
+  toLight: string;
+}
+
+const { toDark, toLight } = Astro.props;
+---
+
+<button
+  type="button"
+  class="theme-toggle inline-flex size-10 items-center justify-center rounded-lg border border-border text-foreground transition hover:bg-muted"
+  aria-label={toDark}
+  data-label-dark={toDark}
+  data-label-light={toLight}
+>
+  <Sun class="theme-icon-sun hidden size-4" aria-hidden="true" />
+  <Moon class="theme-icon-moon size-4" aria-hidden="true" />
+</button>
+
+<script>
+  const storageKey = 'theme';
+  const colors = { light: '#f8f5ee', dark: '#0a100e' } as const;
+  type Theme = keyof typeof colors;
+
+  const resolvedTheme = (): Theme =>
+    document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+
+  function render(theme: Theme) {
+    const dark = theme === 'dark';
+    document.querySelectorAll<HTMLButtonElement>('.theme-toggle').forEach((button) => {
+      button.querySelector('.theme-icon-sun')?.classList.toggle('hidden', !dark);
+      button.querySelector('.theme-icon-moon')?.classList.toggle('hidden', dark);
+      const label = dark ? button.dataset.labelLight : button.dataset.labelDark;
+      if (label) button.setAttribute('aria-label', label);
+    });
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', colors[theme]);
+  }
+
+  function apply(theme: Theme) {
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    root.style.colorScheme = theme;
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {
+      // Storage unavailable (private mode): the choice lasts for this page only.
+    }
+    render(theme);
+  }
+
+  render(resolvedTheme());
+
+  document.querySelectorAll<HTMLButtonElement>('.theme-toggle').forEach((button) => {
+    button.addEventListener('click', () => apply(resolvedTheme() === 'dark' ? 'light' : 'dark'));
+  });
+
+  // Follow the device setting live, as long as the visitor has not chosen a theme.
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem(storageKey);
+    } catch {
+      stored = null;
+    }
+    if (stored) return;
+    const theme: Theme = event.matches ? 'dark' : 'light';
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(theme);
+    document.documentElement.style.colorScheme = theme;
+    render(theme);
+  });
+</script>

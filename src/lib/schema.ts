@@ -1,4 +1,6 @@
-export const SITE_URL = 'https://yardage.io';
+import { SITE_URL } from '../i18n';
+
+export { SITE_URL };
 
 export type JsonLd = Record<string, unknown>;
 
@@ -8,7 +10,7 @@ export function organizationJsonLd(): JsonLd {
     '@id': `${SITE_URL}/#organization`,
     name: 'Yardage',
     legalName: 'PLATEFORME IO',
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     logo: `${SITE_URL}/images/logo.png`,
     email: 'contact@yardage.io',
     telephone: '+33 5 37 07 97 18',
