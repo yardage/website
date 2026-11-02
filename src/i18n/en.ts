@@ -48,7 +48,6 @@ export const en: Messages = {
   processTitle: 'From the course to the book, in four steps.',
   processIntro:
     'A controlled process to deliver precise books, consistent from hole to hole, and tailored to your club’s identity — without technical burden on your side.',
-  processSeeMore: 'See the method →',
   processSteps: [
     {
       title: 'Analysis',
@@ -68,15 +67,10 @@ export const en: Messages = {
     },
   ],
   pricingEyebrow: 'Offer',
-  pricingTitle: 'A clear price grid for clubs and pros.',
-  pricingIntroBefore: 'Suggested retail price\u00a0:',
-  pricingIntroPrice: '€16–19 incl. tax',
-  pricingIntroAfter: '. Club rate on request. Volume discounts below.',
-  pricingVolumes: [
-    { qty: 'Per copy', price: 'On request', note: 'Club rate excl. tax' },
-    { qty: '500 copies', price: '−10%', note: 'Volume discount' },
-    { qty: '1,000 copies', price: '−20%', note: 'Volume discount' },
-  ],
+  pricingTitle: 'A tailored quote for your course.',
+  pricingRate: 'Price on request',
+  pricingIntro:
+    'Every book is produced for one specific course, so pricing is set by quote, based on your course and your order.',
   pricingExtras: [
     'Logo and sponsor customisation',
     'Premium print on eco-friendly paper',
@@ -108,19 +102,6 @@ export const en: Messages = {
     error:
       'Unable to send right now. Contact us at contact@yardage.io or +33 5 37 07 97 18.',
   },
-  gallery: [
-    {
-      alt: 'Hole page from a Yardage golf yardage book: distances, hazards and lines of play',
-    },
-    {
-      alt: 'Green and fairway detail from a Yardage yardage book, with useful distances',
-    },
-  ],
-  lightboxLabel: 'Image viewer',
-  lightboxClose: 'Close',
-  lightboxPrev: 'Previous image',
-  lightboxNext: 'Next image',
-  lightboxEnlarge: 'Enlarge',
   home: {
     title: 'Yardage — Golf yardage books for clubs and pros',
     description:
@@ -315,7 +296,7 @@ export const en: Messages = {
       },
       {
         q: 'What is the minimum order?',
-        a: '150 copies per order. Volume discounts at 500 and 1,000 copies. A digital sample can be prepared on request.',
+        a: '150 copies per order. A digital sample can be prepared on request.',
       },
       {
         q: 'Can the book be updated if the course changes?',
@@ -330,5 +311,139 @@ export const en: Messages = {
         a: 'Write via the contact form, to contact@yardage.io or +33 5 37 07 97 18. Reply within 48 business hours. Include the club name, number of holes and, if possible, an estimated volume.',
       },
     ],
+  },
+  breadcrumbHome: 'Home',
+  coverPdf: 'See a sample cover (PDF, 1 page)',
+  offer: {
+    title: 'Offer — Yardage',
+    description:
+      'Yardage offer: price on request, customised in your club’s colours, minimum 150 copies, delivery within 1 month after quote approval.',
+    eyebrow: 'Offer',
+    text: 'Customisation, eco-friendly paper, delivery within 1 month after quote approval — from 150 copies.',
+    includedTitle: 'What is included',
+    includedText:
+      'The club rate covers the full journey, from design to delivery. You do not need to assemble vendors: Yardage handles the product end to end.',
+    included: [
+      'Course analysis, data base and layout of every hole',
+      'Customisation: club logo, sponsor page, partner mentions',
+      'Premium print on eco-friendly paper',
+      'Delivery to your club or pro shop, within 1 month after quote approval',
+      'Minimum 150 copies per order',
+      'Digital sample on request',
+    ],
+    custom: {
+      eyebrow: 'Customisation',
+      title: 'Your club’s official yardage book.',
+      paragraphs: [
+        'Club logo, sponsor page, partner mentions — the book carries your organisation’s identity while remaining a playing tool.',
+        'We adapt the cover and brand elements to your guidelines without compromising the readability of hole pages. The result should be immediately recognisable as your club’s official yardage book.',
+      ],
+      coverAlt: 'Sample cover of a Yardage book: Ableiges, Le Vexin, 2022 edition',
+    },
+    process: {
+      eyebrow: 'How it works',
+      title: 'A simple path, from request to delivery.',
+      text: 'You keep control of approval; we handle production.',
+      steps: [
+        {
+          title: 'Contact',
+          text: 'The club writes to us with the club name, number of holes and, if possible, an estimated volume — from 150 copies.',
+        },
+        {
+          title: 'Quote',
+          text: 'We review your course and send a clear proposal: pricing, customisation options and delivery terms.',
+        },
+        {
+          title: 'Approval',
+          text: 'Once the quote is approved, production starts. You validate identity elements (logo, sponsors) so the book matches your image.',
+        },
+        {
+          title: 'Delivery',
+          text: 'Books are delivered within 1 month after quote approval — ready for the pro shop, members and competitions.',
+        },
+      ],
+    },
+    faqItems: [6, 5, 3, 4, 9],
+    cta: {
+      eyebrow: 'Quote',
+      title: 'Let’s talk about your course.',
+      text: 'Tell us the club name, the number of holes and, if possible, an estimated volume. Reply within 48 business hours.',
+    },
+  },
+  method: {
+    title: 'Method — Yardage',
+    description:
+      'Analysis, data, production and print: the Yardage method for precise, consistent yardage books that reflect your club.',
+    eyebrow: 'Method',
+    text: 'Four steps to turn the course into a reference book — precise, readable, and true to your club.',
+    leadAlt: 'Hole page from a Yardage book: distances, hazards and lines of play from tee to green',
+    steps: [
+      {
+        id: 'analyse',
+        title: 'Understand the course before drawing it',
+        paragraphs: [
+          'Every book starts with a careful reading of the land. We look at hole layouts, hazards, natural lines of play and the distances that actually matter to the player.',
+          'The goal is not to pile up measurements for their own sake, but to identify what helps build a strategy: where to play, where to avoid, where to aim. This step lays the foundation for a book that is useful on the course — not just aesthetic.',
+          'We also talk with the club. You know your course better than anyone — sensitive bunkers, risk areas, demanding greens. Your feedback sharpens our reading and ensures the book matches the reality of the land.',
+        ],
+        alt: 'Aerial view of a golf course',
+      },
+      {
+        id: 'data',
+        title: 'A reliable base, ready to evolve',
+        paragraphs: [
+          'Once the course is analysed, we structure the information into a clear, consistent base. Distances, playing elements, cartographic landmarks: everything is organised to support book production.',
+          'This organisation has a concrete benefit for the club. When the course evolves — a new bunker, a renovated green, a redrawn fairway — the base can be updated without starting over. The book remains a living tool, not a frozen document.',
+          'For the player, that means reliable, consistent information from hole to hole. The same logic, the same landmarks, the same standard of care across the entire course.',
+        ],
+        alt: 'Green page from a Yardage book, with its reference grid and approach distances',
+      },
+      {
+        id: 'production',
+        title: 'Drawn to be read at a glance',
+        paragraphs: [
+          'Production turns data into clear, hierarchical hole pages. Every element has its place: distances, hazards, lines of play, green. The player must be able to read the page quickly — on the tee or in the middle of the fairway.',
+          'We maintain strong consistency from hole to hole. A player discovering your course should find the same landmarks and the same logic of use across all eighteen holes. That is what makes a book a true standard — not a collection of isolated pages.',
+          'This shared structure still leaves room for the club’s identity. Cover, logo, partner mentions: the book remains yours, while being immediately recognisable as a Yardage book.',
+        ],
+        alt: 'Yardage book open on a green page, held up facing the green',
+      },
+      {
+        id: 'impression',
+        title: 'An object worthy of your pro shop',
+        paragraphs: [
+          'The book is printed on eco-friendly paper, with finishes designed for course use and for presentation in the shop. It should feel good in the hand, hold up in the bag, and match the image you want to convey.',
+          'We handle printing and delivery to your club or pro shop. You do not need to coordinate a printer, formats or timelines: production is part of the method.',
+          'Result: a premium product, ready to offer to your members, visitors and competitors — with no technical burden on your side.',
+        ],
+        alt: 'Yardage books displayed in a pro shop stand',
+      },
+    ],
+    page: {
+      title: 'What a hole page contains',
+      text: 'A Yardage page is built for decisions. It gathers the essential information without overwhelming the reader:',
+      points: [
+        'useful distances to shape the shot;',
+        'hazards and areas to anticipate;',
+        'lines of play and course landmarks;',
+        'green representation to prepare the approach and putting.',
+      ],
+      note: 'Each hole is produced from course data for immediate reading on the ground. And because the base can be updated, the book can evolve with your club.',
+    },
+    standard: {
+      title: 'A shared standard, an identity unique to each club',
+      paragraphs: [
+        'Our method aims for a simple balance: a shared professional structure, and respect for the singularity of each course.',
+        'A player moving from one Yardage club to another should find the same landmarks and the same reading logic. That familiarity speeds up uptake and builds confidence during the round.',
+        'At the same time, each club keeps its history, architecture and image. The book is recognisable as a Yardage product — and as the official book of your club.',
+      ],
+    },
+    faqItems: [2, 7, 0, 1],
+    cta: {
+      eyebrow: 'Ready to equip your course?',
+      title: 'From the course to the book, we handle it all.',
+      text: 'From course analysis to book delivery, Yardage handles the full process. You keep control of the club’s identity; we ensure precision, consistency and product quality.',
+      secondary: 'View the offer',
+    },
   },
 };

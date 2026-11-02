@@ -1,0 +1,154 @@
+---
+/** The method page, shared by `/methode/` and `/en/method/`. */
+import { Check } from '@lucide/astro';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import greenInHand from '../../assets/carnets/carnet-green-en-main.jpg';
+import holeGreen from '../../assets/carnets/carnet-trou-2-green.png';
+import holePage from '../../assets/carnets/carnet-trou-2-page.png';
+import proShop from '../../assets/carnets/carnets-pro-shop.jpg';
+import aerial from '../../assets/carnets/releve-aerien.jpg';
+import { absoluteUrl, getLocale, localePath, t } from '../../i18n';
+import Base from '../../layouts/Base.astro';
+import { breadcrumbJsonLd, faqPageJsonLd } from '../../lib/schema';
+import BookPage from '../BookPage.astro';
+import Cta from '../Cta.astro';
+import Faq from '../Faq.astro';
+import Footer from '../Footer.astro';
+import Header from '../Header.astro';
+import PageHero from '../PageHero.astro';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
+const method = copy.method;
+const faqItems = method.faqItems.map((index) => copy.faq.items[index]!);
+
+// One visual per step. Book pages are shown as paper, photos fill their card.
+const visuals: { src: ImageMetadata; page: boolean }[] = [
+  { src: aerial, page: false },
+  { src: holeGreen, page: true },
+  { src: greenInHand, page: false },
+  { src: proShop, page: false },
+];
+const steps = method.steps.map((step, index) => ({
+  ...step,
+  n: String(index + 1).padStart(2, '0'),
+  label: copy.processSteps[index]!.title,
+  summary: copy.processSteps[index]!.text,
+  visual: visuals[index]!,
+}));
+---
+
+<Base
+  title={method.title}
+  description={method.description}
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: copy.breadcrumbHome, url: absoluteUrl(locale, 'home') },
+      { name: copy.nav.method, url: absoluteUrl(locale, 'method') },
+    ]),
+    faqPageJsonLd(faqItems.map((item) => ({ question: item.q, answer: item.a }))),
+  ]}
+>
+  <Header />
+  <main id="main">
+    <PageHero eyebrow={method.eyebrow} title={copy.processTitle} text={method.text} split>
+      <ol class="mt-8 grid gap-2 sm:grid-cols-2">
+        {
+          steps.map((step) => (
+            <li>
+              <a
+                href={`#${step.id}`}
+                class="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 text-sm transition hover:bg-muted"
+              >
+                <span class="font-display text-xl text-primary tabular-nums">{step.n}</span>
+                <span class="font-medium">{step.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+      <div slot="aside" class="relative mx-auto w-full max-w-xs">
+        <div class="absolute inset-[6%] -z-10 rounded-[2rem] bg-primary/20 blur-3xl dark:bg-primary/15"></div>
+        <BookPage src={holePage} alt={method.leadAlt} sizes="(min-width: 1024px) 320px, 80vw" priority class="-rotate-2" />
+      </div>
+    </PageHero>
+
+    {
+      steps.map((step, index) => (
+        <section
+          id={step.id}
+          class:list={['scroll-mt-20 border-b border-border', index % 2 === 1 && 'section-alt']}
+          aria-labelledby={`${step.id}-title`}
+        >
+          <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:py-20 md:px-6 lg:grid-cols-2 lg:gap-16">
+            <div class:list={[index % 2 === 1 && 'lg:order-2']}>
+              <p class="text-xs font-medium tracking-[0.14em] text-primary uppercase">
+                {step.n} — {step.label}
+              </p>
+              <h2 id={`${step.id}-title`} class="mt-3 text-4xl tracking-tight text-balance sm:text-5xl">
+                {step.title}
+              </h2>
+              <p class="mt-4 font-medium text-pretty">{step.summary}</p>
+              {step.paragraphs.map((paragraph) => <p class="mt-4 text-pretty text-muted-foreground">{paragraph}</p>)}
+            </div>
+            <div class="mx-auto w-full max-w-sm">
+              {step.visual.page ? (
+                <BookPage src={step.visual.src} alt={step.alt} sizes="(min-width: 1024px) 384px, 90vw" class="rotate-1" />
+              ) : (
+                <Image
+                  src={step.visual.src}
+                  alt={step.alt}
+                  width={704}
+                  widths={[320, 480, 704]}
+                  sizes="(min-width: 1024px) 384px, 90vw"
+                  format="webp"
+                  quality={74}
+                  class="aspect-[4/5] w-full rounded-xl border border-border object-cover shadow-[0_30px_60px_-30px_rgb(0_0_0/0.45)]"
+                />
+              )}
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <section aria-label={method.page.title}>
+      <div class="mx-auto grid max-w-6xl gap-4 px-5 py-16 sm:py-20 md:px-6 lg:grid-cols-2">
+        <article class="rounded-xl border border-border bg-card p-6 sm:p-8">
+          <h2 class="text-3xl tracking-tight text-balance">{method.page.title}</h2>
+          <p class="mt-4 text-muted-foreground">{method.page.text}</p>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            {
+              method.page.points.map((point) => (
+                <li class="flex gap-2.5">
+                  <Check class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <span>{point}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-4 text-sm text-muted-foreground">{method.page.note}</p>
+        </article>
+        <article class="rounded-xl border border-border bg-card p-6 sm:p-8">
+          <h2 class="text-3xl tracking-tight text-balance">{method.standard.title}</h2>
+          {method.standard.paragraphs.map((paragraph) => <p class="mt-4 text-muted-foreground">{paragraph}</p>)}
+        </article>
+      </div>
+    </section>
+
+    <Faq
+      eyebrow={copy.faq.eyebrow}
+      title={copy.faq.title}
+      items={faqItems}
+      more={{ href: localePath(locale, 'faq'), label: copy.home.faq.seeAll }}
+    />
+    <Cta
+      eyebrow={method.cta.eyebrow}
+      title={method.cta.title}
+      text={method.cta.text}
+      secondary={{ href: localePath(locale, 'offer'), label: method.cta.secondary }}
+    />
+  </main>
+  <Footer />
+</Base>
