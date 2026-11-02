@@ -141,6 +141,24 @@ html.dark {
     background: color-mix(in srgb, var(--muted) 70%, var(--background));
   }
 
+  /* Soft brand glow behind the hero and the final call to action. */
+  .mesh {
+    background-image:
+      radial-gradient(ellipse 80% 55% at 12% -10%, color-mix(in srgb, var(--primary) 16%, transparent), transparent 60%),
+      radial-gradient(ellipse 55% 45% at 92% 4%, color-mix(in srgb, var(--sage) 26%, transparent), transparent 55%),
+      linear-gradient(180deg, var(--background), var(--background));
+  }
+
+  /* Faint map grid, faded towards the edges. */
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--border) 85%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--border) 85%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 20%, transparent 75%);
+  }
+
   /* Wordmark drawn from the white PNG logo, so it takes the current text colour. */
   .logo-mask {
     display: inline-block;
