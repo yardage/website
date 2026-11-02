@@ -34,6 +34,7 @@ Le site vend les carnets (service et impression). Un club ne doit jamais pouvoir
 
 - **jamais le contenu complet d'un golf** : 2 à 3 trous par golf au plus ;
 - résolution web uniquement : **1600 px de large au plus, en WebP** (via `astro:assets`) ;
+- ne jamais lire une propriété d’une image importée (`image.width`, `image.src`…) dans un composant : Astro publierait alors l’original dans `dist/`. Les pages d’exemple et leurs légendes sont dans `src/lib/bookSamples.ts` ;
 - **aucun PDF ni téléchargement de pages de trous**. Seul le PDF d'exemple de couverture existant (`public/docs/exemple-couverture.pdf`) reste.
 
 ## Style

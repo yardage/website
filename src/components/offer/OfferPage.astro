@@ -13,6 +13,7 @@ import Header from '../Header.astro';
 import Editions from '../home/Editions.astro';
 import PageHero from '../PageHero.astro';
 import QuoteGrid from '../QuoteGrid.astro';
+import SampleGallery from '../SampleGallery.astro';
 import SectionHeading from '../SectionHeading.astro';
 
 const locale = getLocale(Astro.currentLocale);
@@ -41,6 +42,8 @@ const faqItems = offer.faqItems.map((index) => copy.faq.items[index]!);
     </PageHero>
 
     <Editions />
+
+    <SampleGallery />
 
     <section aria-labelledby="custom-title">
       <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:py-20 md:px-6 lg:grid-cols-[1.2fr_1fr]">
