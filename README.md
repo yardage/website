@@ -89,13 +89,16 @@ src/
   i18n/           index.ts (locales, routes, helpers, constants), fr.ts, en.ts (UI copy)
   layouts/        Base.astro — SEO, canonical, hreflang, OG, JSON-LD, theme script, skip link
   components/     Header, Footer, Brand, ThemeToggle, LangSwitch + page sections
-  lib/            schema.ts (JSON-LD), social.ts, paths.ts, sectionBackgrounds.ts
+  assets/carnets/ Book pages and photos, served through astro:assets as WebP (+ CREDITS.txt)
+  lib/            schema.ts (JSON-LD), social.ts, bookSamples.ts (sample pages and captions)
   pages/          FR at root; EN under pages/en/; 404.astro
   styles/         global.css — theme tokens, @theme inline, utilities
 scripts/
   check-links.mjs Link and trailing-slash checker for dist/
 public/
-  images/         Photos, logos, product samples (+ CREDITS.txt)
+  images/         Logos only
+  og.png          Social sharing image (1200 × 630)
+  favicon*.png    Favicons and apple-touch-icon
   docs/           Cover sample PDF
   CNAME           yardage.io
   .nojekyll       Required so GitHub Pages serves assets/

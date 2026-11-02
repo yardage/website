@@ -489,4 +489,18 @@ export const en: Messages = {
       lead: 'How we handle data collected through the website.',
     },
   },
+  samples: {
+    label: 'Sample page',
+    hole: 'hole',
+    alt: [
+      'Hole page from a Yardage book, {edition} edition, hole {hole}: distances, hazards and lines of play',
+      'Green page from a Yardage book, {edition} edition, hole {hole}: green and approach distances',
+    ],
+    gallery: {
+      eyebrow: 'Sample books',
+      title: 'What a Yardage page looks like.',
+      text: 'For each course, the hole page and the green page. The full book stays with the club.',
+      pages: 'pages 1 and 2',
+    },
+  },
 };
