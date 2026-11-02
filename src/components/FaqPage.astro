@@ -1,0 +1,47 @@
+---
+/** The FAQ page, shared by `/faq/` and `/en/faq/`: every question, open on demand. */
+import { absoluteUrl, getLocale, localePath, t } from '../i18n';
+import Base from '../layouts/Base.astro';
+import { breadcrumbJsonLd, faqPageJsonLd } from '../lib/schema';
+import Cta from './Cta.astro';
+import FaqList from './FaqList.astro';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import PageHero from './PageHero.astro';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
+const meta = copy.pages.faq;
+const items = copy.faq.items;
+---
+
+<Base
+  title={meta.title}
+  description={meta.description}
+  jsonLd={[
+    faqPageJsonLd(items.map((item) => ({ question: item.q, answer: item.a }))),
+    breadcrumbJsonLd([
+      { name: copy.breadcrumbHome, url: absoluteUrl(locale, 'home') },
+      { name: copy.nav.faq, url: absoluteUrl(locale, 'faq') },
+    ]),
+  ]}
+>
+  <Header />
+  <main id="main">
+    <PageHero eyebrow={meta.eyebrow} title={meta.heading} text={meta.lead} />
+
+    <section aria-label={meta.heading}>
+      <div class="mx-auto max-w-3xl px-5 py-14 sm:py-20 md:px-6">
+        <FaqList items={items} />
+      </div>
+    </section>
+
+    <Cta
+      eyebrow={copy.offer.cta.eyebrow}
+      title={copy.offer.cta.title}
+      text={copy.offer.cta.text}
+      secondary={{ href: localePath(locale, 'method'), label: copy.home.flow.seeMore }}
+    />
+  </main>
+  <Footer />
+</Base>
