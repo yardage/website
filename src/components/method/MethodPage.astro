@@ -4,12 +4,11 @@ import { Check } from '@lucide/astro';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import greenInHand from '../../assets/carnets/carnet-green-en-main.jpg';
-import holeGreen from '../../assets/carnets/carnet-trou-2-green.png';
-import holePage from '../../assets/carnets/carnet-trou-2-page.png';
 import proShop from '../../assets/carnets/carnets-pro-shop.jpg';
 import aerial from '../../assets/carnets/releve-aerien.jpg';
 import { absoluteUrl, getLocale, localePath, t } from '../../i18n';
 import Base from '../../layouts/Base.astro';
+import { samples } from '../../lib/bookSamples';
 import { breadcrumbJsonLd, faqPageJsonLd } from '../../lib/schema';
 import BookPage from '../BookPage.astro';
 import Cta from '../Cta.astro';
@@ -22,6 +21,9 @@ const locale = getLocale(Astro.currentLocale);
 const copy = t(locale);
 const method = copy.method;
 const faqItems = method.faqItems.map((index) => copy.faq.items[index]!);
+// Validated holes only (AGENTS.md, visuals rule).
+const holePage = samples.ableiges4.pages[0];
+const holeGreen = samples.national1.pages[1];
 
 // One visual per step. Book pages are shown as paper, photos fill their card.
 const visuals: { src: ImageMetadata; page: boolean }[] = [

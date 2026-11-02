@@ -1,17 +1,17 @@
 ---
 import { ArrowRight } from '@lucide/astro';
-import holeGreen from '../../assets/carnets/carnet-trou-2-green.png';
-import holePage from '../../assets/carnets/carnet-trou-2-page.png';
 import { getLocale, localePath, t } from '../../i18n';
+import { sampleAlt, samples } from '../../lib/bookSamples';
 import BookPage from '../BookPage.astro';
 
 const locale = getLocale(Astro.currentLocale);
 const copy = t(locale);
 const hero = copy.home.hero;
-// Two pages of the same hole, web resolution only (see AGENTS.md, visuals rule).
+// Two pages of the same validated hole, web resolution only (see AGENTS.md, visuals rule).
+const spread = samples.national2;
 const pages = [
-  { src: holePage, alt: hero.spreadAlt[0], class: '-rotate-2' },
-  { src: holeGreen, alt: hero.spreadAlt[1], class: 'mt-10 -ml-[7%] rotate-2 sm:mt-14' },
+  { src: spread.pages[0], alt: sampleAlt(locale, spread, 0), class: '-rotate-2' },
+  { src: spread.pages[1], alt: sampleAlt(locale, spread, 1), class: 'mt-10 -ml-[7%] rotate-2 sm:mt-14' },
 ];
 ---
 
