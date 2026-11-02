@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
@@ -10,13 +10,12 @@ import SectionPhoto from '../components/SectionPhoto.astro';
 const locale = 'fr' as const;
 ---
 
-<BaseLayout
-  locale={locale}
+<Base
   title="Offre — Yardage"
   description="Tarifs Yardage : tarif club sur devis, remises volume, minimum 150 exemplaires, livraison sous 1 mois après validation du devis."
 >
-  <Header locale={locale} />
-  <main>
+  <Header />
+  <main id="main">
     <Hero
       locale={locale}
       title="Offre"
@@ -119,5 +118,5 @@ const locale = 'fr' as const;
 
     <Pricing locale={locale} />
   </main>
-  <Footer locale={locale} />
-</BaseLayout>
+  <Footer />
+</Base>

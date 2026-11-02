@@ -1,55 +1,153 @@
 @import "tailwindcss";
-@import "lenis/dist/lenis.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
 
-@theme {
+/* `dark:` utilities follow the resolved theme class set on <html> by Base.astro. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Theme tokens. Light = sand cream + Yardage green; dark = near-black green + sage.
+ * Contrast (WCAG 2.1): every text/background pair below is AA or better —
+ * foreground ≥ 14:1, muted-foreground ≥ 5.8:1, primary button ≥ 9:1 in both themes.
+ */
+:root {
+  color-scheme: light;
+  --background: #f8f5ee;
+  --foreground: #0f1f19;
+  --card: #fffdf8;
+  --card-foreground: #0f1f19;
+  --muted: #efe9dd;
+  --muted-foreground: #4b5c54;
+  --primary: #14382c;
+  --primary-foreground: #f8f5ee;
+  --accent: #dfe9e3;
+  --accent-foreground: #14382c;
+  --border: #e2dccf;
+  --ring: #14382c;
+  --sage: #9db8a8;
+  --radius: 0.625rem;
+}
+
+html.dark {
+  color-scheme: dark;
+  --background: #0a100e;
+  --foreground: #f2f0ea;
+  --card: #0f1714;
+  --card-foreground: #f2f0ea;
+  --muted: #16211c;
+  --muted-foreground: #a3ada6;
+  --primary: #9db8a8;
+  --primary-foreground: #0a100e;
+  --accent: #1b2b24;
+  --accent-foreground: #d3e2d9;
+  --border: #1f2c26;
+  --ring: #9db8a8;
+}
+
+/* No-JS fallback: follow the device setting unless the light class was forced. */
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
+    color-scheme: dark;
+    --background: #0a100e;
+    --foreground: #f2f0ea;
+    --card: #0f1714;
+    --card-foreground: #f2f0ea;
+    --muted: #16211c;
+    --muted-foreground: #a3ada6;
+    --primary: #9db8a8;
+    --primary-foreground: #0a100e;
+    --accent: #1b2b24;
+    --accent-foreground: #d3e2d9;
+    --border: #1f2c26;
+    --ring: #9db8a8;
+  }
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 
-  /* Dark mode palette — brand green #14382c */
-  --color-ink: #f2f0ea;
-  --color-ink-soft: #9aa59c;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-sage: var(--sage);
+  /* Fixed brand green, for surfaces that stay dark in both themes (photo heroes). */
   --color-brand: #14382c;
-  --color-green: #14382c;
-  --color-green-mid: #9db8a8;
-  --color-green-light: #2a5f4a;
-  --color-sand: #121c18;
-  --color-paper: #0a100e;
-  --color-mist: #24332c;
-  --color-panel: #0f1714;
-  --color-white: #ffffff;
+
+  /*
+   * Legacy aliases used by the pages that predate the redesign.
+   * Remove once every page is rebuilt (steps 2–4 of the redesign).
+   */
+  --color-ink: var(--foreground);
+  --color-ink-soft: var(--muted-foreground);
+  --color-paper: var(--background);
+  --color-panel: var(--card);
+  --color-sand: var(--muted);
+  --color-mist: var(--border);
+  --color-green-mid: var(--primary);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
 }
 
 @layer base {
   html {
-    scroll-behavior: auto;
-    color-scheme: dark;
-  }
-
-  html.lenis.lenis-smooth {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
   }
 
   body {
-    @apply bg-paper text-ink font-sans antialiased;
-    font-feature-settings: "ss01" on;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgb(20 56 44 / 0.45), transparent),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgb(20 56 44 / 0.2), transparent);
-    background-attachment: fixed;
+    font-family: var(--font-sans);
+    background: var(--background);
+    color: var(--foreground);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-green-mid) 35%, transparent);
+    background: color-mix(in srgb, var(--primary) 28%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: var(--font-display);
-  }
-
   .text-balance {
     text-wrap: balance;
+  }
+
+  .section-alt {
+    background: color-mix(in srgb, var(--muted) 70%, var(--background));
+  }
+
+  /* Wordmark drawn from the white PNG logo, so it takes the current text colour. */
+  .logo-mask {
+    display: inline-block;
+    aspect-ratio: 655 / 102;
+    background-color: currentColor;
+    -webkit-mask: url("/images/logo.png") center / contain no-repeat;
+    mask: url("/images/logo.png") center / contain no-repeat;
   }
 
   .section-photo {
@@ -65,7 +163,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    opacity: 0.22;
+    opacity: 0.16;
   }
 
   .section-photo > .section-photo-veil {
@@ -74,111 +172,67 @@
     z-index: -10;
     background: linear-gradient(
       180deg,
-      color-mix(in srgb, var(--color-paper) 82%, transparent),
-      color-mix(in srgb, var(--color-paper) 94%, transparent)
+      color-mix(in srgb, var(--background) 84%, transparent),
+      color-mix(in srgb, var(--background) 95%, transparent)
     );
   }
 
+  /*
+   * Entrance animation, CSS only: content is visible without JavaScript and
+   * never stays hidden. Delays stagger elements in the first viewport.
+   */
   .reveal {
-    opacity: 0;
-    transform: translateY(1.25rem);
-    transition:
-      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+    animation: reveal-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .reveal-delay-1 {
-    transition-delay: 0.12s;
+    animation-delay: 0.08s;
   }
 
   .reveal-delay-2 {
-    transition-delay: 0.24s;
+    animation-delay: 0.16s;
   }
 
   .reveal-delay-3 {
-    transition-delay: 0.36s;
+    animation-delay: 0.24s;
   }
 
   .reveal-delay-4 {
-    transition-delay: 0.48s;
+    animation-delay: 0.32s;
   }
 
   .reveal-delay-5 {
-    transition-delay: 0.6s;
+    animation-delay: 0.4s;
   }
 
-  @keyframes hero-fade {
+  .animate-hero-fade {
+    animation: reveal-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-hero-fade-delay {
+    animation: reveal-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  }
+
+  .animate-hero-fade-delay-2 {
+    animation: reveal-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+  }
+
+  .animate-hero-image {
+    animation: hero-image 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes reveal-in {
     from {
       opacity: 0;
-      transform: translateY(1rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0.75rem);
     }
   }
 
   @keyframes hero-image {
     from {
       opacity: 0;
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  .animate-hero-fade {
-    animation: hero-fade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .animate-hero-fade-delay {
-    animation: hero-fade 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
-  }
-
-  .animate-hero-fade-delay-2 {
-    animation: hero-fade 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
-  }
-
-  .animate-hero-image {
-    animation: hero-image 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal,
-    .reveal.is-visible {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
-
-    .animate-hero-fade,
-    .animate-hero-fade-delay,
-    .animate-hero-fade-delay-2,
-    .animate-hero-image {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  #site-header.header-scrolled {
-    background-color: color-mix(in srgb, var(--color-paper) 88%, transparent);
-    backdrop-filter: blur(12px);
-  }
-
-  #site-header:not(.header-scrolled) {
-    background-image: linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--color-paper) 80%, transparent),
-      transparent
-    );
   }
 
   body.lightbox-open {
@@ -186,7 +240,7 @@
   }
 
   .image-lightbox {
-    --lightbox-header-offset: 4.75rem;
+    --lightbox-header-offset: 3.5rem;
     position: fixed;
     top: var(--lightbox-header-offset);
     right: 0;
@@ -224,21 +278,25 @@
     box-sizing: border-box;
   }
 
-  .image-lightbox-close {
+  .image-lightbox-close,
+  .image-lightbox-nav {
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
     z-index: 3;
     display: grid;
     height: 2.75rem;
     width: 2.75rem;
     place-items: center;
-    border-radius: 0.25rem;
-    border: 1px solid color-mix(in srgb, var(--color-mist) 90%, transparent);
+    border-radius: var(--radius-md);
+    border: 1px solid rgb(255 255 255 / 0.15);
     background: rgb(15 23 20 / 0.95);
-    color: var(--color-ink);
+    color: #f2f0ea;
     box-shadow: 0 4px 20px rgb(0 0 0 / 0.45);
-    transition: background-color 0.15s ease;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+  }
+
+  .image-lightbox-close {
+    top: 0.75rem;
+    right: 0.75rem;
   }
 
   .image-lightbox-close svg {
@@ -246,27 +304,11 @@
     width: 1.25rem;
   }
 
-  .image-lightbox-close:hover {
-    background: var(--color-mist);
-  }
-
   .image-lightbox-nav {
-    position: absolute;
     top: 50%;
-    z-index: 3;
-    display: grid;
-    height: 2.75rem;
-    width: 2.75rem;
-    place-items: center;
-    border-radius: 0.25rem;
-    border: 1px solid color-mix(in srgb, var(--color-mist) 90%, transparent);
-    background: rgb(15 23 20 / 0.95);
-    color: var(--color-ink);
     font-size: 1.75rem;
     line-height: 1;
     transform: translateY(-50%);
-    box-shadow: 0 4px 20px rgb(0 0 0 / 0.45);
-    transition: background-color 0.15s ease, opacity 0.15s ease;
   }
 
   .image-lightbox-nav-prev {
@@ -277,8 +319,9 @@
     right: 0.75rem;
   }
 
+  .image-lightbox-close:hover,
   .image-lightbox-nav:hover:not(:disabled) {
-    background: var(--color-mist);
+    background: #1f2c26;
   }
 
   .image-lightbox-nav:disabled {
@@ -317,14 +360,10 @@
     font-size: 0.875rem;
     line-height: 1.5;
     text-align: center;
-    color: var(--color-ink-soft);
+    color: #a3ada6;
   }
 
   @media (max-width: 40rem) {
-    .image-lightbox {
-      --lightbox-header-offset: 4.25rem;
-    }
-
     .image-lightbox-panel {
       padding: 0.75rem 2.75rem 0.75rem;
     }
@@ -349,5 +388,20 @@
     .image-lightbox-nav-next {
       right: 0.35rem;
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

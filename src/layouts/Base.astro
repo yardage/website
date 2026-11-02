@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import {
+  SITE_URL,
+  getLocale,
+  locales,
+  routeKeyFromPathname,
+  routes,
+  t,
+  withTrailingSlash,
+} from '../i18n';
+import { jsonLdGraph, organizationJsonLd, type JsonLd } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  jsonLd?: JsonLd | JsonLd[];
+  /** Keep the page out of search engines (404). */
+  noindex?: boolean;
+}
+
+const { title, ogImage = '/images/carnets-irl.jpg', noindex = false } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
+const description = Astro.props.description ?? copy.defaultDescription;
+
+const canonical = new URL(withTrailingSlash(Astro.url.pathname), SITE_URL).href;
+const routeKey = routeKeyFromPathname(Astro.url.pathname);
+const alternates = routeKey
+  ? [
+      ...locales.map((l) => ({ hreflang: l, href: new URL(routes[routeKey][l], SITE_URL).href })),
+      { hreflang: 'x-default', href: new URL(routes[routeKey].fr, SITE_URL).href },
+    ]
+  : [];
+const ogImageUrl = new URL(ogImage, SITE_URL).href;
+const extraJsonLd = Astro.props.jsonLd
+  ? Array.isArray(Astro.props.jsonLd)
+    ? Astro.props.jsonLd
+    : [Astro.props.jsonLd]
+  : [];
+const structuredData = jsonLdGraph([organizationJsonLd(), ...extraJsonLd]);
+---
+
+<!doctype html>
+<html lang={copy.htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="theme-color" content="#f8f5ee" />
+    <!-- Resolve the theme before first paint: stored choice, else device setting. No flash. -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored === 'dark' || stored === 'light' ? stored : prefersDark ? 'dark' : 'light';
+          var root = document.documentElement;
+          root.classList.remove('light', 'dark');
+          root.classList.add(theme);
+          root.style.colorScheme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a100e' : '#f8f5ee');
+        } catch (e) {}
+      })();
+    </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Yardage" />
+    <meta property="og:locale" content={copy.ogLocale} />
+    <meta property="og:locale:alternate" content={locale === 'fr' ? 'en_US' : 'fr_FR'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <script type="application/ld+json" set:html={structuredData} />
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased">
+    <a
+      href="#main"
+      class="sr-only rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100]"
+    >
+      {copy.skip}
+    </a>
+    <slot />
+  </body>
+</html>

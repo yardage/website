@@ -1,6 +1,6 @@
 ---
 import { withBase } from '../lib/paths';
-import { type Locale, localePath, t } from '../lib/i18n';
+import { type Locale, localePath, t } from '../i18n';
 
 interface Props {
   title?: string;
@@ -29,7 +29,7 @@ const isBrand = title === 'Yardage';
 <section
   class:list={[
     'hero-section relative isolate overflow-hidden bg-brand text-white',
-    compact ? 'min-h-[52vh]' : 'min-h-[100svh]',
+    compact ? 'min-h-[44vh]' : 'min-h-[calc(100svh-3.5rem)]',
   ]}
 >
   <img
@@ -40,12 +40,12 @@ const isBrand = title === 'Yardage';
     height="1067"
     fetchpriority="high"
   />
-  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-paper/75 via-brand/70 to-paper/95"></div>
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-[#0a100e]/70 via-brand/65 to-[#0a100e]/90"></div>
 
   <div
     class:list={[
       'mx-auto flex max-w-6xl flex-col justify-end px-5 md:px-8',
-      compact ? 'pb-14 pt-28 md:pb-16 md:pt-32' : 'min-h-[100svh] pb-16 pt-32 md:pb-24 md:pt-40',
+      compact ? 'pb-12 pt-20 md:pb-14 md:pt-24' : 'min-h-[calc(100svh-3.5rem)] pb-16 pt-24 md:pb-24 md:pt-32',
     ]}
   >
     {
@@ -76,7 +76,7 @@ const isBrand = title === 'Yardage';
         <div class="animate-hero-fade-delay-2 mt-8 flex flex-wrap gap-3">
           <a
             href={localePath(locale, 'contact', '?intent=devis')}
-            class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+            class="rounded-lg bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-white/90"
           >
             {copy.ctaQuote}
           </a>

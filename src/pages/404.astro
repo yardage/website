@@ -1,0 +1,32 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { getLocale, localePath, t } from '../i18n';
+import Base from '../layouts/Base.astro';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
+const other = locale === 'fr' ? 'en' : 'fr';
+---
+
+<Base title={`${copy.notFound.title} — Yardage`} description={copy.notFound.text} noindex>
+  <Header />
+  <main id="main" class="mx-auto flex w-full max-w-xl flex-1 flex-col items-center px-5 py-24 text-center md:px-6">
+    <p class="text-sm font-medium tracking-wide text-primary">404</p>
+    <h1 class="mt-3 font-display text-5xl tracking-tight md:text-6xl">{copy.notFound.title}</h1>
+    <p class="mt-4 text-muted-foreground">{copy.notFound.text}</p>
+    <a
+      href={localePath(locale, 'home')}
+      class="mt-8 inline-flex rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+    >
+      {copy.notFound.home}
+    </a>
+    <p class="mt-10 text-sm text-muted-foreground" lang={other}>
+      {copy.notFound.other}
+      <a href={localePath(other, 'home')} class="underline underline-offset-4 hover:text-foreground" hreflang={other}>
+        {copy.notFound.otherHome}
+      </a>
+    </p>
+  </main>
+  <Footer />
+</Base>

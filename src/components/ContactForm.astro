@@ -1,5 +1,5 @@
 ---
-import { type Locale, t } from '../lib/i18n';
+import { type Locale, t } from '../i18n';
 
 interface Props {
   locale?: Locale;
@@ -75,7 +75,7 @@ const fieldClass =
 
   <button
     type="submit"
-    class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink disabled:opacity-60"
+    class="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
   >
     {form.submit}
   </button>
