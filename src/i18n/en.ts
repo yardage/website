@@ -43,7 +43,6 @@ export const en: Messages = {
   footerRights: 'All rights reserved.',
   footerLegal: 'Legal notice',
   footerPrivacy: 'Privacy',
-  heroSubtitle: 'Golf tradition meets cartographic precision.',
   processEyebrow: 'Method',
   processTitle: 'From the course to the book, in four steps.',
   processIntro:
@@ -308,7 +307,7 @@ export const en: Messages = {
       },
       {
         q: 'How do I get a quote?',
-        a: 'Write via the contact form, to contact@yardage.io or +33 5 37 07 97 18. Reply within 48 business hours. Include the club name, number of holes and, if possible, an estimated volume.',
+        a: 'Write via the contact form, to contact@yardage.io or +33 5 37 07 97 18. Reply within 48 business hours. Include the club name, number of holes and, if possible, an estimated volume.',
       },
     ],
   },
@@ -367,7 +366,7 @@ export const en: Messages = {
     cta: {
       eyebrow: 'Quote',
       title: 'Let’s talk about your course.',
-      text: 'Tell us the club name, the number of holes and, if possible, an estimated volume. Reply within 48 business hours.',
+      text: 'Tell us the club name, the number of holes and, if possible, an estimated volume. Reply within 48 business hours.',
     },
   },
   method: {
@@ -444,6 +443,50 @@ export const en: Messages = {
       title: 'From the course to the book, we handle it all.',
       text: 'From course analysis to book delivery, Yardage handles the full process. You keep control of the club’s identity; we ensure precision, consistency and product quality.',
       secondary: 'View the offer',
+    },
+  },
+  pages: {
+    faq: {
+      title: 'FAQ — Yardage',
+      description:
+        'Answers about Yardage golf yardage books: hole-page content, quotes, lead time, customisation, rangefinders and club orders.',
+      eyebrow: 'FAQ',
+      heading: 'Frequently asked questions',
+      lead: 'Common questions about Yardage golf yardage books — for clubs and players.',
+    },
+    about: {
+      title: 'About — Yardage',
+      description: 'Yardage makes the yardage book accessible to clubs and players of every level.',
+      eyebrow: 'About',
+      heading: 'Every course deserves a book equal to its identity.',
+      lead: 'Our ambition is to make the yardage book accessible to clubs and players of every level.',
+    },
+    contact: {
+      title: 'Contact — Yardage',
+      description: 'Request a quote for your golf club. Yardage: contact@yardage.io — +33 5 37 07 97 18.',
+      eyebrow: 'Contact',
+      heading: 'Let’s talk about your course.',
+      lead: 'Quotes and digital samples on request — write to us. Reply within 48 business hours.',
+      details: 'Contact details',
+      email: 'Email',
+      phone: 'Phone',
+      social: 'Social',
+      formTitle: 'Request a quote',
+      formText: 'Club, estimated volume and message — we will come back to you with a proposal.',
+    },
+    legal: {
+      title: 'Legal notice — Yardage',
+      description: 'Legal notice for Yardage and yardage.io website.',
+      eyebrow: 'Legal information',
+      heading: 'Legal notice',
+      lead: 'Legal information relating to Yardage and yardage.io website.',
+    },
+    privacy: {
+      title: 'Privacy — Yardage',
+      description: 'Privacy policy for the Yardage website.',
+      eyebrow: 'Personal data',
+      heading: 'Privacy',
+      lead: 'How we handle data collected through the website.',
     },
   },
 };

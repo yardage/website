@@ -41,7 +41,6 @@ export const fr = {
   footerRights: 'Tous droits réservés.',
   footerLegal: 'Mentions légales',
   footerPrivacy: 'Confidentialité',
-  heroSubtitle: 'La tradition golfique rencontre la précision cartographique.',
   processEyebrow: 'Méthode',
   processTitle: 'Du terrain au carnet, en quatre étapes.',
   processIntro:
@@ -307,7 +306,7 @@ export const fr = {
       },
       {
         q: 'Comment obtenir un devis ?',
-        a: 'Écrivez-nous via le formulaire de contact, à contact@yardage.io ou au +33 5 37 07 97 18. Réponse sous 48 h ouvrées. Indiquez le nom du golf, le nombre de trous et, si possible, un volume estimé.',
+        a: 'Écrivez-nous via le formulaire de contact, à contact@yardage.io ou au +33 5 37 07 97 18. Réponse sous 48 h ouvrées. Indiquez le nom du golf, le nombre de trous et, si possible, un volume estimé.',
       },
     ],
   },
@@ -367,7 +366,7 @@ export const fr = {
     cta: {
       eyebrow: 'Devis',
       title: 'Parlons de votre parcours.',
-      text: 'Indiquez le nom du golf, le nombre de trous et, si possible, un volume estimé. Réponse sous 48 h ouvrées.',
+      text: 'Indiquez le nom du golf, le nombre de trous et, si possible, un volume estimé. Réponse sous 48 h ouvrées.',
     },
   },
   method: {
@@ -444,6 +443,50 @@ export const fr = {
       title: 'Du terrain au carnet, on s’occupe de tout.',
       text: 'De l’analyse du terrain à la livraison des carnets, Yardage prend en charge l’ensemble du processus. Vous gardez la maîtrise de l’identité du club ; nous assurons la précision, la cohérence et la qualité du produit.',
       secondary: 'Voir l’offre',
+    },
+  },
+  pages: {
+    faq: {
+      title: 'FAQ — Yardage',
+      description:
+        'Réponses sur les carnets de parcours golf Yardage : contenu d’une page, devis, délais, personnalisation, télémètre et commande club.',
+      eyebrow: 'FAQ',
+      heading: 'Questions fréquentes',
+      lead: 'Questions fréquentes sur les carnets de parcours golf Yardage — pour les clubs et les joueurs.',
+    },
+    about: {
+      title: 'À propos — Yardage',
+      description: 'Yardage rend le carnet de parcours accessible aux clubs et aux joueurs de tous niveaux.',
+      eyebrow: 'À propos',
+      heading: 'Chaque parcours mérite un carnet à la hauteur de son identité.',
+      lead: 'Notre ambition est de rendre le carnet de parcours accessible aux clubs et aux joueurs de tous niveaux.',
+    },
+    contact: {
+      title: 'Contact — Yardage',
+      description: 'Demandez un devis pour votre golf. Yardage : contact@yardage.io — +33 5 37 07 97 18.',
+      eyebrow: 'Contact',
+      heading: 'Parlons de votre parcours.',
+      lead: 'Devis et exemplaire numérique sur demande — écrivez-nous. Réponse sous 48 h ouvrées.',
+      details: 'Coordonnées',
+      email: 'Email',
+      phone: 'Téléphone',
+      social: 'Réseaux',
+      formTitle: 'Demander un devis',
+      formText: 'Club, volume estimé et message — nous revenons vers vous avec une proposition.',
+    },
+    legal: {
+      title: 'Mentions légales — Yardage',
+      description: 'Mentions légales du site Yardage.',
+      eyebrow: 'Informations légales',
+      heading: 'Mentions légales',
+      lead: 'Informations légales relatives à Yardage et au site yardage.io.',
+    },
+    privacy: {
+      title: 'Confidentialité — Yardage',
+      description: 'Politique de confidentialité du site Yardage.',
+      eyebrow: 'Données personnelles',
+      heading: 'Confidentialité',
+      lead: 'Comment nous traitons les données collectées via le site.',
     },
   },
 };
