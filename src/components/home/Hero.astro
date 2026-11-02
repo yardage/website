@@ -1,9 +1,9 @@
 ---
 import { ArrowRight } from '@lucide/astro';
-import { Image } from 'astro:assets';
-import holeGreen from '../../assets/home/carnet-trou-2-green.png';
-import holePage from '../../assets/home/carnet-trou-2-page.png';
+import holeGreen from '../../assets/carnets/carnet-trou-2-green.png';
+import holePage from '../../assets/carnets/carnet-trou-2-page.png';
 import { getLocale, localePath, t } from '../../i18n';
+import BookPage from '../BookPage.astro';
 
 const locale = getLocale(Astro.currentLocale);
 const copy = t(locale);
@@ -61,36 +61,17 @@ const pages = [
       <div class="absolute inset-x-[8%] inset-y-[10%] -z-10 rounded-[3rem] bg-primary/20 blur-3xl dark:bg-primary/15"></div>
       <div class="flex justify-center">
         {
-          pages.map((page, index) => (
-            <figure class:list={['book-page m-0 w-[46%] max-w-[22rem]', page.class]}>
-              <Image
-                src={page.src}
-                alt={page.alt}
-                width={704}
-                widths={[320, 480, 704]}
-                sizes="(min-width: 768px) 352px, 46vw"
-                format="webp"
-                quality={78}
-                loading="eager"
-                fetchpriority={index === 0 ? 'high' : 'auto'}
-                class="block h-auto w-full"
-              />
-            </figure>
+          pages.map((page) => (
+            <BookPage
+              src={page.src}
+              alt={page.alt}
+              sizes="(min-width: 768px) 352px, 46vw"
+              priority
+              class={`w-[46%] max-w-[22rem] ${page.class}`}
+            />
           ))
         }
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .book-page {
-    overflow: hidden;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    background: #fff;
-    box-shadow:
-      0 1px 2px rgb(0 0 0 / 0.06),
-      0 30px 60px -28px rgb(0 0 0 / 0.45);
-  }
-</style>

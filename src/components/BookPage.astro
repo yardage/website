@@ -1,0 +1,42 @@
+---
+/**
+ * A yardage book page shown as paper (white, soft shadow) in both themes.
+ * Web resolution only (AGENTS.md, visuals rule): WebP, 704 px wide at most.
+ */
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  /** CSS `sizes` of the image. */
+  sizes: string;
+  /** Above the fold: eager loading. */
+  priority?: boolean;
+  class?: string;
+}
+
+const { src, alt, sizes, priority = false, class: className } = Astro.props;
+const max = Math.min(src.width, 704);
+const widths = [320, 480, max].filter((w, i, all) => w <= max && all.indexOf(w) === i);
+---
+
+<figure
+  class:list={[
+    'm-0 overflow-hidden rounded-md border border-border bg-white shadow-[0_1px_2px_rgb(0_0_0/0.06),0_30px_60px_-28px_rgb(0_0_0/0.45)]',
+    className,
+  ]}
+>
+  <Image
+    src={src}
+    alt={alt}
+    width={max}
+    widths={widths}
+    sizes={sizes}
+    format="webp"
+    quality={78}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+    class="block h-auto w-full"
+  />
+</figure>
