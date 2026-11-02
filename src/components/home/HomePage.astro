@@ -1,0 +1,52 @@
+---
+/** The home page, shared by `/` and `/en/`; the locale comes from Astro i18n routing. */
+import { getLocale, localePath, t } from '../../i18n';
+import Base from '../../layouts/Base.astro';
+import { faqPageJsonLd, serviceJsonLd, websiteJsonLd } from '../../lib/schema';
+import Cta from '../Cta.astro';
+import Faq from '../Faq.astro';
+import Footer from '../Footer.astro';
+import Header from '../Header.astro';
+import Audience from './Audience.astro';
+import Editions from './Editions.astro';
+import Flow from './Flow.astro';
+import Hero from './Hero.astro';
+import Pricing from './Pricing.astro';
+import Problem from './Problem.astro';
+import Proof from './Proof.astro';
+import Tour from './Tour.astro';
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
+const faqItems = copy.faq.homeItems.map((index) => copy.faq.items[index]!);
+---
+
+<Base
+  title={copy.home.title}
+  description={copy.home.description}
+  jsonLd={[
+    websiteJsonLd(locale),
+    serviceJsonLd(locale, copy.home.hero.eyebrow, copy.home.description),
+    faqPageJsonLd(faqItems.map((item) => ({ question: item.q, answer: item.a }))),
+  ]}
+>
+  <Header />
+  <main id="main">
+    <Hero />
+    <Problem />
+    <Tour />
+    <Editions />
+    <Flow />
+    <Audience />
+    <Proof />
+    <Pricing />
+    <Faq
+      eyebrow={copy.faq.eyebrow}
+      title={copy.faq.title}
+      items={faqItems}
+      more={{ href: localePath(locale, 'faq'), label: copy.home.faq.seeAll }}
+    />
+    <Cta eyebrow={copy.home.cta.eyebrow} title={copy.home.cta.title} text={copy.home.cta.text} />
+  </main>
+  <Footer />
+</Base>
