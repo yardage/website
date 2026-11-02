@@ -1,6 +1,6 @@
 ---
 import { withBase } from '../lib/paths';
-import { type Locale, localePath, t } from '../lib/i18n';
+import { type Locale, localePath, t } from '../i18n';
 import { nextSectionBackground } from '../lib/sectionBackgrounds';
 
 interface Props {
@@ -72,7 +72,7 @@ const extras = copy.pricingExtras;
     <div class="reveal reveal-delay-3 mt-10 flex flex-wrap gap-3">
       <a
         href={localePath(locale, 'contact', '?intent=devis')}
-        class="rounded-sm bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-ink"
+        class="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
       >
         {copy.ctaQuote}
       </a>
@@ -80,7 +80,7 @@ const extras = copy.pricingExtras;
         teaser && (
           <a
             href={localePath(locale, 'offer')}
-            class="rounded-sm border border-white/25 px-5 py-3 text-sm font-semibold text-ink transition hover:bg-white/5"
+            class="rounded-lg border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
           >
             {copy.pricingDetail}
           </a>

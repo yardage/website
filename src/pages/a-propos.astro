@@ -1,21 +1,20 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import SectionPhoto from '../components/SectionPhoto.astro';
-import { localePath } from '../lib/i18n';
+import { localePath } from '../i18n';
 
 const locale = 'fr' as const;
 ---
 
-<BaseLayout
-  locale={locale}
+<Base
   title="À propos — Yardage"
   description="Yardage rend le carnet de parcours accessible aux clubs et aux joueurs de tous niveaux."
 >
-  <Header locale={locale} />
-  <main>
+  <Header />
+  <main id="main">
     <Hero
       locale={locale}
       title="À propos"
@@ -330,12 +329,12 @@ const locale = 'fr' as const;
         <div class="mt-10">
           <a
             href={localePath(locale, 'contact')}
-            class="inline-flex rounded-sm bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink"
+            class="inline-flex rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
           >
             Parler de votre parcours
           </a>
         </div>
       </SectionPhoto>
   </main>
-  <Footer locale={locale} />
-</BaseLayout>
+  <Footer />
+</Base>
