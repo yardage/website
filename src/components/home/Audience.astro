@@ -1,0 +1,28 @@
+---
+import { Flag, GraduationCap, Landmark } from '@lucide/astro';
+import { getLocale, t } from '../../i18n';
+import SectionHeading from '../SectionHeading.astro';
+
+const copy = t(getLocale(Astro.currentLocale)).home.audience;
+const icons = [Landmark, GraduationCap, Flag];
+---
+
+<section class="section-alt border-y border-border" aria-labelledby="audience-title">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20 md:px-6">
+    <SectionHeading id="audience-title" eyebrow={copy.eyebrow} title={copy.title} />
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      {
+        copy.items.map((item, index) => {
+          const Icon = icons[index]!;
+          return (
+            <article class="rounded-xl border border-border bg-card p-6">
+              <Icon class="size-5 text-primary" aria-hidden="true" />
+              <h3 class="mt-4 font-semibold tracking-tight">{item.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

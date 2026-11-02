@@ -1,4 +1,4 @@
-import { SITE_URL } from '../i18n';
+import { SITE_URL, absoluteUrl, type Locale } from '../i18n';
 
 export { SITE_URL };
 
@@ -26,6 +26,30 @@ export function organizationJsonLd(): JsonLd {
       'https://www.facebook.com/yardage.io/',
       'https://www.linkedin.com/company/yardageio',
     ],
+  };
+}
+
+export function websiteJsonLd(locale: Locale): JsonLd {
+  return {
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    name: 'Yardage',
+    url: absoluteUrl(locale, 'home'),
+    inLanguage: locale,
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+}
+
+/** The yardage book service (design + print), described without prices: quotes are tailored. */
+export function serviceJsonLd(locale: Locale, name: string, description: string): JsonLd {
+  return {
+    '@type': 'Service',
+    '@id': `${absoluteUrl(locale, 'home')}#service`,
+    name,
+    description,
+    serviceType: 'Golf yardage book design and printing',
+    provider: { '@id': `${SITE_URL}/#organization` },
+    url: absoluteUrl(locale, 'home'),
   };
 }
 
