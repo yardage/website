@@ -1,0 +1,44 @@
+---
+/**
+ * Text page (about, legal notice, privacy): page hero, then the page body as
+ * readable prose. Titles and meta come from `pages.<key>` in i18n.
+ */
+import { absoluteUrl, getLocale, t } from '../i18n';
+import Base from '../layouts/Base.astro';
+import { breadcrumbJsonLd } from '../lib/schema';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import PageHero from './PageHero.astro';
+
+interface Props {
+  page: 'about' | 'legal' | 'privacy';
+}
+
+const { page } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale);
+const meta = copy.pages[page];
+---
+
+<Base
+  title={meta.title}
+  description={meta.description}
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: copy.breadcrumbHome, url: absoluteUrl(locale, 'home') },
+      { name: meta.heading, url: absoluteUrl(locale, page) },
+    ]),
+  ]}
+>
+  <Header />
+  <main id="main">
+    <PageHero eyebrow={meta.eyebrow} title={meta.heading} text={meta.lead} />
+    <div class="mx-auto max-w-3xl px-5 py-14 sm:py-20 md:px-6">
+      <article class="prose-yardage">
+        <slot />
+      </article>
+    </div>
+    <slot name="after" />
+  </main>
+  <Footer />
+</Base>

@@ -16,7 +16,7 @@ const form = copy.form;
 const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT || 'https://formspree.io/f/YOUR_FORM_ID';
 
 const fieldClass =
-  'mt-2 w-full rounded-sm border border-mist bg-paper px-3 py-3 text-sm text-ink outline-none transition placeholder:text-ink-soft/50 focus:border-green-mid';
+  'mt-2 w-full rounded-lg border border-border bg-background px-3 py-3 text-sm text-foreground transition placeholder:text-muted-foreground focus:border-primary';
 ---
 
 <form
@@ -35,22 +35,22 @@ const fieldClass =
 
   <div class="grid gap-5 md:grid-cols-2">
     <label class="block">
-      <span class="text-sm font-medium text-ink">{form.name}</span>
+      <span class="text-sm font-medium">{form.name}</span>
       <input type="text" name="name" required class={fieldClass} autocomplete="name" />
     </label>
     <label class="block">
-      <span class="text-sm font-medium text-ink">{form.email}</span>
+      <span class="text-sm font-medium">{form.email}</span>
       <input type="email" name="email" required class={fieldClass} autocomplete="email" />
     </label>
   </div>
 
   <div class="grid gap-5 md:grid-cols-2">
     <label class="block">
-      <span class="text-sm font-medium text-ink">{form.club}</span>
+      <span class="text-sm font-medium">{form.club}</span>
       <input type="text" name="club" required class={fieldClass} />
     </label>
     <label class="block">
-      <span class="text-sm font-medium text-ink">{form.volume}</span>
+      <span class="text-sm font-medium">{form.volume}</span>
       <select name="volume" id="form-volume" class={fieldClass}>
         <option value="">{form.optVolumePlaceholder}</option>
         <option value="150-499">{form.opt150to499}</option>
@@ -62,7 +62,7 @@ const fieldClass =
   </div>
 
   <label class="block">
-    <span class="text-sm font-medium text-ink">{form.message}</span>
+    <span class="text-sm font-medium">{form.message}</span>
     <textarea
       name="message"
       id="form-message"
@@ -75,7 +75,7 @@ const fieldClass =
 
   <button
     type="submit"
-    class="rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
+    class="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
   >
     {form.submit}
   </button>
@@ -115,8 +115,8 @@ const fieldClass =
     if (action.includes('YOUR_FORM_ID')) {
       event.preventDefault();
       if (status) {
-        status.classList.remove('hidden', 'text-green-mid');
-        status.classList.add('text-ink-soft');
+        status.classList.remove('hidden', 'text-primary');
+        status.classList.add('text-muted-foreground');
         status.textContent = msgUnconfigured;
       }
       return;
@@ -137,8 +137,8 @@ const fieldClass =
         form.reset();
         if (subjectField) subjectField.value = form.dataset.subjectQuote ?? '';
         if (status) {
-          status.classList.remove('hidden', 'text-ink-soft');
-          status.classList.add('text-green-mid');
+          status.classList.remove('hidden', 'text-muted-foreground');
+          status.classList.add('text-primary');
           status.textContent = msgSuccess;
         }
       } else {
@@ -146,8 +146,8 @@ const fieldClass =
       }
     } catch {
       if (status) {
-        status.classList.remove('hidden', 'text-green-mid');
-        status.classList.add('text-ink-soft');
+        status.classList.remove('hidden', 'text-primary');
+        status.classList.add('text-muted-foreground');
         status.textContent = msgError;
       }
     } finally {

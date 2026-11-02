@@ -1,61 +1,42 @@
 ---
-import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import SectionPhoto from '../components/SectionPhoto.astro';
-
-const locale = 'fr' as const;
+import ProsePage from '../components/ProsePage.astro';
 ---
 
-<Base
-  title="Confidentialité — Yardage"
-  description="Politique de confidentialité du site Yardage."
->
-  <Header />
-  <main id="main">
-    <Hero
-      locale={locale}
-      title="Confidentialité"
-      subtitle="Comment nous traitons les données collectées via le site."
-      image="/images/bg-water1.jpg"
-      compact
-    />
-    <SectionPhoto contentClass="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
-        <h2 class="reveal font-display text-2xl text-ink">Responsable</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          Pour toute question relative à vos données personnelles, contactez-nous à
-          <a href="mailto:contact@yardage.io" class="text-green-mid hover:underline">contact@yardage.io</a>.
-          La facturation des commandes Yardage est assurée par PLATEFORME IO.
-        </p>
+<ProsePage page="privacy">
+  <section>
+    <h2>Responsable</h2>
+    <p>
+      Pour toute question relative à vos données personnelles, contactez-nous à
+      <a href="mailto:contact@yardage.io">contact@yardage.io</a>.
+      La facturation des commandes Yardage est assurée par PLATEFORME IO.
+    </p>
 
-        <h2 class="reveal mt-10 font-display text-2xl text-ink">Données collectées</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          Le formulaire de contact collecte les informations que vous renseignez (nom, email, club,
-          volume, message) afin de répondre à votre demande de devis ou d’exemplaire numérique.
-        </p>
+    <h2>Données collectées</h2>
+    <p>
+      Le formulaire de contact collecte les informations que vous renseignez (nom, email, club,
+      volume, message) afin de répondre à votre demande de devis ou d’exemplaire numérique.
+    </p>
 
-        <h2 class="reveal mt-10 font-display text-2xl text-ink">Finalité</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          Ces données sont utilisées uniquement pour le suivi commercial et la relation avec les golfs
-          et professionnels intéressés par Yardage. Elles ne sont pas vendues à des tiers.
-        </p>
+    <h2>Finalité</h2>
+    <p>
+      Ces données sont utilisées uniquement pour le suivi commercial et la relation avec les golfs
+      et professionnels intéressés par Yardage. Elles ne sont pas vendues à des tiers.
+    </p>
 
-        <h2 class="reveal mt-10 font-display text-2xl text-ink">Sous-traitants</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          L’envoi du formulaire peut transiter par Formspree. L’hébergement du site est assuré par Amazon
-          Web Services (AWS). Consultez les politiques de confidentialité de ces prestataires pour plus
-          d’informations.
-        </p>
+    <h2>Sous-traitants</h2>
+    <p>
+      Le formulaire de contact est transmis par Formspree. L’hébergement du site est assuré par GitHub Pages
+      (GitHub, Inc.). Les polices de caractères sont installées sur le site : aucun service tiers n’est appelé pour
+      les afficher. Consultez les politiques de confidentialité de ces prestataires pour plus
+      d’informations.
+    </p>
 
-        <h2 class="reveal mt-10 font-display text-2xl text-ink">Vos droits</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          Vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant à
-          <a href="mailto:contact@yardage.io" class="text-green-mid hover:underline"
-            >contact@yardage.io</a
-          >.
-        </p>
-    </SectionPhoto>
-  </main>
-  <Footer />
-</Base>
+    <h2>Vos droits</h2>
+    <p>
+      Vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant à
+      <a href="mailto:contact@yardage.io"
+        >contact@yardage.io</a
+      >.
+    </p>
+  </section>
+</ProsePage>

@@ -1,61 +1,41 @@
 ---
-import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import SectionPhoto from '../components/SectionPhoto.astro';
-
-const locale = 'fr' as const;
+import ProsePage from '../components/ProsePage.astro';
 ---
 
-<Base
-  title="Mentions légales — Yardage"
-  description="Mentions légales du site Yardage."
->
-  <Header />
-  <main id="main">
-    <Hero
-      locale={locale}
-      title="Mentions légales"
-      subtitle="Informations légales relatives à Yardage et au site yardage.io."
-      image="/images/bg-greenkeeper.jpg"
-      compact
-    />
-    <SectionPhoto contentClass="prose-legal mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
-        <h2 class="reveal font-display text-2xl text-ink">Éditeur</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          Le site <strong>yardage.io</strong> est édité sous la marque Yardage.<br />
-          Contact : <a href="mailto:contact@yardage.io" class="text-green-mid hover:underline">contact@yardage.io</a>
-          — <a href="tel:+33537079718" class="text-green-mid hover:underline">+33 5 37 07 97 18</a>.
-        </p>
+<ProsePage page="legal">
+  <section>
+    <h2>Éditeur</h2>
+    <p>
+      Le site <strong>yardage.io</strong> est édité sous la marque Yardage.<br />
+      Contact : <a href="mailto:contact@yardage.io">contact@yardage.io</a>
+      — <a href="tel:+33537079718">+33 5 37 07 97 18</a>.
+    </p>
 
-        <h2 class="reveal mt-10 font-display text-2xl text-ink">Facturation</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          Les produits Yardage sont facturés par <strong>PLATEFORME IO</strong>, SAS au capital de 1&nbsp;000&nbsp;€.<br />
-          Siège social : 128 rue La Boétie, 75008 Paris.<br />
-          SIREN : 842 499 808 — SIRET : 842 499 808 00017.
-        </p>
-        <p class="reveal reveal-delay-2 mt-3 text-base leading-relaxed text-ink-soft">
-          Pour toute demande commerciale : <a href="mailto:contact@yardage.io" class="text-green-mid hover:underline">contact@yardage.io</a>
-          — <a href="tel:+33537079718" class="text-green-mid hover:underline">+33 5 37 07 97 18</a>.
-        </p>
+    <h2>Facturation</h2>
+    <p>
+      Les produits Yardage sont facturés par <strong>PLATEFORME IO</strong>, SAS au capital de 1&nbsp;000&nbsp;€.<br />
+      Siège social : 128 rue La Boétie, 75008 Paris.<br />
+      SIREN : 842 499 808 — SIRET : 842 499 808 00017.
+    </p>
+    <p>
+      Pour toute demande commerciale : <a href="mailto:contact@yardage.io">contact@yardage.io</a>
+      — <a href="tel:+33537079718">+33 5 37 07 97 18</a>.
+    </p>
 
-        <h2 class="reveal mt-10 font-display text-2xl text-ink">Hébergement</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          Le site est hébergé par <strong>Amazon Web Services EMEA SARL</strong>, 38 Avenue John F. Kennedy, L-1855 Luxembourg.
-          RCS Luxembourg B186284.
-        </p>
+    <h2>Hébergement</h2>
+    <p>
+      Le site est hébergé par <strong>GitHub Pages</strong>, service de GitHub, Inc., 88 Colin P. Kelly Jr. Street,
+      San Francisco, CA 94107, États-Unis.
+    </p>
 
-        <h2 class="reveal mt-10 font-display text-2xl text-ink">Propriété intellectuelle</h2>
-        <p class="reveal reveal-delay-1 mt-3 text-base leading-relaxed text-ink-soft">
-          <strong>Yardage</strong> est une marque déposée. L’ensemble des contenus présents sur ce site (textes, visuels,
-          logos, vidéos) est protégé. Toute reproduction non autorisée est interdite.
-        </p>
-        <p class="reveal reveal-delay-2 mt-3 text-base leading-relaxed text-ink-soft">
-          La reproduction de tous les produits Yardage et des outils de développement associés est interdite sans
-          autorisation préalable.
-        </p>
-    </SectionPhoto>
-  </main>
-  <Footer />
-</Base>
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      <strong>Yardage</strong> est une marque déposée. L’ensemble des contenus présents sur ce site (textes, visuels,
+      logos, vidéos) est protégé. Toute reproduction non autorisée est interdite.
+    </p>
+    <p>
+      La reproduction de tous les produits Yardage et des outils de développement associés est interdite sans
+      autorisation préalable.
+    </p>
+  </section>
+</ProsePage>
