@@ -1,14 +1,22 @@
 ---
 import { Image } from 'astro:assets';
-import coverInHand from '../../assets/carnets/carnet-couverture-en-main.jpg';
 import greenInHand from '../../assets/carnets/carnet-green-en-main.jpg';
 import proShop from '../../assets/carnets/carnets-pro-shop.jpg';
 import aerial from '../../assets/carnets/releve-aerien.jpg';
 import { getLocale, t } from '../../i18n';
+import { sampleAlt, sampleCaption, samples } from '../../lib/bookSamples';
 import SectionHeading from '../SectionHeading.astro';
 
-const copy = t(getLocale(Astro.currentLocale)).home.tour;
-const images = [aerial, greenInHand, coverInHand, proShop];
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale).home.tour;
+// Step 3 (layout) shows a real hole page; the others are photos.
+const layoutSample = samples.saintNom1;
+const images = [
+  { src: aerial, alt: copy.items[0]!.alt },
+  { src: greenInHand, alt: copy.items[1]!.alt },
+  { src: layoutSample.pages[0], alt: sampleAlt(locale, layoutSample, 0), caption: sampleCaption(locale, layoutSample) },
+  { src: proShop, alt: copy.items[3]!.alt },
+];
 ---
 
 <section id={copy.id} class="scroll-mt-20" aria-labelledby="tour-title">
@@ -22,16 +30,26 @@ const images = [aerial, greenInHand, coverInHand, proShop];
         copy.items.map((item, index) => (
           <li class="w-[78vw] max-w-sm shrink-0 snap-start md:w-auto md:max-w-none">
             <article class="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card">
-              <Image
-                src={images[index]!}
-                alt={item.alt}
-                width={640}
-                widths={[320, 480, 640]}
-                sizes="(min-width: 1024px) 270px, (min-width: 768px) 45vw, 78vw"
-                format="webp"
-                quality={72}
-                class="aspect-[4/5] w-full object-cover"
-              />
+              <figure class="relative m-0">
+                <Image
+                  src={images[index]!.src}
+                  alt={images[index]!.alt}
+                  width={640}
+                  widths={[320, 480, 640]}
+                  sizes="(min-width: 1024px) 270px, (min-width: 768px) 45vw, 78vw"
+                  format="webp"
+                  quality={72}
+                  class:list={[
+                    'aspect-[4/5] w-full object-cover',
+                    images[index]!.caption && 'border-b border-border bg-white object-top',
+                  ]}
+                />
+                {images[index]!.caption && (
+                  <figcaption class="absolute bottom-3 left-3 rounded-md bg-background/90 px-2 py-1 text-xs text-muted-foreground">
+                    {images[index]!.caption}
+                  </figcaption>
+                )}
+              </figure>
               <div class="flex flex-1 flex-col p-5">
                 <span class="text-xs font-semibold tracking-wider text-primary tabular-nums">
                   {String(index + 1).padStart(2, '0')}

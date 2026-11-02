@@ -489,6 +489,20 @@ export const fr = {
       lead: 'Comment nous traitons les données collectées via le site.',
     },
   },
+  samples: {
+    label: 'Exemple de page',
+    hole: 'trou',
+    alt: [
+      'Page de trou d’un carnet Yardage, édition {edition}, trou {hole} : distances, obstacles et lignes de jeu',
+      'Page de green d’un carnet Yardage, édition {edition}, trou {hole} : green et distances d’approche',
+    ],
+    gallery: {
+      eyebrow: 'Exemples de carnets',
+      title: 'À quoi ressemble une page Yardage.',
+      text: 'Pour chaque parcours, la page du trou et la page de green. Le carnet complet reste réservé au club.',
+      pages: 'pages 1 et 2',
+    },
+  },
 };
 
 export type Messages = typeof fr;

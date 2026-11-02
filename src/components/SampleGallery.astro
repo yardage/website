@@ -1,0 +1,41 @@
+---
+/**
+ * "Sample books": page 1 and page 2 of one hole per golf (4 golfs at most),
+ * shown at web resolution, never enlarged, no download (AGENTS.md, visuals rule).
+ */
+import { getLocale, t } from '../i18n';
+import { type BookSample, sampleAlt, sampleCaption, samples } from '../lib/bookSamples';
+import BookPage from './BookPage.astro';
+import SectionHeading from './SectionHeading.astro';
+
+const gallery: readonly BookSample[] = [samples.ableiges4, samples.national1, samples.saintNom1];
+
+const locale = getLocale(Astro.currentLocale);
+const copy = t(locale).samples.gallery;
+---
+
+<section id="exemples" class="scroll-mt-20" aria-labelledby="samples-title">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20 md:px-6">
+    <SectionHeading id="samples-title" eyebrow={copy.eyebrow} title={copy.title} text={copy.text} />
+
+    <ul class="mt-10 grid gap-4 md:grid-cols-3">
+      {
+        gallery.map((sample) => (
+          <li class="rounded-xl border border-border bg-card p-4 sm:p-5">
+            <div class="grid grid-cols-2 gap-3">
+              {([0, 1] as const).map((page) => (
+                <BookPage
+                  src={sample.pages[page]}
+                  alt={sampleAlt(locale, sample, page)}
+                  sizes="(min-width: 1024px) 170px, (min-width: 768px) 15vw, 44vw"
+                />
+              ))}
+            </div>
+            <p class="mt-4 text-sm font-medium">{sampleCaption(locale, sample)}</p>
+            <p class="text-xs text-muted-foreground">{copy.pages}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

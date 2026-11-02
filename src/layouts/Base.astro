@@ -20,7 +20,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, ogImage = '/images/carnets-irl.jpg', noindex = false } = Astro.props;
+const { title, ogImage = '/og.png', noindex = false } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
 const copy = t(locale);
 const description = Astro.props.description ?? copy.defaultDescription;
@@ -53,8 +53,9 @@ const structuredData = jsonLdGraph([organizationJsonLd(), ...extraJsonLd]);
     {noindex && <meta name="robots" content="noindex" />}
     {!noindex && <link rel="canonical" href={canonical} />}
     {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="500x500" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#f8f5ee" />
     <!-- Resolve the theme before first paint: stored choice, else device setting. No flash. -->
     <script is:inline>
@@ -80,6 +81,9 @@ const structuredData = jsonLdGraph([organizationJsonLd(), ...extraJsonLd]);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Yardage" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
