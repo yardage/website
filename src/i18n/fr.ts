@@ -46,7 +46,6 @@ export const fr = {
   processTitle: 'Du terrain au carnet, en quatre étapes.',
   processIntro:
     'Un processus maîtrisé pour livrer des carnets précis, cohérents d’un trou à l’autre, et adaptés à l’identité de votre golf — sans charge technique de votre côté.',
-  processSeeMore: 'Voir la méthode →',
   processSteps: [
     {
       title: 'Analyse',
@@ -66,15 +65,10 @@ export const fr = {
     },
   ],
   pricingEyebrow: 'Offre',
-  pricingTitle: 'Une grille claire pour les golfs et les pros.',
-  pricingIntroBefore: 'Prix public conseillé\u00a0:',
-  pricingIntroPrice: '16–19 € TTC',
-  pricingIntroAfter: '. Tarif club sur devis. Remises volume ci-dessous.',
-  pricingVolumes: [
-    { qty: 'À l’unité', price: 'Sur devis', note: 'Tarif club HT' },
-    { qty: '500 ex.', price: '−10 %', note: 'Remise volume' },
-    { qty: '1 000 ex.', price: '−20 %', note: 'Remise volume' },
-  ],
+  pricingTitle: 'Un tarif sur devis, adapté à votre parcours.',
+  pricingRate: 'Tarif sur devis',
+  pricingIntro:
+    'Chaque carnet est produit pour un parcours précis : le tarif est établi sur devis, selon votre parcours et votre commande.',
   pricingExtras: [
     'Personnalisation logo et sponsors',
     'Impression premium sur papier écologique',
@@ -106,19 +100,6 @@ export const fr = {
     error:
       'Envoi impossible pour le moment. Contactez-nous à contact@yardage.io ou au +33 5 37 07 97 18.',
   },
-  gallery: [
-    {
-      alt: 'Page de trou d’un carnet de parcours Yardage : distances, obstacles et lignes de jeu',
-    },
-    {
-      alt: 'Détail green et fairway d’un carnet de parcours golf Yardage, avec distances utiles',
-    },
-  ],
-  lightboxLabel: 'Visionneuse d’image',
-  lightboxClose: 'Fermer',
-  lightboxPrev: 'Image précédente',
-  lightboxNext: 'Image suivante',
-  lightboxEnlarge: 'Agrandir',
   home: {
     title: 'Yardage — Carnets de parcours de golf pour clubs et pros',
     description:
@@ -314,7 +295,7 @@ export const fr = {
       },
       {
         q: 'Quel est le minimum de commande ?',
-        a: '150 exemplaires par commande. Remises volume à 500 et 1 000 exemplaires. Un exemplaire numérique peut être préparé sur demande.',
+        a: '150 exemplaires par commande. Un exemplaire numérique peut être préparé sur demande.',
       },
       {
         q: 'Le carnet peut-il être mis à jour si le parcours évolue ?',
@@ -329,6 +310,141 @@ export const fr = {
         a: 'Écrivez-nous via le formulaire de contact, à contact@yardage.io ou au +33 5 37 07 97 18. Réponse sous 48 h ouvrées. Indiquez le nom du golf, le nombre de trous et, si possible, un volume estimé.',
       },
     ],
+  },
+  breadcrumbHome: 'Accueil',
+  coverPdf: 'Voir un exemple de couverture (PDF, 1 page)',
+  offer: {
+    title: 'Offre — Yardage',
+    description:
+      'Offre Yardage : tarif sur devis, personnalisation aux couleurs du club, minimum 150 exemplaires, livraison sous 1 mois après validation du devis.',
+    eyebrow: 'Offre',
+    text: 'Personnalisation, papier écologique, livraison sous 1 mois après validation du devis — à partir de 150 exemplaires.',
+    includedTitle: 'Ce qui est inclus',
+    includedText:
+      'Le tarif club couvre l’ensemble du parcours, de la conception à la livraison. Vous n’avez pas à assembler des prestataires : Yardage prend en charge le produit de bout en bout.',
+    included: [
+      'Analyse du parcours, base de données et mise en page de chaque trou',
+      'Personnalisation : logo du club, page sponsors, mentions partenaires',
+      'Impression premium sur papier écologique',
+      'Livraison jusqu’à votre club ou votre pro shop, sous 1 mois après validation du devis',
+      'Minimum 150 exemplaires par commande',
+      'Exemplaire numérique sur demande',
+    ],
+    custom: {
+      eyebrow: 'Personnalisation',
+      title: 'Le carnet officiel de votre golf.',
+      paragraphs: [
+        'Logo du club, page sponsors, mentions partenaires — le carnet porte l’identité de votre structure tout en restant un outil de jeu.',
+        'Nous adaptons la couverture et les éléments de marque à votre charte, sans compromettre la lisibilité des pages de trou. Le résultat doit être immédiatement reconnaissable comme le carnet officiel de votre golf.',
+      ],
+      coverAlt: 'Exemple de couverture d’un carnet Yardage : Ableiges, Le Vexin, édition 2022',
+    },
+    process: {
+      eyebrow: 'Comment ça se passe',
+      title: 'Un parcours simple, de la demande à la livraison.',
+      text: 'Vous gardez la main sur la validation ; nous assurons la production.',
+      steps: [
+        {
+          title: 'Contact',
+          text: 'Le golf nous écrit avec le nom du club, le nombre de trous et, si possible, un volume estimé — à partir de 150 exemplaires.',
+        },
+        {
+          title: 'Devis',
+          text: 'Nous étudions votre parcours et vous adressons une proposition claire : tarif, options de personnalisation et modalités de livraison.',
+        },
+        {
+          title: 'Validation',
+          text: 'Une fois le devis validé, la production démarre. Vous validez les éléments d’identité (logo, sponsors) pour que le carnet soit à votre image.',
+        },
+        {
+          title: 'Livraison',
+          text: 'Les carnets vous sont livrés sous 1 mois après validation du devis — prêts pour le pro shop, les membres et les compétitions.',
+        },
+      ],
+    },
+    /** Positions in `faq.items` shown on the offer page. */
+    faqItems: [6, 5, 3, 4, 9],
+    cta: {
+      eyebrow: 'Devis',
+      title: 'Parlons de votre parcours.',
+      text: 'Indiquez le nom du golf, le nombre de trous et, si possible, un volume estimé. Réponse sous 48 h ouvrées.',
+    },
+  },
+  method: {
+    title: 'Méthode — Yardage',
+    description:
+      'Analyse, data, production et impression : la méthode Yardage pour des carnets de parcours précis, cohérents et à l’image de votre club.',
+    eyebrow: 'Méthode',
+    text: 'Quatre étapes pour transformer le terrain en carnet de référence — précis, lisible et à l’image de votre club.',
+    leadAlt: 'Page de trou d’un carnet Yardage : distances, obstacles et lignes de jeu du tee au green',
+    steps: [
+      {
+        id: 'analyse',
+        title: 'Comprendre le parcours avant de le dessiner',
+        paragraphs: [
+          'Chaque carnet commence par une lecture attentive du terrain. Nous observons le dessin des trous, les obstacles, les lignes de jeu naturelles et les distances qui comptent réellement pour le joueur.',
+          'L’objectif n’est pas d’accumuler des mesures pour elles-mêmes, mais d’identifier ce qui aide à préparer une stratégie : où jouer, où éviter, où viser. Cette étape pose les bases d’un carnet utile sur le parcours, pas seulement esthétique.',
+          'Nous échangeons aussi avec le club. Vous connaissez mieux que quiconque les particularités de votre parcours — bunkers sensibles, zones à risque, green exigeants. Votre retour affine notre lecture et garantit que le carnet collera à la réalité du terrain.',
+        ],
+        alt: 'Vue aérienne d’un parcours de golf',
+      },
+      {
+        id: 'data',
+        title: 'Une base fiable, prête à évoluer',
+        paragraphs: [
+          'Une fois le parcours analysé, nous structurons les informations dans une base claire et cohérente. Distances, éléments de jeu, repères cartographiques : tout est organisé pour servir la production du carnet.',
+          'Cette organisation a un avantage concret pour le club. Quand le parcours évolue — nouveau bunker, green rénové, fairway redessiné — la base peut être mise à jour sans tout recommencer. Le carnet reste un outil vivant, pas un document figé.',
+          'Pour le joueur, cela se traduit par des informations fiables et homogènes d’un trou à l’autre. Même logique, mêmes repères, même niveau d’exigence sur l’ensemble du parcours.',
+        ],
+        alt: 'Page de green d’un carnet Yardage, avec la grille de repères et les distances d’approche',
+      },
+      {
+        id: 'production',
+        title: 'Dessiner pour lire en un coup d’œil',
+        paragraphs: [
+          'La production transforme les données en pages de trou claires et hiérarchisées. Chaque élément a sa place : distances, obstacles, lignes de jeu, green. Le joueur doit pouvoir lire la page rapidement, sur le tee comme au milieu du fairway.',
+          'Nous veillons à une cohérence forte d’un trou à l’autre. Un joueur qui découvre votre parcours doit retrouver les mêmes repères et la même logique d’utilisation sur les dix-huit trous. C’est ce qui fait d’un carnet un vrai standard — et non une collection de pages isolées.',
+          'Cette structure commune laisse toute sa place à l’identité du club. Couverture, logo, mentions partenaires : le carnet reste le vôtre, tout en étant immédiatement identifiable comme un carnet Yardage.',
+        ],
+        alt: 'Carnet Yardage ouvert sur une page de green, tenu face au green',
+      },
+      {
+        id: 'impression',
+        title: 'Un objet digne de votre pro shop',
+        paragraphs: [
+          'Le carnet est imprimé sur papier écologique, avec des finitions pensées pour l’usage sur le parcours et pour la présentation en boutique. Il doit être agréable à tenir, solide dans le sac, et à la hauteur de l’image que vous souhaitez transmettre.',
+          'Nous gérons le tirage et la livraison jusqu’à votre club ou votre pro shop. Vous n’avez pas à coordonner imprimeur, formats ou délais : la production fait partie intégrante de la méthode.',
+          'Résultat : un support premium, prêt à être proposé à vos membres, à vos visiteurs et à vos compétiteurs — sans charge technique de votre côté.',
+        ],
+        alt: 'Carnets Yardage présentés dans un présentoir de pro shop',
+      },
+    ],
+    page: {
+      title: 'Ce que contient une page de carnet',
+      text: 'Une page Yardage est conçue pour la décision. Elle rassemble les informations essentielles sans surcharger la lecture :',
+      points: [
+        'les distances utiles pour construire son coup ;',
+        'les obstacles et zones à anticiper ;',
+        'les lignes de jeu et repères de parcours ;',
+        'la représentation du green pour préparer l’approche et le putting.',
+      ],
+      note: 'Chaque trou est produit à partir des données terrain, pour une lecture immédiate sur le parcours. Et comme la base reste actualisable, le carnet peut évoluer avec votre golf.',
+    },
+    standard: {
+      title: 'Un standard commun, une identité propre à chaque golf',
+      paragraphs: [
+        'Notre méthode vise un équilibre simple : une structure commune et professionnelle, et le respect de la singularité de chaque parcours.',
+        'Un joueur qui passe d’un parcours à un autre doit retrouver les mêmes repères et la même logique de lecture. Cette familiarité accélère la prise en main et renforce la confiance pendant la partie.',
+        'En parallèle, chaque club conserve son histoire, son architecture et son image. Le carnet est identifiable comme un produit Yardage — et comme le carnet officiel de votre structure.',
+      ],
+    },
+    faqItems: [2, 7, 0, 1],
+    cta: {
+      eyebrow: 'Prêt à équiper votre parcours ?',
+      title: 'Du terrain au carnet, on s’occupe de tout.',
+      text: 'De l’analyse du terrain à la livraison des carnets, Yardage prend en charge l’ensemble du processus. Vous gardez la maîtrise de l’identité du club ; nous assurons la précision, la cohérence et la qualité du produit.',
+      secondary: 'Voir l’offre',
+    },
   },
 };
 
