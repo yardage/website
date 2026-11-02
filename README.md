@@ -1,9 +1,12 @@
 # Yardage — B2B marketing website
 
-Static site ([Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com)) presenting **Yardage** to golf clubs and professionals: method, offer, and contact.
+Static site ([Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com)) presenting **Yardage** yardage books to golf clubs and professionals: method, offer, and quote requests.
 
-**Live site:** [https://yardage.io](https://yardage.io)  
+**Live site:** [https://yardage.io](https://yardage.io)
 **Contact:** [contact@yardage.io](mailto:contact@yardage.io) · +33 5 37 07 97 18
+
+> Working on this repo (branches, review, visuals rule)? Read [`AGENTS.md`](AGENTS.md) first.
+> **A push to `main` publishes to production.**
 
 ---
 
@@ -11,24 +14,23 @@ Static site ([Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.c
 
 | Layer | Choice |
 |-------|--------|
-| Framework | Astro 5 (static output) |
-| Styling | Tailwind CSS 4 via `@tailwindcss/vite` |
-| Language | TypeScript (`astro/tsconfigs/strict`) |
-| Fonts | [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif) (display) + [Manrope](https://fonts.google.com/specimen/Manrope) (UI) |
-| Theme | Dark brand palette — green `#14382c` (`--color-brand` / `--color-paper` in `src/styles/global.css`) |
+| Framework | Astro 7 (static output, built-in i18n routing, `trailingSlash: 'always'`) |
+| Styling | Tailwind CSS 4 via `@tailwindcss/vite`, theme tokens in `src/styles/global.css` |
+| Language | TypeScript (`astro/tsconfigs/strict`), checked with `astro check` |
+| Fonts | Self-hosted with Fontsource: [Instrument Serif](https://fontsource.org/fonts/instrument-serif) (headings) + [Geist](https://fontsource.org/fonts/geist) (text). No Google Fonts call. |
+| Icons | [`@lucide/astro`](https://lucide.dev); brand icons (social) in `src/lib/social.ts` |
+| Themes | Light and dark, following the device setting, with a toggle (no flash on load) |
 | Forms | [Formspree](https://formspree.io) (`PUBLIC_FORMSPREE_ENDPOINT`) |
-| Hosting | GitHub Pages from the `dist` branch |
-
-Config: [`astro.config.mjs`](astro.config.mjs) — `site: https://yardage.io`, `base: '/'`, built assets under `assets/`.
+| Hosting | GitHub Pages, from the `dist` branch |
 
 ---
 
 ## Prerequisites
 
-- **Node.js 22.12+** or **24 LTS** (Node 21 is not supported by Vite 8)
+- **Node.js 22.12+** or **24 LTS**
 - npm 9+
 
-CI builds with Node 22 (see [`.github/workflows/deploy-dist.yml`](.github/workflows/deploy-dist.yml)).
+CI builds with Node 22.
 
 ---
 
@@ -39,49 +41,44 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:4321](http://localhost:4321).
+Open [http://localhost:4321](http://localhost:4321). Every page URL ends with `/` (`/faq/`, `/en/offer/`).
 
 | Script | Purpose |
 |--------|---------|
 | `npm run dev` | Local dev server |
+| `npm run check` | Type check (`astro check`) — also guarantees every FR string exists in EN |
 | `npm run build` | Production build → `dist/` |
-| `npm run preview` | Preview the production build |
+| `npm run check:links` | After a build: no broken internal link, trailing slash on links, canonical, hreflang and sitemap |
+| `npm run preview` | Serve the production build |
 
 ---
 
 ## Environment (contact form)
 
-1. Create a form on [formspree.io](https://formspree.io) that delivers to `contact@yardage.io`.
-2. Copy `.env.example` → `.env`.
-3. Set:
+1. Copy `.env.example` → `.env`.
+2. Set `PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxxxxx`.
 
-```bash
-PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxxxxx
-```
-
-Without a real endpoint (placeholder still contains `YOUR_FORM_ID`), the form shows a configuration message; email and phone remain available on the contact page.
-
-**Production:** the deploy workflow injects `PUBLIC_FORMSPREE_ENDPOINT` at build time. Local `.env` is gitignored and is only needed for local form testing.
+Without a real endpoint the form shows a configuration message; email and phone remain available. In production, the deploy workflow injects the endpoint at build time. `.env` is gitignored.
 
 ---
 
 ## Site map (FR / EN)
 
-French is the default locale (root paths). English lives under `/en/`.
+French is the default locale (root paths); English lives under `/en/`. Routes are defined once in [`src/i18n/index.ts`](src/i18n/index.ts) (`routes`).
 
 | Page | French | English |
 |------|--------|---------|
-| Home | `/` | `/en` |
-| Method | `/methode` | `/en/method` |
-| Offer | `/offre` | `/en/offer` |
-| About | `/a-propos` | `/en/about` |
-| Contact | `/contact` | `/en/contact` |
-| Legal notice | `/mentions-legales` | `/en/legal` |
-| Privacy | `/confidentialite` | `/en/privacy` |
+| Home | `/` | `/en/` |
+| Method | `/methode/` | `/en/method/` |
+| Offer | `/offre/` | `/en/offer/` |
+| FAQ | `/faq/` | `/en/faq/` |
+| About | `/a-propos/` | `/en/about/` |
+| Contact | `/contact/` | `/en/contact/` |
+| Legal notice | `/mentions-legales/` | `/en/legal/` |
+| Privacy | `/confidentialite/` | `/en/privacy/` |
+| Not found | `/404.html` (bilingual) | |
 
-Language switcher in the header and footer. `hreflang` + canonical URLs are emitted from [`BaseLayout.astro`](src/layouts/BaseLayout.astro).
-
-Route helpers and shared UI strings: [`src/lib/i18n.ts`](src/lib/i18n.ts). Base-path prefixing: [`src/lib/paths.ts`](src/lib/paths.ts) (`withBase`).
+Legacy URLs redirect (see `redirects` in [`astro.config.mjs`](astro.config.mjs)) and are excluded from the sitemap.
 
 ---
 
@@ -89,99 +86,45 @@ Route helpers and shared UI strings: [`src/lib/i18n.ts`](src/lib/i18n.ts). Base-
 
 ```
 src/
-  components/     Header, Footer, Hero, Pillars, ProcessSteps,
-                  ProductGallery, Pricing, ContactForm, SectionPhoto
-  layouts/        BaseLayout — SEO, fonts, OG, hreflang, scroll reveal
-  lib/            paths.ts, i18n.ts (locales, routes, UI copy)
-  pages/          FR at root; EN under pages/en/
-  styles/         global.css — CSS variables + Tailwind 4 + motion utilities
+  i18n/           index.ts (locales, routes, helpers, constants), fr.ts, en.ts (UI copy)
+  layouts/        Base.astro — SEO, canonical, hreflang, OG, JSON-LD, theme script, skip link
+  components/     Header, Footer, Brand, ThemeToggle, LangSwitch + page sections
+  lib/            schema.ts (JSON-LD), social.ts, paths.ts, sectionBackgrounds.ts
+  pages/          FR at root; EN under pages/en/; 404.astro
+  styles/         global.css — theme tokens, @theme inline, utilities
+scripts/
+  check-links.mjs Link and trailing-slash checker for dist/
 public/
   images/         Photos, logos, product samples (+ CREDITS.txt)
-  docs/           Sample PDF (e.g. cover example)
-  favicon.svg / favicon.png / apple-touch-icon.png
+  docs/           Cover sample PDF
   CNAME           yardage.io
-  .nojekyll       Required so GitHub Pages serves `_astro/` / `assets/`
+  .nojekyll       Required so GitHub Pages serves assets/
 ```
 
-### Layout behaviour (`BaseLayout`)
+### Themes
 
-- Meta description, Open Graph, Twitter card, canonical URL
-- Alternate `hreflang` links (`fr`, `en`, `x-default` → FR)
-- Scroll progress bar, IntersectionObserver reveal (`.reveal`), smooth same-page hash scrolling with header offset
-- Respects `prefers-reduced-motion`
+Tokens (`--background`, `--foreground`, `--card`, `--muted`, `--muted-foreground`, `--primary`, `--accent`, `--border`, `--ring`) are defined for light (`:root`) and dark (`html.dark`, plus a `prefers-color-scheme` fallback without JavaScript), then exposed to Tailwind through `@theme inline` (`bg-background`, `text-muted-foreground`, `bg-primary`…).
+
+- Light: sand cream background, near-black green text, primary = Yardage green `#14382c`, soft sage accent.
+- Dark: `#0a100e` background, `#0f1714` cards, primary = sage `#9db8a8`.
+
+An inline script in `<head>` applies the stored choice (`localStorage.theme`) or the device setting before first paint. All text and button pairs meet WCAG AA in both themes.
 
 ### Content model
 
-- **Shared chrome / CTAs / form / pricing labels:** `t(locale)` in `i18n.ts`
-- **Page body copy:** mostly inline in each `.astro` page (FR and EN files are paired)
+- Shared chrome, CTAs, form and pricing labels: `t(locale)` from `src/i18n`. `en.ts` is typed against `fr.ts`, so `npm run check` fails if a key is missing in English.
+- Page body copy: inline in each `.astro` page (FR and EN files are paired).
+- The current locale comes from Astro i18n routing (`Astro.currentLocale`).
 
 ### Contact form
 
-[`ContactForm.astro`](src/components/ContactForm.astro) posts to Formspree (AJAX + JSON `Accept` header).
-
-- Fields: name, email, club, volume, message
-- Honeypot: `_gotcha`
-- Intent prefills via query or hash:
-  - Quote: `?intent=devis` or `?intent=quote`
-  - Sample: `?intent=exemplaire`, `sample`, or `exemple` (also `#exemplaire`)
-
-Hero CTAs link to these intents.
+[`ContactForm.astro`](src/components/ContactForm.astro) posts to Formspree (AJAX + JSON `Accept` header). Honeypot `_gotcha`. Intent prefills: `?intent=devis` / `?intent=quote`, `?intent=exemplaire` / `sample`.
 
 ---
 
-## Assets
+## CI and deployment
 
-- **Images:** `public/images/` — Unsplash credits in [`public/images/CREDITS.txt`](public/images/CREDITS.txt)
-- **Product samples:** hole maps, IRL book photo, optional cover assets under `images/` / `docs/`
-- **Favicons:** SVG preferred, PNG + Apple touch icon as fallbacks
-- **Hero:** background stills (e.g. `bg-aerial.jpg`); no video in the current hero
+- **Pull requests** — [`.github/workflows/ci.yml`](.github/workflows/ci.yml): `npm ci`, `npm run check`, `npm run build`, `npm run check:links`. No deployment.
+- **Production** — [`.github/workflows/deploy-dist.yml`](.github/workflows/deploy-dist.yml): on push to `main` (or manual run), build with the Formspree endpoint and publish `dist/` to the **`dist`** branch, served by GitHub Pages on `yardage.io` (`public/CNAME`).
 
-### Optional hero video (not required)
-
-Large source files are not versioned. To prepare a compressed clip:
-
-```bash
-# from the parent Yardage folder, if you have YARDAGE.mp4
-ffmpeg -i ../YARDAGE.mp4 -vcodec libx264 -crf 28 -an public/video/yardage.mp4
-```
-
-Wire it into the hero only if you intentionally reintroduce video.
-
----
-
-## Deployment (GitHub Pages)
-
-Workflow: [`.github/workflows/deploy-dist.yml`](.github/workflows/deploy-dist.yml)
-
-1. Push to `main` (or run **workflow_dispatch**)
-2. `npm ci` → `npm run build` (with Formspree env)
-3. Ensure `dist/.nojekyll`
-4. Deploy `dist/` → branch **`dist`** (single-commit, cleaned)
-
-**GitHub → Settings → Pages**
-
-- Source: **Deploy from a branch**
-- Branch: **`dist`**, folder **`/`**
-
-**Domain:** `yardage.io` (DNS A records to GitHub Pages + custom domain; `public/CNAME` is included in the build).
-
----
-
-## Out of scope (phase 1)
-
-- Online shop
-- Client portal / account area
-- Link to the cartography tooling product
-
----
-
-## Project health (checkup)
-
-Verified on implementation of this README:
-
-- `npm run build` succeeds — **14 static pages** (7 FR + 7 EN)
-- Route table matches `src/lib/i18n.ts` `routes`
-- Deploy workflow on `main` → `dist` branch is configured
-- Formspree endpoint is provided in CI; local setup uses `.env`
-- `public/video/` is unused by the current hero (images only)
-- No active `scripts/` tooling in this repo
+GitHub Pages settings, DNS and Formspree are managed by the owner; do not change them from this repo.
